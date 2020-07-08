@@ -1,0 +1,15 @@
+2020/07/08-11:35:31.574 6f2 Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/08-11:35:31.575 6f2 Recovering log #156
+2020/07/08-11:35:31.575 6f2 Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000156.log 
+2020/07/08-14:18:13.464 7d6 Level-0 table #160: started
+2020/07/08-14:18:13.514 7d6 Level-0 table #160: 190 bytes OK
+2020/07/08-14:18:13.581 7d6 Delete type=0 #156
+2020/07/08-14:18:13.581 7d6 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/08-14:18:13.581 7d6 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x00\x00\x00\x05' @ 2460 : 1
+2020/07/08-14:18:13.581 7d6 Compacting 1@1 + 1@2 files
+2020/07/08-14:18:13.615 7d6 Generated table #161@1: 46 keys, 1836 bytes
+2020/07/08-14:18:13.615 7d6 Compacted 1@1 + 1@2 files => 1836 bytes
+2020/07/08-14:18:13.645 7d6 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/08-14:18:13.646 7d6 Delete type=2 #160
+2020/07/08-14:18:13.646 7d6 Delete type=2 #145
+2020/07/08-14:18:13.646 7d6 Manual compaction at level-1 from '\x00\x00\x00\x00\x05' @ 2460 : 1 .. (end); will stop at (end)

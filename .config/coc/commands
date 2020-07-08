@@ -1,0 +1,8 @@
+clangd.install
+python.startREPL
+python.setInterpreter
+python.setLinter
+python.createTerminal
+python.execInTerminal
+python.viewOutput
+python.runLinting

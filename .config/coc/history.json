@@ -1,0 +1,44 @@
+{
+  "lists": {
+    "%2Fhome%2Fanu%2FCoding-Example%2FPython%2FMyPythonScipts": [
+      ":q"
+    ]
+  },
+  "commands": {
+    "%2Fhome%2Fanu%2FCoding-Example%2FPython%2FMyPythonScipts": [
+      "start",
+      "python"
+    ],
+    "%2Fhome%2Fanu%2FCoding-Example%2FSorting": [
+      "clang"
+    ],
+    "%2Fhome%2Fanu%2F": {
+      "vim%2Fconfig%2Fplug-config": [
+        "set lin"
+      ]
+    },
+    "%2Fhome%2Fanu%2FPython%2Fcurses": [
+      "python.",
+      "p",
+      "python.crr",
+      "star"
+    ],
+    "%2Fhome%2Fanu%2FCoding-Example%2FFunctions": [
+      "clangd inst"
+    ]
+  },
+  "extensions": {
+    "%2Fhome%2Fanu%2FCoding-Example%2FPython%2FMyPythonScipts": [
+      "coc:"
+    ],
+    "%2Fhome%2Fanu%2FCoding-Example%2FSorting": [
+      "clag"
+    ]
+  },
+  "outline": {
+    "%2Fhome%2Fanu%2FPython%2Fcurses": [
+      "cur",
+      "ind"
+    ]
+  }
+}

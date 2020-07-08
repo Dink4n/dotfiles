@@ -1,0 +1,15 @@
+2020/07/03-19:54:19.986 102d Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.mathrubhumi.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/03-19:54:19.986 102d Recovering log #11
+2020/07/03-19:54:19.986 102d Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/https_www.mathrubhumi.com_0.indexeddb.leveldb/000011.log 
+2020/07/03-19:55:08.756 971 Level-0 table #16: started
+2020/07/03-19:55:08.786 971 Level-0 table #16: 512 bytes OK
+2020/07/03-19:55:08.819 971 Delete type=0 #11
+2020/07/03-19:55:08.819 971 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/03-19:55:08.819 971 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x12\x00s\x00u\x00b\x00s\x00c\x00r\x00i\x00p\x00t\x00i\x00o\x00n\x00D\x00o\x00m\x00a\x00i\x00n' @ 126 : 1
+2020/07/03-19:55:08.819 971 Compacting 1@1 + 1@2 files
+2020/07/03-19:55:08.853 971 Generated table #17@1: 33 keys, 903 bytes
+2020/07/03-19:55:08.853 971 Compacted 1@1 + 1@2 files => 903 bytes
+2020/07/03-19:55:08.885 971 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/03-19:55:08.885 971 Delete type=2 #13
+2020/07/03-19:55:08.885 971 Delete type=2 #16
+2020/07/03-19:55:08.891 971 Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x12\x00s\x00u\x00b\x00s\x00c\x00r\x00i\x00p\x00t\x00i\x00o\x00n\x00D\x00o\x00m\x00a\x00i\x00n' @ 126 : 1 .. (end); will stop at (end)

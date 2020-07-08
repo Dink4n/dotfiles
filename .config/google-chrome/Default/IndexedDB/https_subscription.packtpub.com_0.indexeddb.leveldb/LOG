@@ -1,0 +1,5 @@
+2020/06/29-14:33:39.260 3a29 Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_subscription.packtpub.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/06/29-14:38:11.902 101f Level-0 table #5: started
+2020/06/29-14:38:11.935 101f Level-0 table #5: 1268 bytes OK
+2020/06/29-14:38:11.969 101f Delete type=0 #3
+2020/06/29-14:38:11.969 101f Manual compaction at level-0 from (begin) .. (end); will stop at (end)

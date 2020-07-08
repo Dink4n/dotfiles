@@ -1,0 +1,8 @@
+2020/07/08-11:13:23.909 6c8 Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/chrome-extension_cjpalhdlnbpafiamejdnhcphjbkeiagm_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/08-11:13:23.909 6c8 Recovering log #121
+2020/07/08-11:13:23.909 6c8 Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/chrome-extension_cjpalhdlnbpafiamejdnhcphjbkeiagm_0.indexeddb.leveldb/000121.log 
+2020/07/08-11:13:26.104 7d6 Level-0 table #125: started
+2020/07/08-11:13:26.104 7d6 Level-0 table #125: 0 bytes OK
+2020/07/08-11:13:26.332 7d6 Delete type=0 #121
+2020/07/08-11:13:26.332 7d6 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/08-11:13:26.332 7d6 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

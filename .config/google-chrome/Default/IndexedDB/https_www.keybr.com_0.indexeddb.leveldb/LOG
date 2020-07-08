@@ -1,0 +1,8 @@
+2020/07/08-09:22:26.638 b27 Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.keybr.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/08-09:22:26.652 b27 Recovering log #72
+2020/07/08-09:22:26.652 b27 Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/https_www.keybr.com_0.indexeddb.leveldb/000072.log 
+2020/07/08-09:22:28.753 c20 Level-0 table #76: started
+2020/07/08-09:22:28.753 c20 Level-0 table #76: 0 bytes OK
+2020/07/08-09:22:28.788 c20 Delete type=0 #72
+2020/07/08-09:22:28.788 c20 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/08-09:22:28.788 c20 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

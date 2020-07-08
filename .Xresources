@@ -1,0 +1,23 @@
+*faceName:      JetBrains Mono
+*faceSize:      10
+
+*background:#323d43
+*cursorColor:#d8caac
+*foreground:#d8caac
+
+*color0:        #323d43
+*color1:        #e68183
+*color10:       #a7c080
+*color11:       #d9bb80
+*color12:       #89beba
+*color13:       #d3a0bc
+*color14:       #87c095
+*color15:       #d8caac
+*color2:        #a7c080
+*color3:        #d9bb80
+*color4:        #89beba
+*color5:        #d3a0bc
+*color6:        #87c095
+*color7:        #d8caac
+*color8:        #d8caac
+*color9:        #e68183

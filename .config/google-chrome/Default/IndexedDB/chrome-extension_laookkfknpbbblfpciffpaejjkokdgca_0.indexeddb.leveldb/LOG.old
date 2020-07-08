@@ -1,0 +1,5 @@
+2020/06/25-18:37:42.191 493f Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/chrome-extension_laookkfknpbbblfpciffpaejjkokdgca_0.indexeddb.leveldb/MANIFEST-000001
+2020/06/25-18:37:56.928 48b1 Level-0 table #5: started
+2020/06/25-18:37:56.971 48b1 Level-0 table #5: 4079 bytes OK
+2020/06/25-18:37:57.022 48b1 Delete type=0 #3
+2020/06/25-18:37:57.023 48b1 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

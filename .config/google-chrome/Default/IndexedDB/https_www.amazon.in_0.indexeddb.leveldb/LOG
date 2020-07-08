@@ -1,0 +1,15 @@
+2020/07/08-09:23:37.687 b28 Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.amazon.in_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/08-09:23:37.687 b28 Recovering log #39
+2020/07/08-09:23:37.687 b28 Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/https_www.amazon.in_0.indexeddb.leveldb/000039.log 
+2020/07/08-09:23:51.826 c20 Level-0 table #44: started
+2020/07/08-09:23:51.877 c20 Level-0 table #44: 781 bytes OK
+2020/07/08-09:23:51.914 c20 Delete type=0 #39
+2020/07/08-09:23:51.914 c20 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/08-09:23:51.914 c20 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x1f\x03\x000\x1f]\xcc2wB\x00\x01\x14\x007\x00E\x001\x00E\x00A\x002\x00Z\x00S\x00D\x00V\x00D\x00W\x00V\x00K\x007\x004\x00H\x00E\x000\x002' @ 307 : 1
+2020/07/08-09:23:51.915 c20 Compacting 1@1 + 1@2 files
+2020/07/08-09:23:51.953 c20 Generated table #45@1: 35 keys, 990 bytes
+2020/07/08-09:23:51.954 c20 Compacted 1@1 + 1@2 files => 990 bytes
+2020/07/08-09:23:51.988 c20 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/08-09:23:51.988 c20 Delete type=2 #44
+2020/07/08-09:23:51.988 c20 Delete type=2 #41
+2020/07/08-09:23:51.988 c20 Manual compaction at level-1 from '\x00\x01\x01\x1f\x03\x000\x1f]\xcc2wB\x00\x01\x14\x007\x00E\x001\x00E\x00A\x002\x00Z\x00S\x00D\x00V\x00D\x00W\x00V\x00K\x007\x004\x00H\x00E\x000\x002' @ 307 : 1 .. (end); will stop at (end)

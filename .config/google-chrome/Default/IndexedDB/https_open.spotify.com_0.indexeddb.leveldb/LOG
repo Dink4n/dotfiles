@@ -1,0 +1,5 @@
+2020/06/30-19:29:25.922 51ed Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_open.spotify.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/06/30-19:30:58.183 f11 Level-0 table #5: started
+2020/06/30-19:30:58.222 f11 Level-0 table #5: 179041 bytes OK
+2020/06/30-19:30:58.257 f11 Delete type=0 #3
+2020/06/30-19:30:58.258 f11 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

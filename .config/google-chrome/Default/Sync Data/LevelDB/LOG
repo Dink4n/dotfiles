@@ -1,0 +1,21 @@
+2020/07/08-11:13:16.464 6c9 Reusing MANIFEST /home/anu/.config/google-chrome/Default/Sync Data/LevelDB/MANIFEST-000001
+2020/07/08-11:13:16.622 6c9 Recovering log #239
+2020/07/08-11:13:16.782 6c9 Reusing old log /home/anu/.config/google-chrome/Default/Sync Data/LevelDB/000239.log 
+2020/07/08-11:50:17.069 13a5 Level-0 table #243: started
+2020/07/08-11:50:17.112 13a5 Level-0 table #243: 98183 bytes OK
+2020/07/08-11:50:17.143 13a5 Delete type=0 #239
+2020/07/08-11:50:17.143 13a5 Compacting 4@0 + 1@1 files
+2020/07/08-11:50:17.188 13a5 Generated table #244@0: 245 keys, 29699 bytes
+2020/07/08-11:50:17.188 13a5 Compacted 4@0 + 1@1 files => 29699 bytes
+2020/07/08-11:50:17.225 13a5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/07/08-11:50:17.226 13a5 Delete type=2 #237
+2020/07/08-11:50:17.226 13a5 Delete type=2 #243
+2020/07/08-11:50:17.226 13a5 Delete type=2 #234
+2020/07/08-11:50:17.226 13a5 Delete type=2 #240
+2020/07/08-11:50:17.226 13a5 Delete type=2 #232
+2020/07/08-13:40:57.898 13a5 Level-0 table #246: started
+2020/07/08-13:40:57.936 13a5 Level-0 table #246: 86102 bytes OK
+2020/07/08-13:40:57.970 13a5 Delete type=0 #242
+2020/07/08-14:46:15.908 13a5 Level-0 table #248: started
+2020/07/08-14:46:15.996 13a5 Level-0 table #248: 99058 bytes OK
+2020/07/08-14:46:16.054 13a5 Delete type=0 #245

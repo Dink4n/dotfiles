@@ -1,0 +1,15 @@
+2020/07/06-21:37:45.115 875d Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.thehindubusinessline.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/06-21:37:45.116 875d Recovering log #11
+2020/07/06-21:37:45.116 875d Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/https_www.thehindubusinessline.com_0.indexeddb.leveldb/000011.log 
+2020/07/06-21:38:26.524 1a3b Level-0 table #16: started
+2020/07/06-21:38:26.565 1a3b Level-0 table #16: 1089 bytes OK
+2020/07/06-21:38:26.598 1a3b Delete type=0 #11
+2020/07/06-21:38:26.598 1a3b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/06-21:38:26.598 1a3b Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x02\x01\x02\x01\x0c\x00r\x00e\x00p\x00o\x00r\x00t\x00P\x00a\x00r\x00a\x00m\x00s' @ 224 : 1
+2020/07/06-21:38:26.598 1a3b Compacting 1@1 + 1@2 files
+2020/07/06-21:38:26.632 1a3b Generated table #17@1: 51 keys, 1455 bytes
+2020/07/06-21:38:26.632 1a3b Compacted 1@1 + 1@2 files => 1455 bytes
+2020/07/06-21:38:26.664 1a3b compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/06-21:38:26.664 1a3b Delete type=2 #13
+2020/07/06-21:38:26.664 1a3b Delete type=2 #16
+2020/07/06-21:38:26.670 1a3b Manual compaction at level-1 from '\x00\x02\x01\x02\x01\x0c\x00r\x00e\x00p\x00o\x00r\x00t\x00P\x00a\x00r\x00a\x00m\x00s' @ 224 : 1 .. (end); will stop at (end)

@@ -1,0 +1,5 @@
+2020/07/06-21:39:29.691 8662 Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.bloombergquint.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/06-21:40:07.170 1a3b Level-0 table #5: started
+2020/07/06-21:40:07.203 1a3b Level-0 table #5: 7998 bytes OK
+2020/07/06-21:40:07.238 1a3b Delete type=0 #3
+2020/07/06-21:40:07.238 1a3b Manual compaction at level-0 from (begin) .. (end); will stop at (end)

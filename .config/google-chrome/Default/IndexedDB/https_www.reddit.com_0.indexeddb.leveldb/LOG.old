@@ -1,0 +1,15 @@
+2020/07/06-09:14:17.825 19ca Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/06-09:14:17.825 19ca Recovering log #179
+2020/07/06-09:14:17.825 19ca Reusing old log /home/anu/.config/google-chrome/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/000179.log 
+2020/07/06-09:15:22.146 1a3b Level-0 table #184: started
+2020/07/06-09:15:22.180 1a3b Level-0 table #184: 1325 bytes OK
+2020/07/06-09:15:22.215 1a3b Delete type=0 #179
+2020/07/06-09:15:22.215 1a3b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/06-09:15:22.215 1a3b Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x15\x00v\x002\x00_\x00e\x00v\x00e\x00n\x00t\x00_\x00b\x00o\x00i\x00l\x00e\x00r\x00_\x00p\x00l\x00a\x00t\x00e' @ 726 : 1
+2020/07/06-09:15:22.215 1a3b Compacting 1@1 + 1@2 files
+2020/07/06-09:15:22.256 1a3b Generated table #185@1: 20 keys, 1307 bytes
+2020/07/06-09:15:22.256 1a3b Compacted 1@1 + 1@2 files => 1307 bytes
+2020/07/06-09:15:22.290 1a3b compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/06-09:15:22.290 1a3b Delete type=2 #181
+2020/07/06-09:15:22.290 1a3b Delete type=2 #184
+2020/07/06-09:15:22.291 1a3b Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x15\x00v\x002\x00_\x00e\x00v\x00e\x00n\x00t\x00_\x00b\x00o\x00i\x00l\x00e\x00r\x00_\x00p\x00l\x00a\x00t\x00e' @ 726 : 1 .. (end); will stop at (end)
