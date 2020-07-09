@@ -1,5 +1,0 @@
-2020/06/29-13:02:33.242 277a Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_pixlr.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/06/29-13:02:54.074 101f Level-0 table #5: started
-2020/06/29-13:02:54.115 101f Level-0 table #5: 5745 bytes OK
-2020/06/29-13:02:54.154 101f Delete type=0 #3
-2020/06/29-13:02:54.155 101f Manual compaction at level-0 from (begin) .. (end); will stop at (end)

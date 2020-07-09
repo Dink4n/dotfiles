@@ -1,5 +1,0 @@
-2020/06/27-18:01:43.587 52ea Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_www.facebook.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/06/27-18:02:15.865 b46 Level-0 table #5: started
-2020/06/27-18:02:15.894 b46 Level-0 table #5: 1235 bytes OK
-2020/06/27-18:02:15.978 b46 Delete type=0 #3
-2020/06/27-18:02:15.978 b46 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

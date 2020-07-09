@@ -2,8 +2,8 @@
 syntax enable
 
 "---Indentation---
-set autoindent
 filetype plugin indent on
+set autoindent
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -14,10 +14,8 @@ set nowrap
 set nu
 set rnu
 set hidden
-set wildmenu
 set guicursor=
 set cursorline
-set laststatus=2
 set showtabline=4
 set scrolloff=8
 set noerrorbells
@@ -29,17 +27,24 @@ set nohlsearch
 set smartcase
 
 "---Misc---
+set nobackup
+set nowritebackup
 set noswapfile
-set nobackup
-set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
 set termguicolors
 set shortmess+=c
 set clipboard=unnamedplus
-set updatetime=50
 set noshowmode
+" Give more space for displaying messages.
+set cmdheight=2
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=50
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 " Set Map leader
 let mapleader = " " 
 
@@ -49,11 +54,125 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
+Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mbbill/undotree'
+Plug 'lyuts/vim-rtags'
+Plug 'vuciv/vim-bujo'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " Themes
 Plug 'gruvbox-community/gruvbox'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'
-set background=dark
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection='0'
+
 colorscheme gruvbox
+set background=dark
+
+let g:ackprg = 'ag --vimgrep --smart-case'                                                   
+cnoreabbrev ag Ack                                                                           
+cnoreabbrev aG Ack                                                                           
+cnoreabbrev Ag Ack                                                                           
+cnoreabbrev AG Ack  
+
+
+let mapleader = " "
+let g:netrw_browse_spllit=2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <Leader>j :wincmd j<CR>
+nnoremap <Leader>k :wincmd k<CR>
+nnoremap <Leader>l :wincmd l<CR>
+nnoremap <Leader>h :wincmd h<CR>
+nnoremap <Leader>u :UndotreeShow<CR>
+nnoremap <Leader>a :Ack!<Space>
+nmap <Tab> :Tabnext<CR>
+nmap <S-Tab> :Tabprev<CR>
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>
+vnoremap < <gv
+vnoremap > >gv

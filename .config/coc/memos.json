@@ -178,7 +178,7 @@
         "sysPrefix": "/home/anu/miniconda3",
         "fileHash": "de54438633162c27da2ce4cf5c1e29f52b0d1a5a57a131c1ccdb5f38ed71f36d63bf3440abb09011c972bf20a4ea90e6c9f15f2dea87d0ac73756641dce383ea"
       },
-      "expiry": 1594216899170
+      "expiry": 1594310568514
     },
     "/home/anu/miniconda3/bin/python3.7.v3": {
       "data": {
@@ -630,24 +630,29 @@
           "type": "Conda",
           "envPath": "/home/anu/miniconda3",
           "envName": "base",
+          "cachedEntry": true,
           "displayName": "Python 3.7.7 64-bit ('base': conda)",
           "__store": true
         }
       },
-      "expiry": 1594216899116
+      "expiry": 1594310568857
     },
     "/home/anu/miniconda3/bin/python.interpreter.displayName.v7": {
       "data": {
-        "displayName": "Python 3.7.7 64-bit ('base': conda)",
-        "hash": "de54438633162c27da2ce4cf5c1e29f52b0d1a5a57a131c1ccdb5f38ed71f36d63bf3440abb09011c972bf20a4ea90e6c9f15f2dea87d0ac73756641dce383ea-69a4d31530427876376c02bfe2f3af1c"
+        "displayName": "Python 3.7.7 64-bit ('miniconda3': virtualenv)",
+        "hash": "de54438633162c27da2ce4cf5c1e29f52b0d1a5a57a131c1ccdb5f38ed71f36d63bf3440abb09011c972bf20a4ea90e6c9f15f2dea87d0ac73756641dce383ea-e0bb44de0e5dd05d7b11cd5b1dd01783"
       },
-      "expiry": 1594216899172
+      "expiry": 1594310568875
     },
     "CONDA_ENVIRONMENTS": {
       "data": [
         {
           "name": "base",
           "path": "/home/anu/miniconda3"
+        },
+        {
+          "name": "myenv",
+          "path": "/home/anu/miniconda3/envs/myenv"
         }
       ]
     },
@@ -677,6 +682,32 @@
         "type": "Conda",
         "envPath": "/home/anu/miniconda3",
         "envName": "base"
+      },
+      {
+        "architecture": 3,
+        "path": "/home/anu/miniconda3/envs/myenv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.8.3-final",
+          "major": 3,
+          "minor": 8,
+          "patch": 3,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.8.3-final"
+        },
+        "sysPrefix": "/home/anu/miniconda3/envs/myenv",
+        "fileHash": "b34764071f5f9beb75d37deec56f67845048588615939b26dec8df18b215afd94d2983c017e68ec1ba39dac16779a47400f1d08a0d2bb4534c16fea9f129c855",
+        "companyDisplayName": "Anaconda, Inc.",
+        "type": "Conda",
+        "envPath": "/home/anu/miniconda3/envs/myenv",
+        "envName": "myenv"
       }
     ],
     "INTERPRETERS_CACHE_v3_CondaEnvService": [
@@ -705,6 +736,32 @@
         "type": "Conda",
         "envPath": "/home/anu/miniconda3",
         "envName": "base"
+      },
+      {
+        "architecture": 3,
+        "path": "/home/anu/miniconda3/envs/myenv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.8.3-final",
+          "major": 3,
+          "minor": 8,
+          "patch": 3,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.8.3-final"
+        },
+        "sysPrefix": "/home/anu/miniconda3/envs/myenv",
+        "fileHash": "b34764071f5f9beb75d37deec56f67845048588615939b26dec8df18b215afd94d2983c017e68ec1ba39dac16779a47400f1d08a0d2bb4534c16fea9f129c855",
+        "companyDisplayName": "Anaconda, Inc.",
+        "type": "Conda",
+        "envPath": "/home/anu/miniconda3/envs/myenv",
+        "envName": "myenv"
       },
       {
         "architecture": 3,
@@ -739,14 +796,14 @@
         "displayName": "Python 3.8.2 64-bit",
         "hash": "70a6cca000b5e23d6021a0617014ef8133c26108844b4de333c5d70a62fe5c42f7ff649337117a38900b2264c345963273fed5621eddc2d4c675e42ec06f8ba9-46bd4f9c0b5e0439854f267fa6bf295b"
       },
-      "expiry": 1594139078979
+      "expiry": 1594310568647
     },
     "/bin/python3.interpreter.displayName.v7": {
       "data": {
         "displayName": "Python 3.8.2 64-bit",
         "hash": "70a6cca000b5e23d6021a0617014ef8133c26108844b4de333c5d70a62fe5c42f7ff649337117a38900b2264c345963273fed5621eddc2d4c675e42ec06f8ba9-6fac08c931cbaade75fa35e3d823ba46"
       },
-      "expiry": 1594217130589
+      "expiry": 1594310568648
     },
     "InterpreterAutoSeletionRule-system": {
       "architecture": 3,
@@ -770,7 +827,6 @@
       "sysPrefix": "/usr",
       "fileHash": "70a6cca000b5e23d6021a0617014ef8133c26108844b4de333c5d70a62fe5c42f7ff649337117a38900b2264c345963273fed5621eddc2d4c675e42ec06f8ba9",
       "type": "Unknown",
-      "cachedEntry": true,
       "displayName": "Python 3.8.2 64-bit"
     },
     "/usr/bin/python3.interpreter.Details.v7": {
@@ -801,7 +857,7 @@
           "displayName": "Python 3.8.2 64-bit"
         }
       },
-      "expiry": 1594139078985
+      "expiry": 1594310568831
     },
     "/bin/python3.interpreter.Details.v7": {
       "data": {
@@ -828,11 +884,10 @@
           "sysPrefix": "/usr",
           "fileHash": "70a6cca000b5e23d6021a0617014ef8133c26108844b4de333c5d70a62fe5c42f7ff649337117a38900b2264c345963273fed5621eddc2d4c675e42ec06f8ba9",
           "type": "Unknown",
-          "displayName": "Python 3.8.2 64-bit",
-          "__store": true
+          "displayName": "Python 3.8.2 64-bit"
         }
       },
-      "expiry": 1594217130563
+      "expiry": 1594310568839
     },
     "ProposeLSBanner": false,
     "InterpreterAutoSeletionRule-cachedInterpreters": {
@@ -857,7 +912,33 @@
       "sysPrefix": "/usr",
       "fileHash": "70a6cca000b5e23d6021a0617014ef8133c26108844b4de333c5d70a62fe5c42f7ff649337117a38900b2264c345963273fed5621eddc2d4c675e42ec06f8ba9",
       "type": "Unknown",
+      "cachedEntry": true,
       "displayName": "Python 3.8.2 64-bit"
+    },
+    "/home/anu/miniconda3/envs/myenv/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/home/anu/miniconda3/envs/myenv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.8.3-final",
+          "major": 3,
+          "minor": 8,
+          "patch": 3,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.8.3-final"
+        },
+        "sysPrefix": "/home/anu/miniconda3/envs/myenv",
+        "fileHash": "b34764071f5f9beb75d37deec56f67845048588615939b26dec8df18b215afd94d2983c017e68ec1ba39dac16779a47400f1d08a0d2bb4534c16fea9f129c855"
+      },
+      "expiry": 1594310570300
     }
   },
   "coc-python|/home/anu/Coding-Example/Sorting": {
@@ -956,5 +1037,11 @@
     "INTERPRETERS_CACHE_v3_PipEnvService:8cc409946f8c0dd67be299d27b4cfc57": [],
     "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
     "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:8cc409946f8c0dd67be299d27b4cfc57": []
+  },
+  "coc-python|/home/anu/dotfiles": {
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService:cb0c59189e1d955c2ad2acf88812010e": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:cb0c59189e1d955c2ad2acf88812010e": []
   }
 }

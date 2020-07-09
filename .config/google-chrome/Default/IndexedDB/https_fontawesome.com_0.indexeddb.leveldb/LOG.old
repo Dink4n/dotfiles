@@ -1,5 +1,0 @@
-2020/07/03-09:40:21.444 1e5c Reusing MANIFEST /home/anu/.config/google-chrome/Default/IndexedDB/https_fontawesome.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/07/03-13:06:30.725 c1c Level-0 table #5: started
-2020/07/03-13:06:30.883 c1c Level-0 table #5: 1742 bytes OK
-2020/07/03-13:06:31.008 c1c Delete type=0 #3
-2020/07/03-13:06:31.049 c1c Manual compaction at level-0 from (begin) .. (end); will stop at (end)

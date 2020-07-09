@@ -33,7 +33,13 @@
     ],
     "%2Fhome%2Fanu%2FCoding-Example%2FSorting": [
       "clag"
-    ]
+    ],
+    "%2Fhome%2Fanu%2Fdotfiles%2F": {
+      "config%2Fnvim": [
+        "f",
+        "ff"
+      ]
+    }
   },
   "outline": {
     "%2Fhome%2Fanu%2FPython%2Fcurses": [
