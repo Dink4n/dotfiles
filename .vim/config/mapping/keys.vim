@@ -16,3 +16,7 @@ vnoremap > >gv
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
+
+autocmd filetype python nnoremap <F5> :w <bar>!clear;python %<CR>
+" Execute cpp script
+autocmd filetype cpp nnoremap <F5> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>

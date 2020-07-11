@@ -1,9 +1,9 @@
-editor.action.organizeImport
-clangd.install
-python.startREPL
 python.setInterpreter
+python.execInTerminal
+clangd.install
+editor.action.organizeImport
+python.startREPL
 python.setLinter
 python.createTerminal
-python.execInTerminal
 python.viewOutput
 python.runLinting

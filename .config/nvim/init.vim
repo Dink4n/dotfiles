@@ -36,8 +36,7 @@ set termguicolors
 set shortmess+=c
 set clipboard=unnamedplus
 set noshowmode
-" Give more space for displaying messages.
-set cmdheight=2
+" Give more space for displaying messages.  set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -54,16 +53,20 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 Plug 'mileszs/ack.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mbbill/undotree'
-Plug 'lyuts/vim-rtags'
-Plug 'vuciv/vim-bujo'
+Plug 'mhinz/vim-startify'
+Plug 'preservim/nerdcommenter' 
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vuciv/vim-bujo'
+Plug 'lyuts/vim-rtags'
+Plug 'mbbill/undotree'
+Plug 'jremmen/vim-ripgrep'
 
 " Themes
 Plug 'gruvbox-community/gruvbox'
@@ -81,19 +84,43 @@ let g:gruvbox_invert_selection='0'
 colorscheme gruvbox
 set background=dark
 
-let g:ackprg = 'ag --vimgrep --smart-case'                                                   
-cnoreabbrev ag Ack                                                                           
-cnoreabbrev aG Ack                                                                           
-cnoreabbrev Ag Ack                                                                           
-cnoreabbrev AG Ack  
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep --smart-case'                                                   
+    cnoreabbrev ag Ack                                                                           
+    cnoreabbrev aG Ack                                                                           
+    cnoreabbrev Ag Ack                                                                           
+    cnoreabbrev AG Ack  
+endif
 
 
-let mapleader = " "
 let g:netrw_browse_spllit=2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-" Use tab for trigger completion with characters ahead and navigate.
+" --------Vim Airline Settings-------
+" enable tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+" enable powerline fonts
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+" Switch to your current theme
+let g:airline_theme = 'gruvbox'
+
+" Always show tabs
+set showtabline=2
+
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
@@ -164,12 +191,18 @@ command! -nargs=0 Format :call CocAction('format')
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Enter insert mode automatically when entering term mode
+"autocmd TermOpen * startinsert
+
 nnoremap <Leader>j :wincmd j<CR>
 nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 nnoremap <Leader>h :wincmd h<CR>
 nnoremap <Leader>u :UndotreeShow<CR>
+nnoremap <Leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>ps :Rg<Space>
+nnoremap <Leader><CR> :source ~/.config/nvim/init.vim<CR>
 nmap <Tab> :Tabnext<CR>
 nmap <S-Tab> :Tabprev<CR>
 nnoremap <silent> <TAB> :bnext<CR>

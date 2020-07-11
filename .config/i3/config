@@ -4,7 +4,7 @@
 
 # #---AutoStart---# #
 exec_always --no-startup-id nm-applet
-exec_always  feh --randomize --bg-fill ~/Pictures/*.jpg
+exec_always  feh --randomize --bg-fill ~/Pictures/PixelArt/*
 #exec_always --no-startup-id $HOME/Pictures/gif/gifplayer.sh
 exec_always  compton
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -94,7 +94,8 @@ bindsym $mod+s        			    sticky toggle;
 bindsym $mod+Shift+s			      split toggle
 
 # d
-bindsym $mod+space                  exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3
+bindsym $mod+space                  exec rofi  -show run -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen
+
 bindsym $mod+Shift+d                  exec --no-startup-id i3-dmenu-desktop
 
 # f

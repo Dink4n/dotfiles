@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/anu/dotfiles/.config/nvim/plugged/vim-startify'
+let g:netrw_dirhist_3='/home/anu/dotfiles/.config/nvim/plugged/vim-startify/autoload'
+let g:netrw_dirhist_2='/home/anu/dotfiles/.config/nvim/plugged/vim-startify/autoload/startify'
+let g:netrw_dirhist_1='/home/anu/dotfiles/.config/nvim/plugged/vim-startify/autoload'
+let g:netrw_dirhist_0='/home/anu/dotfiles/.config/nvim/plugged/vim-startify'
+let g:netrw_dirhist_9='/home/anu/Python/WebScaping'
+let g:netrw_dirhist_8='/home/anu/dotfiles/.config/nvim/plugged/vim-startify/plugin'
+let g:netrw_dirhist_7='/home/anu/dotfiles/.config/nvim/plugged/vim-startify'
+let g:netrw_dirhist_6='/home/anu/Python/WebScaping'
+let g:netrw_dirhist_5='/home/anu/dotfiles/.config/nvim'

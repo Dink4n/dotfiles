@@ -25,6 +25,10 @@
     ],
     "%2Fhome%2Fanu%2FCoding-Example%2FFunctions": [
       "clangd inst"
+    ],
+    "%2Fhome%2Fanu%2FPython%2FWebScaping": [
+      "exec",
+      "set python in"
     ]
   },
   "extensions": {
