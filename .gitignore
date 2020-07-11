@@ -1,2 +1,2 @@
-.config/nvim/undodir
-.vim/undodir
+.config/nvim/undodir/
+.vim/undodir/
