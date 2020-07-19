@@ -33,11 +33,20 @@ background_opacity: 2.0
 
 font:
   normal:
-    family: "UbuntuMono Nerd Font"
-    style: Regular
+      family: "UbuntuMono Nerd Font"
+      style: Regular
+  italic:
+      family: "UbuntuMono Nerd Font"
+      style: Italic
+  bold:
+      family: "UbuntuMono Nerd Font"
+      style: Bold
+  bold_italic:
+      family: "UbuntuMono Nerd Font"
+      style: Bold Italic
 
   # Point size
-  size: 18.0
+  size: 15.0
 
   offset:
     x: 0

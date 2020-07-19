@@ -1,9 +1,10 @@
+python.setLinter
+python.setShebangInterpreter
 python.setInterpreter
 python.execInTerminal
 clangd.install
 editor.action.organizeImport
 python.startREPL
-python.setLinter
 python.createTerminal
 python.viewOutput
 python.runLinting

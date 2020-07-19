@@ -14,12 +14,10 @@ set nowrap
 set nu
 set rnu
 set hidden
-set guicursor=
 set cursorline
 set showtabline=4
 set scrolloff=8
 set noerrorbells
-set backspace=indent,eol,start
 
 "---Search options---
 set incsearch
@@ -36,6 +34,7 @@ set termguicolors
 set shortmess+=c
 set clipboard=unnamedplus
 set noshowmode
+
 " Give more space for displaying messages.  set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -51,20 +50,23 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 
+"------Plugin Management------
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-syntastic/syntastic'
 Plug 'jiangmiao/auto-pairs'
+Plug 'davidhalter/jedi-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'nvie/vim-flake8'
 Plug 'tpope/vim-fugitive'
-Plug 'rking/ag.vim'
-Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-commentary' 
 Plug 'mhinz/vim-startify'
-Plug 'preservim/nerdcommenter' 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vuciv/vim-bujo'
-Plug 'lyuts/vim-rtags'
 Plug 'mbbill/undotree'
 Plug 'jremmen/vim-ripgrep'
 
@@ -81,6 +83,7 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_invert_selection='0'
 
+let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark
 
@@ -96,12 +99,48 @@ if executable('ag')
     cnoreabbrev AG Ack  
 endif
 
+let python_highlight_all=1
 
 let g:netrw_browse_spllit=2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-" --------Vim Airline Settings-------
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"---------------Vim Startify-------------------
+let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   Files']                        },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+          \ ]
+
+
+let g:startify_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_session_persistence = 1
+
+let g:webdevicons_enable_startify = 1
+
+function! StartifyEntryFormat()
+        return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+    endfunction
+
+let g:startify_bookmarks = [
+            \ { 'c': '~/.config/i3/config' },
+            \ { 'i': '~/.config/nvim/init.vim' },
+            \ { 'z': '~/.zshrc' },
+            \ ]
+
+let g:startify_enable_special = 0
+
 " enable tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -133,9 +172,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -194,18 +230,25 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Enter insert mode automatically when entering term mode
 "autocmd TermOpen * startinsert
 
+vnoremap < <gv
+vnoremap > >gv
+nmap <Tab> :Tabnext<CR>
+nmap <S-Tab> :Tabprev<CR>
+nnoremap <Leader>ps :Rg<Space>
 nnoremap <Leader>j :wincmd j<CR>
 nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 nnoremap <Leader>h :wincmd h<CR>
 nnoremap <Leader>u :UndotreeShow<CR>
-nnoremap <Leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <Leader>a :Ack!<Space>
-nnoremap <Leader>ps :Rg<Space>
-nnoremap <Leader><CR> :source ~/.config/nvim/init.vim<CR>
-nmap <Tab> :Tabnext<CR>
-nmap <S-Tab> :Tabprev<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <Leader>pf :Files<CR>
+nmap <Leader>s <Plug>BujoAddnormal
 nnoremap <silent> <TAB> :bnext<CR>
+nmap <Leader>q <Plug>BujoChecknormal
 nnoremap <silent> <S-TAB> :bprevious<CR>
-vnoremap < <gv
-vnoremap > >gv
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>rf :w<Bar>term python %<CR>
+nnoremap <Leader><CR> :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>

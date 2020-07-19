@@ -2,12 +2,43 @@
 
 # This config file will use environment variables such as $BROWSER and $TERMINAL.
 
+font pango:FiraCode Nerd Font Regular 10
+
+# #---Window Bar---# #
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+
+# #---Status Bar---# #
+bar {
+    status_command i3blocks -c ~/.config/i3status/i3blocks.conf
+    position top
+    font pango:FiraCode Nerd Font Medium 12
+    colors {
+        background $bg-color
+            separator #757575
+        #                  border             background         text
+        focused_workspace  $bg-color          $bg-color          $text-color
+        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    }
+}
+
 # #---AutoStart---# #
-exec_always --no-startup-id nm-applet
+# exec_always --no-startup-id nm-applet
 exec_always  feh --randomize --bg-fill ~/Pictures/PixelArt/*
-#exec_always --no-startup-id $HOME/Pictures/gif/gifplayer.sh
+# exec_always ~/.config/polybar/launch.sh
 exec_always  compton
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id autotiling
 
 # #---Basic Definitions---# #
@@ -21,7 +52,7 @@ set $alt Mod1
 set $shutdown sudo -A shutdown -h now
 set $reboot sudo -A reboot
 set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
-set $lock i3lock
+set $lock --no-startup-id ~/.config/i3/lock.sh
 set $suspend sudo systemctl suspend
 set $hibernate sudo -A systemctl hibernate
 
@@ -29,15 +60,9 @@ set $hibernate sudo -A systemctl hibernate
 floating_modifier $mod
 
 ##### i3-gaps ##############
-for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 1
 #gaps horizontal 2
-
-################# i3-radius #######################
-smart_borders on
-smart_borders no_gaps
-border_radius 12
 
 # #---Basic Bindings---# #
 bindsym $mod+Return 		         exec $term
@@ -50,12 +75,11 @@ bindsym $mod+Shift+Escape	       exec --no-startup-id $hibernate
 # bindsym $mod+Shift+BackSpace	   exec --no-startup-id prompt "Reboot computer?" $reboot
 
 # space
-bindsym $mod+d 			            exec --no-startup-id rofi-menu
+bindsym $mod+d                      exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "FiraCode Nerd Font 18"
 
 
 # #---Letter Key Bindings---# #
 bindsym $mod+q			            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
-bindsym $mod+Shift+q		        [con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
 
 # w
 bindsym $mod+w 			            exec --no-startup-id brave
@@ -83,7 +107,7 @@ bindsym $mod+u                  [urgent=latest] focus
 bindsym $mod+i                  fullscreen disable; floating enable; resize set 500 300; sticky enable; move position 4610 1130
 
 # o
-bindsym $mod+o			            exec --no-startup-id $term -e nvim ~/Repos/blog/content
+bindsym $mod+n			            exec --no-startup-id $term -e nvim 
 # bindsym $mod+Shift			        exec --no-startup-id $term -e nvim ~/Repos
 
 # a
@@ -94,9 +118,11 @@ bindsym $mod+s        			    sticky toggle;
 bindsym $mod+Shift+s			      split toggle
 
 # d
-bindsym $mod+space                  exec rofi  -show run -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen
+bindsym $mod+space                     exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d                         exec --no-startup-id $term -e setxkbmap -layout "us" -variant "dvorak"
+bindsym $mod+Shift+q                         exec --no-startup-id $term -e setxkbmap -layout "us"
 
-bindsym $mod+Shift+d                  exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+Shift+d                  exec --no-startup-id i3-dmenu-desktop
 
 # f
 bindsym $mod+f			            fullscreen toggle
@@ -146,7 +172,7 @@ bindsym $mod+v			            exec --no-startup-id $term -e nvim
 bindsym $mod+b			            exec --no-startup-id feh ---randomize-bg-fill  ~/Pictures/*
 
 # n
-bindsym $mod+n			            exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
+#bindsym $mod+n			            exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
 
 # m
 bindsym $mod+m		              exec --no-startup-id spotify
@@ -162,11 +188,11 @@ bindsym $mod+slash		          split vertical ;; exec $term
 bindsym $alt+F4	                     kill
 bindsym $mod+backslash		      workspace back_and_forth
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1: Ethernet  "
+set $ws2 "2: Term  "
+set $ws3 "3: Editor  "
+set $ws4 "4  "
+set $ws5 "5  "
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -174,9 +200,9 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Assign Workspaces:
-assign [class="Brave"] $ws1
-assign [class="Chromium"] $ws2
-assign [class="discord"] $ws8
+assign [class="Alacritty"] $ws2
+assign [class="Google-chrome"] $ws1
+assign [class="Alacritty" title='nvim[[:upper:][:lower:] ]*'] $ws3
 for_window [class="Spotify"] move to workspace $ws9
 assign [class="obs"] $ws10
 
@@ -240,11 +266,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Window borders
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #abb2bf
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
+#client.focused          #4c7899 #285577 #ffffff #2e9ef4   #abb2bf
+#client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#client.background       #ffffff
 
 bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
+
+hide_edge_borders both
