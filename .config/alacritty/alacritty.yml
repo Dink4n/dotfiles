@@ -1,49 +1,74 @@
-# Colors (Gruvbox dark)
-colors:
-  # Default colors
-  primary:
-    # hard contrast: background = '#1d2021'
-    background: '#1d2021'
-    # soft contrast: background = '#32302f'
-    foreground: '#ebdbb2'
+# # Colors (Gruvbox dark)
+# colors:
+#   # COLORSCHEME: base16-circus-256.yml
+#   # Default colors
+#   primary:
+#     # hard contrast: background = '#1d2021'
+#     background: '0x191919'
+#     foreground: '0xa7a7a7'
 
-  # Normal colors
-  normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   normal:
+#   # Bright colors
+#     black: '0x191919'
+#     red: '0xdc657d'
+#     green: '0x84b97c'
+#     yellow: '0xc3ba63'
+#     blue: '0x639ee4'
+#     magenta: '0xb888e2'
+#     cyan: '0x4bb1a7'
+#     white: '0xa7a7a7'
 
-  # Bright colors
-  bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+#   # Bright colors
+#   bright:
+#     black: '0x5f5a60'
+#     red: '0xdc657d'
+#     green: '0x84b97c'
+#     yellow: '0xc3ba63'
+#     blue: '0x639ee4'
+#     magenta: '0xb888e2'
+#     cyan: '0x4bb1a7'
+#     white: '0xffffff'
 
-background_opacity: 2.0
+#   cursor:
+#     text: '0x191919'
+#     cursor: '0xa7a7a7'
+
+#   # Normal colors
+#   dim:
+#     black: '0x31363b'
+#     red: '0x783228'
+#     green: '0x17a262'
+#     yellow: '0xb65619'
+#     blue: '0x1b668f'
+#     magenta: '0x614a73'
+#     cyan: '0x186c60'
+#     white: '0x63686d'
+#   indexed_colors:
+#     - {index: 16, color: '0x4bb1a7'}
+#     - {index: 17, color: '0xb888e2'}
+#     - {index: 18, color: '0x202020'}
+#     - {index: 19, color: '0x303030'}
+#     - {index: 20, color: '0x505050'}
+#     - {index: 21, color: '0x808080'}
+background_opacity: 1.0
 
 font:
+  light:
+    family: FiraCode Nerd Font
+    style: Light
   normal:
-      family: "UbuntuMono Nerd Font"
-      style: Regular
-  italic:
-      family: "UbuntuMono Nerd Font"
-      style: Italic
+    family: FiraCode Nerd Font
+    style: Regular
+  retina:
+    family: FiraCode Nerd Font
+    style: Retina
+  medium:
+    family: FiraCode Nerd Font
+    style: Medium
   bold:
-      family: "UbuntuMono Nerd Font"
-      style: Bold
-  bold_italic:
-      family: "UbuntuMono Nerd Font"
-      style: Bold Italic
+    family: FiraCode Nerd Font
+    style: Bold
 
   # Point size
   size: 15.0
@@ -70,7 +95,7 @@ scrolling:
 draw_bold_text_with_bright_colors: true
 
 selection:
-  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
   # When set to `true`, selected text will be copied to both the primary and
   # the selection clipboard. Otherwise, it will only be copied to the selection
@@ -81,10 +106,37 @@ selection:
 live_config_reload: true
 
 key_bindings:
-  - { key: V, mods: Control|Shift, action: Paste }
-  - { key: C, mods: Control|Shift, action: Copy }
-  - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: Equals, mods: Control, action: IncreaseFontSize }
-  - { key: Add, mods: Control, action: IncreaseFontSize }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize }
-  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: C, mods: Control|Shift, action: Copy}
+  - {key: Key0, mods: Control, action: ResetFontSize}
+  - {key: Equals, mods: Control, action: IncreaseFontSize}
+  - {key: Add, mods: Control, action: IncreaseFontSize}
+  - {key: Subtract, mods: Control, action: DecreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}
+# BEGIN ACE
+colors:
+  primary:
+    background: '0x272724'
+    foreground: '0xdde3e2'
+  cursor:
+    text:       '0x272724'
+    cursor:     '0xdde3e2'
+  normal:
+    black:      '0x272724'
+    red:        '0x59A3B6'
+    green:      '0x72B6C3'
+    yellow:     '0x7DC1C7'
+    blue:       '0xA9B3A8'
+    magenta:    '0x8DBCC6'
+    cyan:       '0xA5CBCE'
+    white:      '0xdde3e2'
+  bright:
+    black:      '0x9a9e9e'
+    red:        '0x59A3B6'
+    green:      '0x72B6C3'
+    yellow:     '0x7DC1C7'
+    blue:       '0xA9B3A8'
+    magenta:    '0x8DBCC6'
+    cyan:       '0xA5CBCE'
+    white:      '0xdde3e2'
+# END ACE

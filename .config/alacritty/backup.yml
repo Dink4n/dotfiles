@@ -1,0 +1,115 @@
+# Colors (Gruvbox dark)
+colors:
+  # COLORSCHEME: base16-circus-256.yml
+  # Default colors
+  primary:
+    # hard contrast: background = '#1d2021'
+    background: '0x191919'
+    foreground: '0xa7a7a7'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  normal:
+  # Bright colors
+    black: '0x191919'
+    red: '0xdc657d'
+    green: '0x84b97c'
+    yellow: '0xc3ba63'
+    blue: '0x639ee4'
+    magenta: '0xb888e2'
+    cyan: '0x4bb1a7'
+    white: '0xa7a7a7'
+
+  # Bright colors
+  bright:
+    black: '0x5f5a60'
+    red: '0xdc657d'
+    green: '0x84b97c'
+    yellow: '0xc3ba63'
+    blue: '0x639ee4'
+    magenta: '0xb888e2'
+    cyan: '0x4bb1a7'
+    white: '0xffffff'
+
+  cursor:
+    text: '0x191919'
+    cursor: '0xa7a7a7'
+
+  # Normal colors
+  dim:
+    black: '0x31363b'
+    red: '0x783228'
+    green: '0x17a262'
+    yellow: '0xb65619'
+    blue: '0x1b668f'
+    magenta: '0x614a73'
+    cyan: '0x186c60'
+    white: '0x63686d'
+  indexed_colors:
+    - {index: 16, color: '0x4bb1a7'}
+    - {index: 17, color: '0xb888e2'}
+    - {index: 18, color: '0x202020'}
+    - {index: 19, color: '0x303030'}
+    - {index: 20, color: '0x505050'}
+    - {index: 21, color: '0x808080'}
+background_opacity: 1.0
+
+font:
+  light:
+    family: FiraCode Nerd Font
+    style: Light
+  normal:
+    family: FiraCode Nerd Font
+    style: Regular
+  retina:
+    family: FiraCode Nerd Font
+    style: Retina
+  medium:
+    family: FiraCode Nerd Font
+    style: Medium
+  bold:
+    family: FiraCode Nerd Font
+    style: Bold
+
+  # Point size
+  size: 15.0
+
+  offset:
+    x: 0
+    y: 0
+
+window:
+  padding:
+    x: 20
+    y: 20
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 10
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+  # When set to `true`, selected text will be copied to both the primary and
+  # the selection clipboard. Otherwise, it will only be copied to the selection
+  # clipboard.
+  save_to_clipboard: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+key_bindings:
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: C, mods: Control|Shift, action: Copy}
+  - {key: Key0, mods: Control, action: ResetFontSize}
+  - {key: Equals, mods: Control, action: IncreaseFontSize}
+  - {key: Add, mods: Control, action: IncreaseFontSize}
+  - {key: Subtract, mods: Control, action: DecreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}

@@ -33,7 +33,7 @@ set undofile
 set termguicolors
 set shortmess+=c
 set clipboard=unnamedplus
-set noshowmode
+set showmode
 
 " Give more space for displaying messages.  set cmdheight=2
 
@@ -55,14 +55,12 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-syntastic/syntastic'
 Plug 'jiangmiao/auto-pairs'
-Plug 'davidhalter/jedi-vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'nvie/vim-flake8'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary' 
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -72,10 +70,14 @@ Plug 'jremmen/vim-ripgrep'
 
 " Themes
 Plug 'gruvbox-community/gruvbox'
+Plug 'chriskempson/base16-vim'
+" Plug 'dylanaraps/wal.vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
+" ---Theme Settings---
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -91,56 +93,13 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep --smart-case'                                                   
-    cnoreabbrev ag Ack                                                                           
-    cnoreabbrev aG Ack                                                                           
-    cnoreabbrev Ag Ack                                                                           
-    cnoreabbrev AG Ack  
-endif
-
 let python_highlight_all=1
 
-let g:netrw_browse_spllit=2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
+let g:netrw_browse_split=2
+let g:netrw_banner=0
+let g:netrw_winsize=25
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"---------------Vim Startify-------------------
-let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   Files']                        },
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
-          \ ]
-
-
-let g:startify_session_autoload = 1
-let g:startify_session_delete_buffers = 1
-let g:startify_change_to_vcs_root = 1
-let g:startify_fortune_use_unicode = 1
-let g:startify_session_persistence = 1
-
-let g:webdevicons_enable_startify = 1
-
-function! StartifyEntryFormat()
-        return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-    endfunction
-
-let g:startify_bookmarks = [
-            \ { 'c': '~/.config/i3/config' },
-            \ { 'i': '~/.config/nvim/init.vim' },
-            \ { 'z': '~/.zshrc' },
-            \ ]
-
-let g:startify_enable_special = 0
-
+" ---Airline Settings---
 " enable tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -155,7 +114,7 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " Switch to your current theme
-let g:airline_theme = 'gruvbox'
+" let g:airline_theme = 'ayu'
 
 " Always show tabs
 set showtabline=2
