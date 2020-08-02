@@ -103,16 +103,22 @@ else
   export EDITOR='nvim'
 fi
 
+# export TERM=rxvt-256color
+
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+# Aliases for a few useful commands
 alias zshconfig="vim ~/.zshrc"
+alias mirrorUpdate='reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias vim="nvim"
+alias vi="nvim"
+alias jn="jupyter notebook"
 alias cl="clear"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -137,12 +143,22 @@ unsetopt BEEP
 # Turn off autocomplete beeps
 # unsetopt LIST_BEEP
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Path settings
+export PATH="$PATH:/home/anu/.local/bin"
+export PATH="$PATH:/home/anu/bin/"
 
 # Prompt Settings
-#PROMPT='%F{blue}%1~%f %F{green}%f '
-#
+precmd() { precmd() { print "" } }
+
 # Enable vim mode in zsh
 bindkey -v
+
+# ---Prompt---
+
+# PROMPT=' %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'$'\n'
+# PROMPT+="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}]%{$reset_color%}%  %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+# # PROMPT+=' %{$fg[cyan]%}%c%{$reset_color%} ' 
+# ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
+# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
