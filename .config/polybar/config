@@ -27,44 +27,42 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/mybar]
+[bar/base]
 monitor = VGA-1
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-fixed-center = true
+
+height = 37
+
+override-redirect = false
+
+border-size = 8
 
 background = ${colors.background}
-foreground = ${colors.foreground}
+offset-y = 3%
+
+; font-0 = Space Mono Nerd Font:pixelsize=10;1
+font-0 = scientifica:size=13;1
+font-1 = FontAwesome5Free:style=Regular:pixelsize=8:antialias=true;3
+font-2 = FontAwesome5Free:style=Solid:pixelsize=8:antialias=true;3
+font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-4 = siji:pixelsize=10;1
+
+[bar/mybar]
+inherit = bar/base
+offset-x = 80%
+fixed-center = true
 
 line-size = 3
 line-color = #f00
 
-padding-left = 0
-padding-right = 2
-
 module-margin-left = 1
 module-margin-right = 2
-
-font-0 = Space Mono Nerd Font:pixelsize=10;1
-font-2 = fa-solid-900:size=12;1
-font-1 = Font awesome:fontformat=truetype:size=12;1
-font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-4 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = mpd
 modules-right = filesystem alsa xkeyboard memory cpu wlan eth date powermenu
 
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
-
 ;wm-restack = bspwm
-wm-restack = i3
-
-;override-redirect = true
+; wm-restack = i3
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -72,8 +70,11 @@ wm-restack = i3
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+[bar/dummy]
+height = 20
+background = #0000
+modules-center = dummy-module
+override-redirect = false
 
 [module/xwindow]
 type = internal/xwindow
@@ -92,6 +93,10 @@ label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
+
+[module/dummy-module]
+type = custom/text
+content = " "
 
 [module/filesystem]
 type = internal/fs
