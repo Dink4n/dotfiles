@@ -22,21 +22,21 @@ client.urgent               $bg      $bg        $magenta $bg
 client.placeholder          $bg      $bg        $cyan    $bg
 
 #---Status Bar---# #
-# bar {
-#     status_command i3blocks -c /home/anu/.config/i3blocks/config
-#     position top
-#     font pango:FiraCode Nerd Font Medium 12
-#     colors {
-#         background $bg-color
-#             separator #757575
-#         #                   Border Background Text
-# 		    focused_workspace   $fg    $fg        $bg
-# 		    active_workspace    $bg    $bg        $purple
-# 		    inactive_workspace  $bg    $bg        $cyan
-# 		    urgent_workspace    $bg    $bg        $magenta
-# 		    background          $bg
-#     }
-# }
+bar {
+    status_command i3blocks -c /home/anu/.config/i3blocks/config
+    position top
+    font pango:FiraCode Nerd Font Medium 12
+    colors {
+        background $bg-color
+            separator #757575
+        #                   Border Background Text
+		    focused_workspace   $fg    $fg        $bg
+		    active_workspace    $bg    $bg        $purple
+		    inactive_workspace  $bg    $bg        $cyan
+		    urgent_workspace    $bg    $bg        $magenta
+		    background          $bg
+    }
+}
 
 # #---Basic Definitions---# #
 smart_gaps on
@@ -56,8 +56,8 @@ set $hibernate -A systemctl hibernate
 # #---AutoStart---# #
 exec         chromium
 exec         picom
-exec_always  --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always  --no-startup-id $HOME/.config/i3/scripts/wallpaper.sh
+# exec_always  --no-startup-id $HOME/.config/polybar/launch.sh
+exec         feh --randomize --bg-fill $HOME/Pictures/anu/*
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -88,7 +88,7 @@ bindsym $mod+d                      exec rofi -show run -lines 3 -eh 2 -width 10
 bindsym $mod+q			            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
 # w
-bindsym $mod+w 			            exec --no-startup-id brave
+bindsym $mod+w 			            exec --no-startup-id Chromium
 
 # e
 bindsym $mod+e 			            exec --no-startup-id $lock
@@ -103,8 +103,8 @@ bindsym $mod+t 			            exec $term -e ytop
 bindsym $mod+Shift+t            focus mode_toggle
 
 # y
-bindsym $mod+y			            exec --no-startup-id flameshot gui -p ~/Pics/screenshots
-bindsym $mod+Shift+y		        exec --no-startup-id flameshot full -p ~/Pics/screenshots
+bindsym Print			            exec --no-startup-id flameshot gui -p ~/Pictures/ScreenShots
+bindsym Shift+Print	 		        exec --no-startup-id flameshot full -p ~/Pictures/ScreenShots
 
 # u
 bindsym $mod+u                  [urgent=latest] focus
@@ -175,7 +175,7 @@ bindsym $mod+Shift+c		        exec --no-startup-id killall picom
 bindsym $mod+v			            exec --no-startup-id $term -e nvim
 
 # b
-bindsym $mod+b			            exec --no-startup-id feh ---randomize-bg-fill  ~/Pictures/*
+bindsym $mod+b			            exec --no-startup-id feh ---randomize-bg-fill  ~/Wallpapers/anu/*
 
 # n
 #bindsym $mod+n			            exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
@@ -194,16 +194,16 @@ bindsym $mod+slash		          split vertical ;; exec $term
 bindsym $alt+F4	                     kill
 bindsym $mod+backslash		      workspace back_and_forth
 
-set $ws1 "1: Ethernet  "
-set $ws2 "2: Term  "
-set $ws3 "3: Editor  "
-set $ws4 "4  "
-set $ws5 "5  "
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+# set $ws1 "1: Ethernet  "
+# set $ws2 "2: Term  "
+# set $ws3 "3: Editor  "
+# set $ws4 "4  "
+# set $ws5 "5  "
+# set $ws6 "6"
+# set $ws7 "7"
+# set $ws8 "8"
+# set $ws9 "9"
+# set $ws10 "10"
 
 set $ws1 " 1:  "
 set $ws2 " 2:  "
@@ -216,19 +216,6 @@ set $ws8 " 8: ♫ "
 set $ws9 " 9:  "
 set $ws10 " 10:  "
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# Assing autofloat
-for_window [title=".*Emulator.*"] floating enable
 
 # switch to workspace
 bindsym $mod+1		workspace $ws1
@@ -255,10 +242,17 @@ bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
 # Assign workspaces
-for_window [class="MPlayer"] move $ws8
+# for_window [class="Chromium"] move $ws8
+for_window [class="code-oss"] move $ws8
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
 
+
+# Assigning autofloat
+for_window [class="XTerm"] floating enable
+for_window [class="OpenGL"] floating enable
+for_window [instance="Godot_Engine"] floating enable
+for_window [instance="Godot_Editor"] floating disable
 
 # #---Function Buttons---# #
 bindsym $mod+Shift+F5       reload
@@ -297,3 +291,5 @@ client.background       #ffffff
 bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
 
 hide_edge_borders both
+
+# for_window [class="Chromium"] exec --no-startup-id notify-send "all window rule"

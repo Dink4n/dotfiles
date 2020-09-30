@@ -1,8 +1,15 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["python", "vim"],
-    // Python Config
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.pythonPath": "~/miniconda3/bin/python",
-    "clangd.path": "/home/anu/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
+    "coc.preferences.formatOnSaveFiletypes": ["vim"],
+    // Python config
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "/home/anu/miniconda3/bin/python",
+
+    "languageserver": {
+        "godot": {
+            "host": "127.0.0.1",
+            "filetypes": ["gdscript3"],
+            "port": 6008
+        }
+    }
 }

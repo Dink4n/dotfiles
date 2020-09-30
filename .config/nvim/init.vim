@@ -15,7 +15,7 @@ set nu
 set rnu
 set hidden
 set cursorline
-set showtabline=4
+set pumheight=10
 set scrolloff=8
 set noerrorbells
 
@@ -50,34 +50,39 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 
-"------Plugin Management------
+" ------ Plugin Management ------
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ryanoasis/vim-devicons'
+" ---- Intellisense ----
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Plug 'vim-syntastic/syntastic', { 'for': ['cpp', 'c'] }
+" Plug 'neomake/neomake', { 'for': ['cpp', 'c'] }
+Plug 'majutsushi/tagbar'
+Plug 'rhysd/vim-clang-format'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
+"
+" ---- Useful ----
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary' 
-" Plug 'mhinz/vim-startify'
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+Plug 'tpope/vim-dispatch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'vuciv/vim-bujo'
 Plug 'mbbill/undotree'
 Plug 'jremmen/vim-ripgrep'
+Plug 'sheerun/vim-polyglot'
+" Plug 'vim-airline/vim-airline'
 
-" Themes
+" ---- Themes ----
 Plug 'gruvbox-community/gruvbox'
-Plug 'chriskempson/base16-vim'
-" Plug 'dylanaraps/wal.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'vim-airline/vim-airline'
 
 call plug#end()
+" ----------- End --------------
 
-" ---Theme Settings---
+" ----------Theme Settings--------
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -85,42 +90,92 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_invert_selection='0'
 
+" ----- theme(s) settings -----
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_bold_vertical_split_line = 1
+
 let g:gruvbox_italic=1
-colorscheme gruvbox
+
+let g:palenight_terminal_italics=1
+
 set background=dark
+let ayucolor="dark"
+colorscheme ayu
+" ------------ END ---------------
 
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
 
+"-------------- Language Settings ----------------
+"--- Python ---
 let python_highlight_all=1
+let g:python3_host_prog='/usr/bin/python'
 
+"--- C++/C ---
+" syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+
+" formatting
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Stroustrup"}"
+"-------------------------------------------------
+
+" ---------- Other -----------
 let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
 
-" ---Airline Settings---
-" enable tabline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+" ---------------------------
 
-" enable powerline fonts
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" ----- Syntastic Settings -----
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-" Switch to your current theme
-" let g:airline_theme = 'ayu'
+" Checkers
+let g:syntastic_cpp_checkers = ['clang_tidy']
+let g:syntastic_c_checkers = ['clang_tidy']
+" ------------------------------
 
-" Always show tabs
-set showtabline=2
+" ----- Airline Settings -----
+" let g:airline_powerline_fonts = 1
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+" ----------------------------
+
+"------- Coc Extensions --------
+let g:coc_global_extensions = [
+    \ 'coc-clangd',
+    \ 'coc-vimlsp',
+    \ 'coc-json',
+    \ 'coc-python',
+      \]
+
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+function! SyntasticCheckHook(errors)
+    if !empty(a:errors)
+        let g:syntastic_loc_list_height = min([len(a:errors), 10])
+    endif
+endfunction
 
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -165,13 +220,19 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+func! CppFormatsettings()
+    xmap <leader>f  :ClangFormat<CR>
+    nmap <leader>f  :ClangFormat<CR>
+endf
+augroup cpp | au!
+    au FileType c,cpp call CppFormatsettings()
+augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
+nmap <leader>a  <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -191,23 +252,27 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 
 vnoremap < <gv
 vnoremap > >gv
-nmap <Tab> :Tabnext<CR>
-nmap <S-Tab> :Tabprev<CR>
+nmap <F8> :TagbarToggle<CR>
 nnoremap <Leader>ps :Rg<Space>
+
+"======= Wincmd =======
 nnoremap <Leader>j :wincmd j<CR>
 nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 nnoremap <Leader>h :wincmd h<CR>
+nnoremap <Leader>J :wincmd J<CR>
+nnoremap <Leader>K :wincmd K<CR>
+nnoremap <Leader>L :wincmd L<CR>
+nnoremap <Leader>H :wincmd H<CR>
+"======================
+
 nnoremap <Leader>u :UndotreeShow<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
 nmap <Leader>s <Plug>BujoAddnormal
-nnoremap <silent> <TAB> :bnext<CR>
 nmap <Leader>q <Plug>BujoChecknormal
-nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>rf :w<Bar>term python %<CR>
 nnoremap <Leader><CR> :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <Leader>pv :Vexplore<CR>

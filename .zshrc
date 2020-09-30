@@ -115,29 +115,16 @@ export ARCHFLAGS="-arch x86_64"
 #
 # Aliases for a few useful commands
 alias zshconfig="vim ~/.zshrc"
-alias mirrorUpdate='reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias p5Server="browser-sync start --server --files ."
 alias vim="nvim"
 alias vi="nvim"
+alias vimconf="nvim ~/.config/nvim/init.vim"
 alias jn="jupyter notebook"
+alias vf="vifm"
 alias cl="clear"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/anu/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/anu/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/anu/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/anu/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
+#
 # Turn off all beeps
 unsetopt BEEP
 # Turn off autocomplete beeps
@@ -145,7 +132,8 @@ unsetopt BEEP
 
 # Path settings
 export PATH="$PATH:/home/anu/.local/bin"
-export PATH="$PATH:/home/anu/bin/"
+export PATH="$PATH:/home/anu/bin"
+export PATH="$HOME:/home/anu/.emacs.d/bin:$PATH"
 
 # Prompt Settings
 precmd() { precmd() { print "" } }

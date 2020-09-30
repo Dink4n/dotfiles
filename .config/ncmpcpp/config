@@ -218,8 +218,8 @@ current_item_suffix = $/r$(end)
 ##   available.
 ##
 #
-#song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
-song_columns_list_format = (50)[blue]{ar} (50)[green]{t}
+# song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+song_columns_list_format = (50)[blue]{arE} (50)[green]{t}
 #
 ##### various settings #####
 #
@@ -310,7 +310,7 @@ titles_visibility = no
 #
 #lines_scrolled = 2
 #
-#lyrics_fetchers = lyricwiki, azlyrics, genius, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
+lyrics_fetchers = genius, lyricwiki, azlyrics, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
 #
 follow_now_playing_lyrics = yes
 #

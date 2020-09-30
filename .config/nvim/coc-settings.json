@@ -1,7 +1,19 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["vim"],
-    // Python config
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "vim",
+        "typescript"
+    ],
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.pythonPath": "/home/anu/miniconda3/bin/python"
+    "python.jediPath": "/home/anu/.local/lib/python3.8/site-packages/",
+    "prettier.tabWidth": 4,
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "tsserver.formatOnType": true
 }

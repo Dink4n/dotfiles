@@ -1,77 +1,92 @@
-# # Colors (Gruvbox dark)
-# colors:
-#   # COLORSCHEME: base16-circus-256.yml
-#   # Default colors
-#   primary:
-#     # hard contrast: background = '#1d2021'
-#     background: '0x191919'
-#     foreground: '0xa7a7a7'
+colors:
+  # COLORSCHEME: nord.yaml
+  # Default colors
+  primary:
+    # hard contrast: background = '#1d2021'
+    background: '0x2E3440'
+    foreground: '0xD8DEE9'
 
-#   # Colors the cursor will use if `custom_cursor_colors` is true
-#   normal:
-#   # Bright colors
-#     black: '0x191919'
-#     red: '0xdc657d'
-#     green: '0x84b97c'
-#     yellow: '0xc3ba63'
-#     blue: '0x639ee4'
-#     magenta: '0xb888e2'
-#     cyan: '0x4bb1a7'
-#     white: '0xa7a7a7'
+  # Normal colors
+  normal:
+  # Bright colors
+    black: '0x3B4252'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x88C0D0'
+    white: '0xE5E9F0'
 
-#   # Bright colors
-#   bright:
-#     black: '0x5f5a60'
-#     red: '0xdc657d'
-#     green: '0x84b97c'
-#     yellow: '0xc3ba63'
-#     blue: '0x639ee4'
-#     magenta: '0xb888e2'
-#     cyan: '0x4bb1a7'
-#     white: '0xffffff'
+  # Bright colors
+  bright:
+    black: '0x4C566A'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x8FBCBB'
+    white: '0xECEFF4'
+  cursor:
+    text: '0x272822'
+    cursor: '0xf8f8f2'
 
-#   cursor:
-#     text: '0x191919'
-#     cursor: '0xa7a7a7'
-
-#   # Normal colors
-#   dim:
-#     black: '0x31363b'
-#     red: '0x783228'
-#     green: '0x17a262'
-#     yellow: '0xb65619'
-#     blue: '0x1b668f'
-#     magenta: '0x614a73'
-#     cyan: '0x186c60'
-#     white: '0x63686d'
-#   indexed_colors:
-#     - {index: 16, color: '0x4bb1a7'}
-#     - {index: 17, color: '0xb888e2'}
-#     - {index: 18, color: '0x202020'}
-#     - {index: 19, color: '0x303030'}
-#     - {index: 20, color: '0x505050'}
-#     - {index: 21, color: '0x808080'}
+  # Normal colors
+  dim:
+    black: '0x232323'
+    red: '0x74423f'
+    green: '0x5e6547'
+    yellow: '0x8b7653'
+    blue: '0x556b79'
+    magenta: '0x6e4962'
+    cyan: '0x5c8482'
+    white: '0x828282'
+  indexed_colors:
+    - {index: 16, color: '0xfd971f'}
+    - {index: 17, color: '0xcc6633'}
+    - {index: 18, color: '0x383830'}
+    - {index: 19, color: '0x49483e'}
+    - {index: 20, color: '0xa59f85'}
+    - {index: 21, color: '0xf5f4f1'}
 background_opacity: 1.0
 
+# font:
+#   normal:
+#     family: iosevka
+#     style: Regular
+
+#   bold:
+#     family: iosevka
+#     style: Bold
+
+#   italic:
+#     family: iosevka
+#     style: Italic
+
+#   bold_italic:
+#     family: iosevka
+#     style: Bold Italic
+
 font:
-  light:
-    family: FiraCode Nerd Font
-    style: Light
   normal:
-    family: FiraCode Nerd Font
+    family: Consolas
     style: Regular
-  retina:
-    family: FiraCode Nerd Font
-    style: Retina
-  medium:
-    family: FiraCode Nerd Font
-    style: Medium
+
+  italic:
+    family: Consolas
+    style: Italic
+
   bold:
-    family: FiraCode Nerd Font
+    family: Consolas
     style: Bold
 
+  bold_italic:
+    family: Consolas
+    style: Bold_Italic
+
   # Point size
-  size: 15.0
+  size: 15
 
   offset:
     x: 0
@@ -113,30 +128,3 @@ key_bindings:
   - {key: Add, mods: Control, action: IncreaseFontSize}
   - {key: Subtract, mods: Control, action: DecreaseFontSize}
   - {key: Minus, mods: Control, action: DecreaseFontSize}
-# BEGIN ACE
-colors:
-  primary:
-    background: '0x0d0f0d'
-    foreground: '0xb5c6b1'
-  cursor:
-    text:       '0x0d0f0d'
-    cursor:     '0xb5c6b1'
-  normal:
-    black:      '0x0d0f0d'
-    red:        '0x297429'
-    green:      '0x4B5F30'
-    yellow:     '0x1F851E'
-    blue:       '0x2A882B'
-    magenta:    '0x498F3A'
-    cyan:       '0x59985E'
-    white:      '0xb5c6b1'
-  bright:
-    black:      '0x7e8a7b'
-    red:        '0x297429'
-    green:      '0x4B5F30'
-    yellow:     '0x1F851E'
-    blue:       '0x2A882B'
-    magenta:    '0x498F3A'
-    cyan:       '0x59985E'
-    white:      '0xb5c6b1'
-# END ACE

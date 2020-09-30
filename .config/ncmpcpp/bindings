@@ -10,16 +10,16 @@
 def_key "k"
   scroll_up
 #
-#def_key "shift-up"
-#  select_item
-#  scroll_up
+def_key "K"
+  select_item
+  scroll_up
 #
 def_key "j"
   scroll_down
 #
-#def_key "shift-down"
-#  select_item
-#  scroll_down
+def_key "J"
+  select_item
+  scroll_down
 #
 #def_key "["
 #  scroll_up_album
@@ -153,8 +153,8 @@ def_key "+"
 #def_key "@"
 #  show_server_info
 #
-#def_key "s"
-#  stop
+def_key "s"
+  stop
 #
 #def_key "p"
 #  pause
@@ -213,7 +213,7 @@ def_key "+"
 #def_key "#"
 #  toggle_bitrate_visibility
 #
-def_key "s"
+def_key "S"
   shuffle
 #
 #def_key "x"

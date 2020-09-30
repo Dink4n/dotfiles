@@ -2,9 +2,10 @@
 ! ======== FONTS ==========
 ! =========================
 
+! =========================
+! ======== URxvt ==========
 Xft.dpi:            96
 Xft.antialias:      true
-URxvt*termName:     rxvt-256color
 URxvt.font:         xft:UbuntuMono Nerd Font:size=15, \
                     xft:Inconsolata Nerd Font Mono:size=15, \
                     xft:DefaVuSansMono Nerd Font:size=15, \
@@ -13,6 +14,24 @@ URxvt.font:         xft:UbuntuMono Nerd Font:size=15, \
                     xft:RobotoMono Nerd Font:size=15, \
                     xft:Noto Sans Mono:size=15, \
                     xft:Monospace:style=Medium:antialias=false
+Xft.hinting:        true
+Xft.rgba:           rgb
+Xft.autohint:       false
+Xft.hintstyle:      hintfull
+Xft.lcdfilter:      lcddefault
+
+! =========================
+! ======= XTerm ===========
+! =========================
+Xft.dpi:            96
+Xft.antialias:      true
+XTerm.vt100.locale: true
+XTerm.vt100.faceName:       xft:Mononoki Nerd Font:size=15, \
+                            xft:Monospace:style=Medium:antialias=false
+XTerm.vt100.faceSize: 9
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
 Xft.hinting:        true
 Xft.rgba:           rgb
 Xft.autohint:       false
