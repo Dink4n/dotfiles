@@ -26,7 +26,7 @@ Xft.lcdfilter:      lcddefault
 Xft.dpi:            96
 Xft.antialias:      true
 XTerm.vt100.locale: true
-XTerm.vt100.faceName:       xft:Mononoki Nerd Font:size=15, \
+XTerm.vt100.faceName:       xft:UbuntuMono Nerd Font:size=15, \
                             xft:Monospace:style=Medium:antialias=false
 XTerm.vt100.faceSize: 9
 XTerm.vt100.metaSendsEscape: true

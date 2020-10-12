@@ -16,7 +16,7 @@ super + @space
 
 # file manager
 super + r
-	alacritty -e ranger
+	alacritty -e vifm
 
 # random wallpaper
 super + b;
