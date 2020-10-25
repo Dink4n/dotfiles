@@ -39,8 +39,8 @@ height = 28
 ;offset-x = 1%
 ; offset-y = 1%
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${color.BG}
+foreground = ${color.FG}
 
 line-size = 3
 line-color = #f00
@@ -55,7 +55,7 @@ font-0 = Iosevka:style=Bold:pixelsize=10;3
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = eth 
+modules-left = eth mpd
 modules-center = bspwm 
 modules-right = updates alsa date 
 
@@ -93,11 +93,11 @@ label-occupied = %name%
 label-occupied-padding = 2
 
 label-urgent = %name%!
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${color.AL}
 label-urgent-padding = 2
 
 label-empty = %name%
-label-empty-foreground = ${colors.background-alt}
+label-empty-foreground = ${color.BGA}
 label-empty-padding = 2
 
 ws-icon-0 = 1;♚
@@ -156,20 +156,28 @@ interval = 300
 ; label-foreground = ${colors.foreground-alt}
 format = <label>
 format-prefix = UP:
-format-prefix-foreground = #88C0D0
+format-prefix-foreground = ${color.GREEN}
+format-underline = ${color.RED}
 format-prefix-padding = 1
 
 label = %output%
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+; format-online-prefix = MUSIC:
+; format-online-prefix-foreground = ${color.GREEN}
+; format-online-prefix-padding = 1
+
+format-online = <label-song> <bar-progress>
+format-underline = ${color.YELLO}
+
+bar-progress-width = 45
+bar-progress-indicator = "─╼ "
+bar-progress-fill = ─
+bar-progress-empty = 
+bar-progress-fill-foreground = ${color.RED}
+bar-progress-indicator-foreground = ${color.RED}
 
 label-song-maxlen = 25
 label-song-ellipsis = true
@@ -183,8 +191,8 @@ format-connected-prefix = ETH:
 format-disconnected-prefix = ETH:
 format-connected-prefix-padding = 1
 format-disconnected-prefix-padding = 1
-format-connected-prefix-foreground = ${color.FGA}
-format-disconneced-prefix-foreground = ${color.FGA}
+format-connected-prefix-foreground = ${color.GREEN}
+format-disconneced-prefix-foreground = ${color.GREEN}
 
 format-connected = <label-connected>
 label-connected = CONNECTED
@@ -196,7 +204,7 @@ label-disconnected = DISCONNECTED
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = "%D"
 date-alt = "%b-%a-%d"
@@ -206,7 +214,7 @@ time-alt = %H:%M:%S
 
 format-prefix = TIME: 
 format-prefix-padding = 1
-format-prefix-foreground = ${color.FGA}
+format-prefix-foreground = ${color.GREEN}
 
 label = %time% | %date%
 
@@ -215,7 +223,7 @@ type = internal/alsa
 
 format-volume-prefix = VOL: 
 format-volume-prefix-padding = 1
-format-volume-prefix-foreground = ${color.FGA}
+format-volume-prefix-foreground = ${color.GREEN}
 
 format-volume = <label-volume>
 label-muted = muted

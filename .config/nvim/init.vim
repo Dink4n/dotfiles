@@ -1,16 +1,21 @@
-syntax enable
-filetype plugin indent on
+syntax enable                                 " Enable syntax-highlighting
+filetype plugin indent on                     " This is useful
 
-set guicursor=
-set smartindent
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set nowrap
-set number
-set relativenumber
-set hidden
-set cursorline
+" set guicursor=                              " Disable cursor-styling
+" Enable Cursor-blinking
+set guicursor+=a:blinkwait700-blinkoff400-blinkon250-Cursor/Cursor
+set guicursor+=sm:block-blinkwait175-blinkoff150-blinkon175
+
+set guifont=FiraCode\ Nerd\ Font:h20        " Set font for neovide
+set smartindent                             " Smart indentation
+set tabstop=4 softtabstop=4                 " changing number of spaces tab counts for to 4
+set shiftwidth=4                            " Number of spaces to use for each step of indent
+set expandtab                               " Change tabs to spaces
+set nowrap                                  " Disable that annoying wraping
+set number                                  " Enable absolute number line
+set relativenumber                          " Enable relative number line
+set hidden                                  " it's useful!!
+set cursorline                              " "
 set noerrorbells
 set incsearch
 set nohlsearch
@@ -24,6 +29,7 @@ set pumheight=10
 set scrolloff=8
 set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect
+set foldmethod=marker
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -39,46 +45,45 @@ set shortmess+=c
 let mapleader = " " 
 
 " Polyglot disabled languages
-" let g:polyglot_disabled = ['c', 'cpp']
+let g:polyglot_disabled = ['c', 'cpp']
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 
-" ------ Plugin Management ------
+" Plugin Management {{{
 call plug#begin('~/.config/nvim/plugged')
 
 " ---- Completion/Syntax ----
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'sheerun/vim-polyglot'
+Plug 'neovim/nvim-lspconfig'                " Builtin LSP client
+Plug 'nvim-lua/completion-nvim'             " Better autocompletion
+Plug 'octol/vim-cpp-enhanced-highlight'     " Better syntax hightlighting for cpp
+Plug 'sheerun/vim-polyglot'                 " Better syntax highlighting
 
 " ---- Useful ----
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary' 
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'mbbill/undotree'
-Plug 'jiangmiao/auto-pairs'
-Plug 'jremmen/vim-ripgrep'
-Plug 'majutsushi/tagbar'
-Plug 'rhysd/vim-clang-format'
-Plug 'unblevable/quick-scope'
-Plug '/home/anu/dev/my-plugins/whid'
-Plug '/home/anu/dev/my-plugins/oldfiles'
+Plug 'tpope/vim-fugitive'                   " Git client in vim
+Plug 'tpope/vim-commentary'                 " Comments stuff for you
+Plug 'tpope/vim-surround'                   " Makes surrounding easy
+Plug 'tpope/vim-dispatch'                   " Async test and build dispatcher
+Plug 'junegunn/fzf',
+    \ { 'do': { -> fzf#install() } }        " this makes Fuzzy search work
+Plug 'junegunn/fzf.vim'                     " Fuzzy search
+Plug 'mbbill/undotree'                      " Amazing undo tree
+Plug 'jiangmiao/auto-pairs'                 " Auto pairs stuff for you
+Plug 'jremmen/vim-ripgrep'                  " Really fast grep
+Plug 'majutsushi/tagbar'                    " Tagbar on the side
+Plug 'unblevable/quick-scope'               " Hightlight unique character in every word
 
 " ---- Themes ----
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'arcticicestudio/nord-vim'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/sonokai'
 Plug 'sainnhe/forest-night'
 
 call plug#end()
+" }}}
+
+" Theme Settings {{{
 
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
@@ -97,7 +102,9 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark
 
-"  ------------ LSP -------------- 
+" }}}
+
+" LSP {{{
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -107,11 +114,14 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 lua require'nvim_lsp'.clangd.setup{ on_attach=require'completion'.on_attach }
+lua require'nvim_lsp'.vimls.setup{ on_attach=require'completion'.on_attach }
 lua require'nvim_lsp'.jsonls.setup{ on_attach=require'completion'.on_attach }
 lua require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
 lua require'nvim_lsp'.pyls.setup{ on_attach=require'completion'.on_attach }
 
-"  -------------------------------
+"  }}}
+
+" Utilities {{{
 
 " Language specific things 
 let python_highlight_all=1
@@ -137,6 +147,10 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
+" }}}
+
+" Key Mappings {{{
+
 vnoremap < <gv
 vnoremap > >gv
 nmap <F8> :TagbarToggle<CR>
@@ -151,26 +165,32 @@ nnoremap <Leader>J :wincmd J<CR>
 nnoremap <Leader>K :wincmd K<CR>
 nnoremap <Leader>L :wincmd L<CR>
 nnoremap <Leader>H :wincmd H<CR>
+nnoremap <Leader>= :wincmd =<CR>
+nnoremap <Leader>o :wincmd o<CR>
 "======================
 
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gca   <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <Leader>rn    :lua vim.lsp.buf.rename()<CR>
-" nmap     <Leader>f     :lua vim.lsp.buf.formatting()<CR>
-" xmap     <Leader>f     :lua vim.lsp.buf.range_formatting()<CR>
+" ======= LSP =========
+nnoremap <Leader>gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <Leader>K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <Leader>gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <Leader>gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <Leader>gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <Leader>gca   <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+" =====================
 
+" Black hole remaps
+" vnoremap <Leader>d      "_dp
+" vnoremap <Leader>c      "_dp
+" ================
+nnoremap <Leader>u      :UndotreeShow<CR>
+nnoremap <C-p>          :GFiles<CR>
+nnoremap <Leader>pf     :Files<CR>
+nnoremap <Leader>pc     :Colors<CR>
+nnoremap <leader>pw     :Rg <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>phw    :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>pv     :Vexplore<CR>
+tnoremap <ESC>          <C-\><C-n>
 
-nnoremap <Leader>u :UndotreeShow<CR>
-nnoremap <C-p> :GFiles<CR>
-nnoremap <Leader>pf :Files<CR>
-nnoremap <Leader>pc :Colors<CR>
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader><CR> :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader>pv :Vexplore<CR>
-tnoremap <ESC> <C-\><C-n>
+" }}}

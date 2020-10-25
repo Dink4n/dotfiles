@@ -1,3 +1,5 @@
+" Notice: this is depecrated
+
 syntax enable
 filetype plugin indent on
 

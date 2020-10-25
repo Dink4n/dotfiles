@@ -54,19 +54,19 @@ background_opacity: 1.0
 
 font:
   normal:
-    family: UbuntuMono Nerd Font
+    family: UbuntuMono
     style: Regular
 
   bold:
-    family: UbuntuMono Nerd Font
+    family: UbuntuMono
     style: Bold
 
   italic:
-    family: UbuntuMono Nerd Font
+    family: UbuntuMono
     style: Italic
 
   bold_italic:
-    family: UbuntuMono Nerd Font
+    family: UbuntuMono
     style: Bold Italic
 
 # font:
@@ -98,6 +98,9 @@ window:
     x: 20
     y: 20
 
+  cursor_blink_interval: 1.6
+  cursor_blink: true
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -108,8 +111,6 @@ scrolling:
   multiplier: 10
 
 # Cursor Blinking
-cursor_blink_interval: 300
-cursor_blink: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true

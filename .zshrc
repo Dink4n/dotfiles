@@ -19,10 +19,18 @@ fi
 
 # export TERM=rxvt-256color
 
+# Termite settings
+if [[ $term == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
+
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
 # Aliases for a few useful commands
+alias ls="lsd"
+alias lt="ls --tree"
 alias zshconfig="vim ~/.zshrc"
 alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias p5Server="browser-sync start --server --files ."
