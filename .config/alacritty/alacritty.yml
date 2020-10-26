@@ -54,19 +54,19 @@ background_opacity: 1.0
 
 font:
   normal:
-    family: UbuntuMono
+    family: UbuntuMono Nerd Font Mono
     style: Regular
 
   bold:
-    family: UbuntuMono
+    family: UbuntuMono Nerd Font
     style: Bold
 
   italic:
-    family: UbuntuMono
+    family: UbuntuMono Nerd Font
     style: Italic
 
   bold_italic:
-    family: UbuntuMono
+    family: UbuntuMono Nerd Font
     style: Bold Italic
 
 # font:
