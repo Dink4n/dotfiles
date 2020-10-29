@@ -169,15 +169,18 @@ type = internal/mpd
 ; format-online-prefix-foreground = ${color.GREEN}
 ; format-online-prefix-padding = 1
 
-format-online = <label-song> <bar-progress>
-format-underline = ${color.YELLO}
+format-online = <label-song>
+format-online-underline = ${color.YELLOW}
 
-bar-progress-width = 45
-bar-progress-indicator = "─╼ "
-bar-progress-fill = ─
-bar-progress-empty = 
-bar-progress-fill-foreground = ${color.RED}
-bar-progress-indicator-foreground = ${color.RED}
+format-offline = offline
+format-offline-underline = ${color.RED}
+
+; bar-progress-width = 45
+; bar-progress-indicator = "─╼ "
+; bar-progress-fill = ─
+; bar-progress-empty = 
+; bar-progress-fill-foreground = ${color.RED}
+; bar-progress-indicator-foreground = ${color.RED}
 
 label-song-maxlen = 25
 label-song-ellipsis = true
