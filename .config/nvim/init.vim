@@ -1,11 +1,7 @@
 syntax enable                                 " Enable syntax-highlighting
-filetype plugin indent on                     " This is useful
+filetype plugin indent on                     " enable filetype, plugin and indentation
 
-" set guicursor=                              " Disable cursor-styling
-" Enable Cursor-blinking
-set guicursor+=a:blinkwait700-blinkoff400-blinkon250-Cursor/Cursor
-set guicursor+=sm:block-blinkwait175-blinkoff150-blinkon175
-
+set guicursor=                              " Disable cursor-styling
 set guifont=FiraCode\ Nerd\ Font:h20        " Set font for neovide
 set smartindent                             " Smart indentation
 set tabstop=4 softtabstop=4                 " changing number of spaces tab counts for to 4
@@ -14,9 +10,9 @@ set expandtab                               " Change tabs to spaces
 set nowrap                                  " Disable that annoying wraping
 set number                                  " Enable absolute number line
 set relativenumber                          " Enable relative number line
-set hidden                                  " it's useful!!
-set cursorline                              " "
-set noerrorbells
+set hidden                                  " Help hidden
+set cursorline
+set noerrorbells                        
 set incsearch
 set nohlsearch
 set smartcase
@@ -45,11 +41,10 @@ set shortmess+=c
 let mapleader = " " 
 
 " Polyglot disabled languages
-let g:polyglot_disabled = ['c', 'cpp']
+" let g:polyglot_disabled = ['c', 'cpp']
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
-
 
 " Plugin Management {{{
 call plug#begin('~/.config/nvim/plugged')
@@ -58,7 +53,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'                " Builtin LSP client
 Plug 'nvim-lua/completion-nvim'             " Better autocompletion
 Plug 'octol/vim-cpp-enhanced-highlight'     " Better syntax hightlighting for cpp
-Plug 'sheerun/vim-polyglot'                 " Better syntax highlighting
+Plug 'sheerun/vim-polyglot'                 " Overall Better syntax highlighting
 
 " ---- Useful ----
 Plug 'tpope/vim-fugitive'                   " Git client in vim
@@ -66,18 +61,22 @@ Plug 'tpope/vim-commentary'                 " Comments stuff for you
 Plug 'tpope/vim-surround'                   " Makes surrounding easy
 Plug 'tpope/vim-dispatch'                   " Async test and build dispatcher
 Plug 'junegunn/fzf',
-    \ { 'do': { -> fzf#install() } }        " this makes Fuzzy search work
-Plug 'junegunn/fzf.vim'                     " Fuzzy search
+    \ { 'do': { -> fzf#install() } }        " this makes Fuzzy finder work
+Plug 'junegunn/fzf.vim'                     " Fuzzy finder
+Plug 'nvim-lua/plenary.nvim'                " Dependencies
+Plug 'nvim-lua/popup.nvim'                  " Dependencies
+Plug 'nvim-lua/telescope.nvim'              " Another Fuzzy finder
 Plug 'mbbill/undotree'                      " Amazing undo tree
 Plug 'jiangmiao/auto-pairs'                 " Auto pairs stuff for you
 Plug 'jremmen/vim-ripgrep'                  " Really fast grep
 Plug 'majutsushi/tagbar'                    " Tagbar on the side
 Plug 'unblevable/quick-scope'               " Hightlight unique character in every word
+Plug 'ThePrimeagen/vim-apm'                 " Vim actions per minute
 
 " ---- Themes ----
-Plug 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'            " Best colorscheme of alltime
 Plug 'sainnhe/gruvbox-material'
-Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim'             " Very calming colorscheme
 Plug 'sainnhe/forest-night'
 
 call plug#end()
@@ -170,18 +169,20 @@ nnoremap <Leader>o :wincmd o<CR>
 "======================
 
 " ======= LSP =========
-nnoremap <Leader>gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <Leader>K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <Leader>gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <Leader>gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <Leader>gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <Leader>gca   <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <Leader>ld     <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <Leader>lh     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <Leader>li     <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <Leader>lt     <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <Leader>lr     <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <Leader>lca    <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <Leader>lrn    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <Leader>lsd    <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 " =====================
 
 " Black hole remaps
 " vnoremap <Leader>d      "_dp
 " vnoremap <Leader>c      "_dp
+
 " ================
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <C-p>          :GFiles<CR>
@@ -192,5 +193,9 @@ nnoremap <leader>phw    :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>pv     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
+
+" language specific remaps
+" autocmd FileType cpp :nnoremap <F5> <cmd>call CompileAndRun(&ft)<CR>
+" autocmd FileType c   :nnoremap <F5> <cmd>call CompileAndRun(&ft)<CR>
 
 " }}}
