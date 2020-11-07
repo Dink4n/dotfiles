@@ -1,13 +1,11 @@
 #! /bin/sh
 
 # #--- AUTOSTART ---# #
-sxhkd &
-picom &
 feh --randomize --bg-fill $HOME/Pictures/anu/* &
 ~/.config/polybar/launch.sh &
 
 # #--- WORKSPACES ---# #
-bspc monitor -d BOOKS CODE WEB FILES MUSIC MOVIES
+bspc monitor -d TERM CODE WEB BOOKS MUSIC EXTRA
 
 # #--- WINDOW Configuration ---# #
 bspc config border_width         4
@@ -20,6 +18,7 @@ bspc config gapless_monocle      true
 # bspc rule -a Chromium desktop='^3'
 bspc rule -a OpenGL state=floating
 bspc rule -a kitty rectangle=545x350+0+0 center=on
+bspc rule -a love state=floating center=on
 
 # #---BSPWM coloring---# #
 bspc config normal_border_color     "#4c566a"
