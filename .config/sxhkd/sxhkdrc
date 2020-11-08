@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	termite
+	$TERMINAL
 
 # suspend pc
 super + shift + e
@@ -16,7 +16,7 @@ super + @space
 
 # file manager
 super + r
-	termite -e vifm
+	$TERMINAL -e vifm
 
 # random wallpaper
 super + b;
@@ -24,7 +24,7 @@ super + b;
 
 # audio manager
 super + a
-	termite -e alsamixer
+	$TERMINAL -e alsamixer
 
 # screenshot
 {_,shift + }Print
@@ -131,7 +131,7 @@ super + ctrl + shift + space
 #
 
 # Expand/contract a window by moving one of its side outward/inward
-super + s : {h,j,k,l}
+super + {h,j,k,l}
     STEP=20; SELECTION={1,2,3,4}; \
     bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
     bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
