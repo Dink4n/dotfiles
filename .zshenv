@@ -6,4 +6,3 @@ export VISUAL="neovide"
 
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/.emacs.d/bin"
