@@ -1,51 +1,33 @@
 export ZSH="/home/anu/.oh-my-zsh"
-ZSH_THEME="myrobbyrussell"
+ZSH_THEME=""
 
 ENABLE_CORRECTION="true"
-plugins=(git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+plugins=(
+    z
+    git
     archlinux
+    chucknorris
+    alias-finder
+    zsh-autosuggestions
+    fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
-
-# export TERM=rxvt-256color
-
-# Termite settings
-if [[ $term == xterm-termite ]]; then
-  . /etc/profile.d/vte.sh
-  __vte_osc7
-fi
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
 # Aliases for a few useful commands
 alias ls="lsd"
-alias lt="ls --tree"
+alias lt="lsd --tree"
 alias zshconfig="vim ~/.zshrc"
 alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
-alias p5Server="browser-sync start --server --files ."
 alias vim="nvim"
 alias vi="nvim"
 alias vimconf="nvim ~/.config/nvim/init.vim"
-alias jn="jupyter notebook"
-alias vf="vifm"
-alias cl="clear"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
 # Turn off all beeps
 unsetopt BEEP
-# Turn off autocomplete beeps
-# unsetopt LIST_BEEP
 
 # SSH settings
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -55,11 +37,6 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-# Path settings
-export PATH="$PATH:/home/anu/.local/bin"
-export PATH="$PATH:/home/anu/bin"
-export PATH="$HOME:/home/anu/.emacs.d/bin:$PATH"
-
 # Prompt Settings
 precmd() { precmd() { print "" } }
 
@@ -68,10 +45,30 @@ bindkey -v
 
 # ---Prompt---
 
-# PROMPT=' %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'$'\n'
-# PROMPT+="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}]%{$reset_color%}%  %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-# # PROMPT+=' %{$fg[cyan]%}%c%{$reset_color%} ' 
-# ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
-# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
-# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+# Stolen from pure prompt
+# For my own and others sanity
+# git:
+# %b => current branch
+# %a => current action (rebase/merge)
+# prompt:
+# %F => color dict
+# %f => reset color
+# %~ => current path
+# %* => time
+# %n => username
+# %m => shortname host
+# %(?..) => prompt conditional - %(condition.true.false)
+# terminal codes:
+# \e7   => save cursor position
+# \e[2A => move cursor 2 lines up
+# \e[1G => go to position 1 in terminal
+# \e8   => restore cursor position
+# \e[K  => clears everything after the cursor on the current line
+# \e[2K => clear everything on the current line
+PROMPT='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'$'\n'
+PROMPT+="%(?:%{$fg_bold[green]%}❯  :%{$fg_bold[red]%}❯  )"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
