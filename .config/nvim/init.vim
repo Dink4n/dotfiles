@@ -12,6 +12,7 @@
 syntax enable                                 " Enable syntax-highlighting
 filetype plugin indent on                     " enable filetype, plugin and indentation
 
+set exrc
 set guicursor=                              " Disable cursor-styling
 set guifont=JetbrainsMono\ Nerd\ Font:h20        " Set font for neovide
 set smartindent                             " Smart indentation
@@ -134,10 +135,7 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 " ======= Useful ======
 vnoremap < <gv
 vnoremap > >gv
-nnoremap <Tab> :tabnext<CR>
-nnoremap <S-Tab> :tabprev<CR>
 nmap <F8> :TagbarToggle<CR>
-nnoremap <Leader>ps :Rg<Space>
 " ====================
 
 "======= Wincmd =======
@@ -154,20 +152,31 @@ nnoremap <Leader>o :wincmd o<CR>
 "======================
 
 " Black hole remaps
-" vnoremap <Leader>d      "_dp
-" vnoremap <Leader>c      "_dp
+vnoremap <Leader>d      "_d
+" vnoremap <Leader>c      "_d
 
 " ================
 nnoremap <Leader>u      :UndotreeShow<CR>
-nnoremap <leader>pw     :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>pv     :Vexplore<CR>
+nnoremap <Leader>pt     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
+nnoremap <Leader>pb     <cmd>lua require("telescope.builtin").buffers{}<CR>
+nnoremap <Leader>pch    <cmd>lua require("telescope.builtin").command_history{}<CR>
+nnoremap <Leader>pht    <cmd>lua require("telescope.builtin").help_tags{}<CR>
+nnoremap <Leader>pcs    <cmd>lua require("telescope.builtin").colorschemes{}<CR>
+nnoremap <Leader>pso    <cmd>lua require("telescope.builtin").vim_options{}<CR>
+nnoremap <Leader>pmp    <cmd>lua require("telescope.builtin").man_pages{}<CR>
+nnoremap <Leader>pcf    <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
+nnoremap <Leader>pb     <cmd>lua require("telescope.builtin").builtin{}<CR>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
     nnoremap <C-p>          :lua require('telescope.builtin').git_files{}<CR>
+    nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").live_grep{ search = vim.fn.expand("<cword>") }<CR>
+    nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").live_grep{ search = vim.fn.input("Grep for > ") }<CR>
 else
     nnoremap <C-p>          :lua require('telescope.builtin').find_files{}<CR>
+    nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.expand("<cword>") }<CR>
+    nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.input("Grep for > ") }<CR>
 endif
 
 " }}}

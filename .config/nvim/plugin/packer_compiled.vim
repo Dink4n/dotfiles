@@ -38,12 +38,6 @@ local plugins = {
     only_sequence = false,
     only_setup = false,
     path = "/home/anu/.local/share/nvim/site/pack/packer/opt/vim-ripgrep"
-  },
-  vimwiki = {
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/home/anu/.local/share/nvim/site/pack/packer/opt/vimwiki"
   }
 }
 

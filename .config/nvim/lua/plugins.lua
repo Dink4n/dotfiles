@@ -72,6 +72,9 @@ return require("packer").startup(function()
         requires = {{ 'nvim-lua/plenary.nvim' }, { 'nvim-lua/popup.nvim' }}
     }
 
+    -- ThePrimeagen
+    use "ThePrimeagen/harpoon"
+
     -- Colorschemes --
     use 'gruvbox-community/gruvbox'
     use 'arcticicestudio/nord-vim'
