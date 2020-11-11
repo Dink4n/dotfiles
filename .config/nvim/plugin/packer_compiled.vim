@@ -12,12 +12,6 @@ local plugins = {
     only_setup = false,
     path = "/home/anu/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
-  tagbar = {
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/home/anu/.local/share/nvim/site/pack/packer/opt/tagbar"
-  },
   undotree = {
     commands = { "UndoTreeToggle" },
     loaded = false,
@@ -173,8 +167,8 @@ endfunction
 
 " Command lazy-loads
 command! -nargs=* -range -bang -complete=file Make call s:load(['vim-dispatch'], { "cmd": "Make", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file Rg call s:load(['vim-ripgrep'], { "cmd": "Rg", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file UndoTreeToggle call s:load(['undotree'], { "cmd": "UndoTreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Rg call s:load(['vim-ripgrep'], { "cmd": "Rg", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Dispatch call s:load(['vim-dispatch'], { "cmd": "Dispatch", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 
 " Keymap lazy-loads
@@ -182,7 +176,5 @@ command! -nargs=* -range -bang -complete=file Dispatch call s:load(['vim-dispatc
 augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
-  au FileType cpp ++once call s:load(['tagbar'], { "ft": "cpp" })
-  au FileType c ++once call s:load(['tagbar'], { "ft": "c" })
   " Event lazy-loads
 augroup END

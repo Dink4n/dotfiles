@@ -29,8 +29,11 @@ vim.cmd [[ packadd packer.nvim ]]
 
 return require("packer").startup(function()
     local local_use = function(name)
-        use { vim.fn.expand("~") .. name }
+        use { vim.fn.expand("~/dev/my-plugins/") .. name }
     end
+
+    -- Local stuff
+    local_use 'harpoon-fork'
 
     -- Packer can manage itself as an optional plugin
     use { 'wbthomason/packer.nvim', opt = true }
@@ -52,19 +55,12 @@ return require("packer").startup(function()
     use 'tpope/vim-fugitive'
     use { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make' } }
 
-    -- Undo tree --
-    use { 'mbbill/undotree' , cmd = 'UndoTreeToggle' }
-
-    -- Auto pairs --
+    -- Utilities --
+    use 'mhinz/vim-startify'
     use 'jiangmiao/auto-pairs'
-
-    -- RIPGrep
-    use { 'jremmen/vim-ripgrep', cmd = 'Rg', opt = true }
-
-    -- I don't now how to describe this
-    use { 'majutsushi/tagbar', ft = { 'cpp', 'c' } }
     use 'unblevable/quick-scope'
-    use 'vimwiki/vimwiki'
+    use { 'mbbill/undotree' , cmd = 'UndoTreeToggle' }
+    use { 'jremmen/vim-ripgrep', cmd = 'Rg', opt = true }
 
     -- Fuzzy Finder --
     use {
@@ -73,7 +69,7 @@ return require("packer").startup(function()
     }
 
     -- ThePrimeagen
-    use "ThePrimeagen/harpoon"
+    -- use "ThePrimeagen/harpoon"
 
     -- Colorschemes --
     use 'gruvbox-community/gruvbox'

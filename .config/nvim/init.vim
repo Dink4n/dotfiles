@@ -26,6 +26,7 @@ set hidden                                  " I like switching buffers quickly
 set cursorline
 set noerrorbells                        
 set incsearch
+set inccommand=split
 set nohlsearch
 set smartcase
 set noswapfile
@@ -153,21 +154,28 @@ nnoremap <Leader>o :wincmd o<CR>
 
 " Black hole remaps
 vnoremap <Leader>d      "_d
-" vnoremap <Leader>c      "_d
 
-" ================
+"  Harpoon
+nnoremap <Leader>tsa    :call SetBuffer(0)<CR>
+nnoremap <Leader>tss    :call SetBuffer(1)<CR>
+nnoremap <Leader>tsd    :call SetBuffer(2)<CR>
+nnoremap <Leader>tsf    :call SetBuffer(3)<CR>
+
+nnoremap <Leader>ta    :call GotoBuffer(0)<CR>
+nnoremap <Leader>ts    :call GotoBuffer(1)<CR>
+nnoremap <Leader>td    :call GotoBuffer(2)<CR>
+nnoremap <Leader>tf    :call GotoBuffer(3)<CR>
+
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>pt     :Vexplore<CR>
+nnoremap <Leader>pv     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
+nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pb     <cmd>lua require("telescope.builtin").buffers{}<CR>
 nnoremap <Leader>pch    <cmd>lua require("telescope.builtin").command_history{}<CR>
-nnoremap <Leader>pht    <cmd>lua require("telescope.builtin").help_tags{}<CR>
-nnoremap <Leader>pcs    <cmd>lua require("telescope.builtin").colorschemes{}<CR>
-nnoremap <Leader>pso    <cmd>lua require("telescope.builtin").vim_options{}<CR>
-nnoremap <Leader>pmp    <cmd>lua require("telescope.builtin").man_pages{}<CR>
-nnoremap <Leader>pcf    <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
-nnoremap <Leader>pb     <cmd>lua require("telescope.builtin").builtin{}<CR>
+nnoremap <Leader>pt     <cmd>lua require("telescope.builtin").help_tags{}<CR>
+nnoremap <Leader>pm     <cmd>lua require("telescope.builtin").man_pages{}<CR>
+nnoremap <Leader>pf     <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
     nnoremap <C-p>          :lua require('telescope.builtin').git_files{}<CR>
