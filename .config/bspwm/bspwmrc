@@ -16,7 +16,7 @@ bspc config gapless_monocle      true
 
 #--- WINDOW RULES ---#
 # bspc rule -a Chromium desktop='^3'
-bspc rule -a OpenGL state=floating
+bspc rule -a Runner state=floating
 bspc rule -a kitty rectangle=545x350+0+0 center=on
 bspc rule -a love state=floating center=on
 
