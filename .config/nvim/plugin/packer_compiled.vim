@@ -12,13 +12,6 @@ local plugins = {
     only_setup = false,
     path = "/home/anu/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
-  undotree = {
-    commands = { "UndoTreeToggle" },
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/home/anu/.local/share/nvim/site/pack/packer/opt/undotree"
-  },
   ["vim-dispatch"] = {
     commands = { "Dispatch", "Make" },
     loaded = false,
@@ -167,7 +160,6 @@ endfunction
 
 " Command lazy-loads
 command! -nargs=* -range -bang -complete=file Make call s:load(['vim-dispatch'], { "cmd": "Make", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file UndoTreeToggle call s:load(['undotree'], { "cmd": "UndoTreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Rg call s:load(['vim-ripgrep'], { "cmd": "Rg", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Dispatch call s:load(['vim-dispatch'], { "cmd": "Dispatch", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 

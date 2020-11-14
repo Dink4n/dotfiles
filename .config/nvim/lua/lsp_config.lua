@@ -1,18 +1,12 @@
 local nvim_lsp = require('nvim_lsp')
+local completion = require("completion")
 
-local my_servers = {
-    'clangd',
-    'vimls',
-    'jsonls',
-    'tsserver',
-    'pyls'
+nvim_lsp.clangd.setup {
+    on_attach = completion.on_attach
 }
-
-for key, server in ipairs(my_servers) do
-    nvim_lsp[server].setup {
-        on_attach = require'completion'.on_attach
-    }
-end
+nvim_lsp.vimls.setup { on_attach = completion.on_attach }
+nvim_lsp.jsonls.setup { on_attach = completion.on_attach }
+nvim_lsp.pyls.setup { on_attach = completion.on_attach }
 
 require('nlua.lsp.nvim').setup(nvim_lsp, {
     on_attach = require'completion'.on_attach,

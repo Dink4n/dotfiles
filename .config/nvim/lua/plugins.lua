@@ -29,11 +29,11 @@ vim.cmd [[ packadd packer.nvim ]]
 
 return require("packer").startup(function()
     local local_use = function(name)
-        use { vim.fn.expand("~/dev/my-plugins/") .. name }
+        use { vim.fn.expand("~/Dev/my-plugins/") .. name }
     end
 
     -- Local stuff
-    local_use 'harpoon-fork'
+    -- local_use 'harpoon-fork'
 
     -- Packer can manage itself as an optional plugin
     use { 'wbthomason/packer.nvim', opt = true }
@@ -59,7 +59,7 @@ return require("packer").startup(function()
     use 'mhinz/vim-startify'
     use 'jiangmiao/auto-pairs'
     use 'unblevable/quick-scope'
-    use { 'mbbill/undotree' , cmd = 'UndoTreeToggle' }
+    use 'mbbill/undotree'
     use { 'jremmen/vim-ripgrep', cmd = 'Rg', opt = true }
 
     -- Fuzzy Finder --
@@ -68,10 +68,20 @@ return require("packer").startup(function()
         requires = {{ 'nvim-lua/plenary.nvim' }, { 'nvim-lua/popup.nvim' }}
     }
 
+    -- Fire Nvim --
+    use {
+        'glacambre/firenvim',
+        run = function()
+            vim.fn["firenvim#install"](0)
+        end
+    }
+
     -- ThePrimeagen
-    -- use "ThePrimeagen/harpoon"
+    use "ThePrimeagen/harpoon"
 
     -- Colorschemes --
     use 'gruvbox-community/gruvbox'
+    use 'tomasr/molokai'
+    use 'patstockwell/vim-monokai-tasty'
     use 'arcticicestudio/nord-vim'
 end)

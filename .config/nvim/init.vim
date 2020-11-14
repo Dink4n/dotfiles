@@ -14,7 +14,7 @@ filetype plugin indent on                     " enable filetype, plugin and inde
 
 set exrc
 set guicursor=                              " Disable cursor-styling
-set guifont=JetbrainsMono\ Nerd\ Font:h20        " Set font for neovide
+set guifont=UbuntuMono\ Nerd\ Font:h12        " Set font for neovide
 set smartindent                             " Smart indentation
 set tabstop=4 softtabstop=4                 " changing number of spaces tab counts for to 4
 set shiftwidth=4                            " Number of spaces to use for each step of indent
@@ -96,7 +96,7 @@ let g:nord_italic_comments = 1
 let g:nord_underline = 1
 let g:nord_bold_vertical_split_line = 1
 
-let g:gruvbox_italic=1
+let g:gruvbox_italic = 1
 
 colorscheme gruvbox
 set background=dark
@@ -121,6 +121,7 @@ endif
 let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
+let g:netrw_localrmdir="rm -r"
 
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
@@ -128,6 +129,16 @@ let $FZF_DEFAULT_OPTS='--reverse'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+
+function! GotoWindow(winId) abort
+    call win_gotoid(a:winId)
+    MaximizerToggle
+endfunction
+
+augroup STARTUP
+    autocmd!
+    au BufEnter github.com_*.txt set filetype=markdown
+augroup END
 
 " }}}
 
@@ -161,10 +172,34 @@ nnoremap <Leader>tss    :call SetBuffer(1)<CR>
 nnoremap <Leader>tsd    :call SetBuffer(2)<CR>
 nnoremap <Leader>tsf    :call SetBuffer(3)<CR>
 
-nnoremap <Leader>ta    :call GotoBuffer(0)<CR>
-nnoremap <Leader>ts    :call GotoBuffer(1)<CR>
-nnoremap <Leader>td    :call GotoBuffer(2)<CR>
-nnoremap <Leader>tf    :call GotoBuffer(3)<CR>
+nnoremap <Leader>ta     :call GotoBuffer(0)<CR>
+nnoremap <Leader>ts     :call GotoBuffer(1)<CR>
+nnoremap <Leader>td     :call GotoBuffer(2)<CR>
+nnoremap <Leader>tf     :call GotoBuffer(3)<CR>
+
+" Debugger
+nnoremap <Leader>m      :MaximizerToggle<CR>
+nnoremap <Leader>dd     :call vimspector#Launch()<CR>
+nnoremap <Leader>dt     :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+nnoremap <Leader>dv     :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <Leader>dw     :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <Leader>ds     :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <Leader>dc     :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <Leader>do     :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <Leader>dq     :call vimspector#Reset()<CR>
+
+nmap     <Leader>dl     <Plug>VimspectorStepOver
+nmap     <Leader>dj     <Plug>VimspectorStepInto
+nmap     <Leader>dk     <Plug>VimspectorStepOut
+nmap     <Leader>drs    <Plug>VimspectorRestart
+nmap     <Leader>d<space>   <Plug>VimspectorContinue
+nmap     <Leader>dp     <Plug>VimspectorPause
+
+nmap     <Leader>drc    <Plug>VimspectorRunToCursor
+nmap     <Leader>dtb    <Plug>VimspectorToggleBreakpoint
+nmap     <Leader>dtcb   <Plug>VimspectorToggleConditionalBreakpoint
+
+nnoremap <Leader>dcb    :call vimspector#ClearLineBreakpoint(expand("%"), line("."))<CR>
 
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
@@ -172,17 +207,16 @@ nnoremap <Leader>pv     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pb     <cmd>lua require("telescope.builtin").buffers{}<CR>
-nnoremap <Leader>pch    <cmd>lua require("telescope.builtin").command_history{}<CR>
 nnoremap <Leader>pt     <cmd>lua require("telescope.builtin").help_tags{}<CR>
 nnoremap <Leader>pm     <cmd>lua require("telescope.builtin").man_pages{}<CR>
 nnoremap <Leader>pf     <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
-    nnoremap <C-p>          :lua require('telescope.builtin').git_files{}<CR>
+    nnoremap <C-p>          <cmd>lua require('telescope.builtin').git_files{}<CR>
     nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").live_grep{ search = vim.fn.expand("<cword>") }<CR>
     nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").live_grep{ search = vim.fn.input("Grep for > ") }<CR>
 else
-    nnoremap <C-p>          :lua require('telescope.builtin').find_files{}<CR>
+    nnoremap <C-p>          <cmd>lua require('telescope.builtin').find_files{}<CR>
     nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.expand("<cword>") }<CR>
     nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.input("Grep for > ") }<CR>
 endif
