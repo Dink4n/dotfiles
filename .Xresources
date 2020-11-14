@@ -1,11 +1,11 @@
 ! =========================
 ! ======== XTERM ==========
 ! =========================
-XTerm.*.faceName:   JetbrainsMono Nerd Font:style=Regular;
-XTerm.*.faceSize:   16
-XTerm.*.saveLines:  4096
+Runner.*.faceName:   JetbrainsMono Nerd Font:style=Regular;
+Runner.*.faceSize:   16
+Runner.*.saveLines:  4096
 
-XTerm.*.translations: #override \n\
+Runner.*.translations: #override \n\
 Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
 Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
@@ -15,79 +15,79 @@ Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 ! Monokai
 ! special
-/* XTerm.*.foreground:   #f8f8f2 */
-/* XTerm.*.background:   #272822 */
-/* XTerm.*.cursorColor:  #f8f8f2 */
-
-/* ! black */
-/* XTerm.*.color0:       #272822 */
-/* XTerm.*.color8:       #75715e */
-
-/* ! red */
-/* XTerm.*.color1:       #f92672 */
-/* XTerm.*.color9:       #f92672 */
-
-/* ! green */
-/* XTerm.*.color2:       #a6e22e */
-/* XTerm.*.color10:      #a6e22e */
-
-/* ! yellow */
-/* XTerm.*.color3:       #f4bf75 */
-/* XTerm.*.color11:      #f4bf75 */
-
-/* ! blue */
-/* XTerm.*.color4:       #66d9ef */
-/* XTerm.*.color12:      #66d9ef */
-
-/* ! magenta */
-/* XTerm.*.color5:       #ae81ff */
-/* XTerm.*.color13:      #ae81ff */
-
-/* ! cyan */
-/* XTerm.*.color6:       #a1efe4 */
-/* XTerm.*.color14:      #a1efe4 */
-
-/* ! white */
-/* XTerm.*.color7:       #f8f8f2 */
-/* XTerm.*.color15:      #f9f8f5 */
-
-
-! special
-*.foreground:   #bbc2cf
-*.background:   #282c34
-*.cursorColor:  #bbc2cf
+Runner.*.foreground:   #f8f8f2
+Runner.*.background:   #272822
+Runner.*.cursorColor:  #f8f8f2
 
 ! black
-*.color0:       #1c1f24
-*.color8:       #5b6268
+Runner.*.color0:       #272822
+Runner.*.color8:       #75715e
 
 ! red
-*.color1:       #ff6c6b
-*.color9:       #da8548
+Runner.*.color1:       #f92672
+Runner.*.color9:       #f92672
 
 ! green
-*.color2:       #98be65
-*.color10:      #4db5bd
+Runner.*.color2:       #a6e22e
+Runner.*.color10:      #a6e22e
 
 ! yellow
-*.color3:       #da8548
-*.color11:      #ecbe7b
+Runner.*.color3:       #f4bf75
+Runner.*.color11:      #f4bf75
 
 ! blue
-*.color4:       #51afef
-*.color12:      #3071db
+Runner.*.color4:       #66d9ef
+Runner.*.color12:      #66d9ef
 
 ! magenta
-*.color5:       #c678dd
-*.color13:      #a9a1e1
+Runner.*.color5:       #ae81ff
+Runner.*.color13:      #ae81ff
 
 ! cyan
-*.color6:       #5699af
-*.color14:      #46d9ff
+Runner.*.color6:       #a1efe4
+Runner.*.color14:      #a1efe4
 
 ! white
-*.color7:       #202328
-*.color15:      #dfdfdf
+Runner.*.color7:       #f8f8f2
+Runner.*.color15:      #f9f8f5
+
+
+/* ! special */
+/* *.foreground:   #bbc2cf */
+/* *.background:   #282c34 */
+/* *.cursorColor:  #bbc2cf */
+
+/* ! black */
+/* *.color0:       #1c1f24 */
+/* *.color8:       #5b6268 */
+
+/* ! red */
+/* *.color1:       #ff6c6b */
+/* *.color9:       #da8548 */
+
+/* ! green */
+/* *.color2:       #98be65 */
+/* *.color10:      #4db5bd */
+
+/* ! yellow */
+/* *.color3:       #da8548 */
+/* *.color11:      #ecbe7b */
+
+/* ! blue */
+/* *.color4:       #51afef */
+/* *.color12:      #3071db */
+
+/* ! magenta */
+/* *.color5:       #c678dd */
+/* *.color13:      #a9a1e1 */
+
+/* ! cyan */
+/* *.color6:       #5699af */
+/* *.color14:      #46d9ff */
+
+/* ! white */
+/* *.color7:       #202328 */
+/* *.color15:      #dfdfdf */
 
 ! ========================
 ! ======== Urxvt =========
