@@ -8,6 +8,7 @@ plugins=(
     archlinux
     chucknorris
     alias-finder
+    colored-man-pages
     zsh-autosuggestions
     fast-syntax-highlighting
 )
@@ -24,7 +25,7 @@ alias zshconfig="vim ~/.zshrc"
 alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias vim="nvim"
 alias vi="nvim"
-alias vimconf="nvim ~/.config/nvim/init.vim"
+alias vimrc="nvim ~/.config/nvim/init.vim"
 
 # Turn off all beeps
 unsetopt BEEP
