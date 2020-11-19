@@ -14,7 +14,6 @@ filetype plugin indent on                     " enable filetype, plugin and inde
 
 set exrc
 set guicursor=                              " Disable cursor-styling
-set guifont=UbuntuMono\ Nerd\ Font:h12        " Set font for neovide
 set smartindent                             " Smart indentation
 set tabstop=4 softtabstop=4                 " changing number of spaces tab counts for to 4
 set shiftwidth=4                            " Number of spaces to use for each step of indent
