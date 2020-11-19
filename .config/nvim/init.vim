@@ -53,34 +53,48 @@ set shortmess+=c
 " Set Map leader
 let mapleader = " " 
 
-" Polyglot disabled languages
-" let g:polyglot_disabled = ['c', 'cpp']
-
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 " }}}
 
 " Plugin Management {{{
 
-lua require('plugins')
+call plug#begin('~/.config/nvim/plugged')
+
+" Lsp Stuff
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+
+" Debugger
+" Plug 'puremourning/vimspector'
+" Plug 'szw/vim-maximizer'
+
+" TPOPE
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+
+" Utilities
+Plug 'mhinz/vim-startify'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mbbill/undotree'
+Plug 'jremmen/vim-ripgrep', { 'on': 'Rg' }
+
+Plug 'ThePrimeagen/harpoon'
+
+" Telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+" Colorschemes
+Plug 'gruvbox-community/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+
+call plug#end()
 
 " }}}
-
-" Lua {{{
-
-lua require('init')
-
-" }}}
-
-" LSP {{{
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set matching strategy to have a better completion experience
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-"  }}}
 
 " Theme {{{
 
@@ -103,16 +117,30 @@ set background=dark
 
 " }}}
 
+" Lua {{{
+
+lua require('init')
+
+" }}}
+
+" LSP {{{
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set matching strategy to have a better completion experience
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+" Enable smart case matching
+let g:completion_matching_smart_case = 1
+
+"  }}}
+
 " Utilities {{{
 
 " Language specific things 
 let python_highlight_all=1
 let g:python3_host_prog='/usr/bin/python'
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -123,12 +151,9 @@ let g:netrw_banner=0
 let g:netrw_winsize=25
 let g:netrw_localrmdir="rm -r"
 
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-let $FZF_DEFAULT_OPTS='--reverse'
-
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+function! MapTerminalCommand(ctrlId, key, command) abort
+    execute printf('nnoremap <Leader>%s     :call SendTerminalCommand(%d, "%s\n")<CR>', a:key, a:ctrlId, a:command)
+endfunction
 
 function! GotoWindow(winId) abort
     call win_gotoid(a:winId)
@@ -140,6 +165,12 @@ augroup STARTUP
     au BufEnter github.com_*.txt set filetype=markdown
 augroup END
 
+augroup CompletionTriggerCharacter
+    autocmd!
+    " autocmd BufEnter * let g:completion_trigger_character = ['.']
+augroup end
+autocmd BufEnter *.c,*.cpp let g:completion_trigger_character = ['.', '::']
+
 " }}}
 
 " Key Mappings {{{
@@ -147,7 +178,6 @@ augroup END
 " ======= Useful ======
 vnoremap < <gv
 vnoremap > >gv
-nmap <F8> :TagbarToggle<CR>
 " ====================
 
 "======= Wincmd =======
@@ -163,10 +193,7 @@ nnoremap <Leader>= :wincmd =<CR>
 nnoremap <Leader>o :wincmd o<CR>
 "======================
 
-" Black hole remaps
-vnoremap <Leader>d      "_d
-
-"  Harpoon
+"  Terminal(Harpoon)
 nnoremap <Leader>tsa    :call SetBuffer(0)<CR>
 nnoremap <Leader>tss    :call SetBuffer(1)<CR>
 nnoremap <Leader>tsd    :call SetBuffer(2)<CR>
@@ -176,6 +203,8 @@ nnoremap <Leader>ta     :call GotoBuffer(0)<CR>
 nnoremap <Leader>ts     :call GotoBuffer(1)<CR>
 nnoremap <Leader>td     :call GotoBuffer(2)<CR>
 nnoremap <Leader>tf     :call GotoBuffer(3)<CR>
+
+nnoremap <C-l>          :set scrollback=1 <bar> sleep 100ms <bar> set scrollback=1000<CR>
 
 " Debugger
 nnoremap <Leader>m      :MaximizerToggle<CR>
@@ -206,9 +235,6 @@ nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>pv     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>af     <C-^>
-nnoremap <Leader>pb     <cmd>lua require("telescope.builtin").buffers{}<CR>
-nnoremap <Leader>pt     <cmd>lua require("telescope.builtin").help_tags{}<CR>
-nnoremap <Leader>pm     <cmd>lua require("telescope.builtin").man_pages{}<CR>
 nnoremap <Leader>pf     <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
