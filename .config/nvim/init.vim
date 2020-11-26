@@ -64,10 +64,12 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
+Plug 'liuchengxu/vista.vim'
 
 " Debugger
-" Plug 'puremourning/vimspector'
-" Plug 'szw/vim-maximizer'
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 " TPOPE
 Plug 'tpope/vim-commentary'
@@ -79,6 +81,7 @@ Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'jremmen/vim-ripgrep', { 'on': 'Rg' }
+Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'ThePrimeagen/harpoon'
 
@@ -88,7 +91,12 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Colorschemes
+Plug 'tjdevries/colorbuddy.vim'
+Plug '~/dev/my-plugins/monobuddy'
+
 Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim'
+Plug 'sainnhe/sonokai'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -111,7 +119,8 @@ let g:nord_bold_vertical_split_line = 1
 
 let g:gruvbox_italic = 1
 
-colorscheme gruvbox
+" lua require("colorbuddy").colorscheme("monobuddy")
+colorscheme dracula
 set background=dark
 
 " }}}
@@ -235,6 +244,10 @@ nnoremap <Leader>pv     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pf     <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
+" Output the current syntax group
+nnoremap <Leader>gs :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
     nnoremap <C-p>          <cmd>lua require('telescope.builtin').git_files{}<CR>
