@@ -64,7 +64,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/playground'
 Plug 'liuchengxu/vista.vim'
 
 " Debugger
@@ -73,30 +72,32 @@ Plug 'szw/vim-maximizer'
 
 " TPOPE
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
 " Utilities
-Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'jremmen/vim-ripgrep', { 'on': 'Rg' }
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'ThePrimeagen/harpoon'
+Plug 'cdelledonne/vim-cmake'
+" Plug 'vhdirk/vim-cmake'
+" Plug 'jalcine/cmake.vim'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Colorschemes
 Plug 'tjdevries/colorbuddy.vim'
 Plug '~/dev/my-plugins/monobuddy'
 
 Plug 'gruvbox-community/gruvbox'
-Plug 'dracula/vim'
-Plug 'sainnhe/sonokai'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -120,7 +121,7 @@ let g:nord_bold_vertical_split_line = 1
 let g:gruvbox_italic = 1
 
 " lua require("colorbuddy").colorscheme("monobuddy")
-colorscheme dracula
+colorscheme gruvbox
 set background=dark
 
 " }}}
@@ -161,6 +162,10 @@ let g:netrw_localrmdir="rm -r"
 
 function! MapTerminalCommand(ctrlId, key, command) abort
     execute printf('nnoremap <Leader>%s     :call SendTerminalCommand(%d, "%s\n")<CR>', a:key, a:ctrlId, a:command)
+endfunction
+
+function! MapDispatchCommand(key, command) abort
+    execute printf('nnoremap <Leader>%s     :Dispatch %s<CR>', a:key, a:command)
 endfunction
 
 function! GotoWindow(winId) abort
@@ -244,19 +249,18 @@ nnoremap <Leader>pv     :Vexplore<CR>
 tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pf     <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
+nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.expand("<cword>") }<CR>
+nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.input("Grep for > ") }<CR>
+
 " Output the current syntax group
-nnoremap <Leader>gs :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
     nnoremap <C-p>          <cmd>lua require('telescope.builtin').git_files{}<CR>
-    nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").live_grep{ search = vim.fn.expand("<cword>") }<CR>
-    nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").live_grep{ search = vim.fn.input("Grep for > ") }<CR>
 else
     nnoremap <C-p>          <cmd>lua require('telescope.builtin').find_files{}<CR>
-    nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.expand("<cword>") }<CR>
-    nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.input("Grep for > ") }<CR>
 endif
 
 " }}}
