@@ -1,5 +1,7 @@
 require("colorizer").setup()
 
-require("lsp_config")
-require("telescope_config")
-require("treesitter_config")
+require("configs/lspconfig")
+require("configs/completion")
+require("configs/snippets")
+require("configs/treesitter")
+require("configs/telescope")
