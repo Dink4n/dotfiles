@@ -5,7 +5,7 @@ feh --randomize --bg-fill $HOME/Pictures/anu/* &
 ~/.config/polybar/launch.sh &
 
 # #--- WORKSPACES ---# #
-bspc monitor -d TERM CODE WEB BOOKS MUSIC EXTRA
+bspc monitor -d HOME TERM CODE WEB BOOKS MUSIC EXTRA
 
 # #--- WINDOW Configuration ---# #
 bspc config border_width         4
@@ -17,7 +17,7 @@ bspc config gapless_monocle      true
 #--- WINDOW RULES ---#
 # bspc rule -a Chromium desktop='^3'
 bspc rule -a Runner state=floating
-bspc rule -a kitty rectangle=545x350+0+0 center=on
+bspc rule -a Music rectangle=545x350+0+0 state=floating
 bspc rule -a love state=floating center=on
 
 # #---BSPWM coloring---# #
