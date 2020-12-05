@@ -228,6 +228,7 @@ song_columns_list_format = (50)[blue]{arE} (50)[green]{t}
 ## notifications etc.
 ##
 execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+# execute_on_song_change="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
 #
 ##
 ## Note: Custom command that will be executed each time player state
