@@ -1,3 +1,5 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
 #import:
 #  - /path/to/alacritty.yml
 
@@ -5,32 +7,30 @@ env:
   TERM: xterm-256color
 
 window:
-  #dimensions:
-  #  columns: 0
-  #  lines: 0
+  dimensions:
+    columns: 0
+    lines: 0
 
-  #position:
-  #  x: 0
-  #  y: 0
+  position:
+    x: 0
+    y: 0
 
   padding:
     x: 20
     y: 20
 
+  # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
 
+  # Window decorations
+  #
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
   #
-  decorations: full
+  decorations: none
 
-  # Values for `startup_mode`:
-  #   - Windowed
-  #   - Maximized
-  #   - Fullscreen
-  #
-  #startup_mode: Windowed
+  startup_mode: Windowed
 
   # Window title
   title: Alacritty
@@ -38,12 +38,12 @@ window:
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
 
-  # Window class (Linux/BSD only):
   class:
     # Application instance name
     instance: Alacritty
     # General application class
     general: Alacritty
+
 
 scrolling:
   history: 10000
@@ -51,37 +51,17 @@ scrolling:
 
 # Font configuration
 font:
-  # normal:
-  #   family: UbuntuMono Nerd Font
-  #   style: Regular
-
-  # bold:
-  #   family: UbuntuMono Nerd Font
-  #   style: Bold
-
-  # italic:
-  #   family: UbuntuMono Nerd Font
-  #   style: Italic
-
-  # bold_italic:
-  #   family: UbuntuMono Nerd Font
-  #   style: Bold Italic
-
-
   normal:
     family: JetbrainsMono Nerd Font
     style: Regular
 
   bold:
-    family: JetbrainsMono Nerd Font
     style: Bold
 
   italic:
-    family: JetbrainsMono Nerd Font
     style: Italic
 
   bold_italic:
-    family: JetbrainsMono Nerd Font
     style: Bold Italic
 
   # Point size
@@ -91,35 +71,48 @@ font:
     x: 0
     y: 0
 
-# If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night)
 colors:
-  # COLORSCHEME: /home/anu/.config/alacritty/themes/other/themes/nord.yaml
+  # COLORSCHEME: /home/anu/.config/alacritty/themes/base16/colors/base16-dracula-256.yml
   # Default colors
   primary:
-    background: '0x2E3440'
-    foreground: '0xD8DEE9'
+    background: '0x282936'
+    foreground: '0xe9e9f4'
 
-  # Normal colors
+  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x2e3440'
-    cursor: '0xe5e9f0'
+    text: '0x282936'
+    cursor: '0xe9e9f4'
 
   # Normal colors
   vi_mode_cursor:
     text: CellBackground
     cursor: CellForeground
 
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area.
+  #
+  # Allowed values are CellForeground and CellBackground, which reference the
+  # affected cell, or hexadecimal colors like #ff00ff.
   selection:
     text: CellBackground
     background: CellForeground
 
+  # Search colors
+  #
+  # Colors used for the search bar and match highlighting.
   search:
+    # Allowed values are CellForeground and CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
     matches:
       foreground: '#000000'
       background: '#ffffff'
+    focused_match:
+      foreground: CellBackground
+      background: CellForeground
 
     bar:
       background: '#c5c8c6'
@@ -127,25 +120,26 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x3B4252'
-    red: '0xBF616A'
-    green: '0xA3BE8C'
-    yellow: '0xEBCB8B'
-    blue: '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan: '0x88C0D0'
-    white: '0xE5E9F0'
+    black: '0x282936'
+    red: '0xea51b2'
+    green: '0xebff87'
+    yellow: '0x00f769'
+    blue: '0x62d6e8'
+    magenta: '0xb45bcf'
+    cyan: '0xa1efe4'
+    white: '0xe9e9f4'
 
   # Bright colors
   bright:
-    black: '0x4C566A'
-    red: '0xBF616A'
-    green: '0xA3BE8C'
-    yellow: '0xEBCB8B'
-    blue: '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan: '0x8FBCBB'
-    white: '0xECEFF4'
+    black: '0x626483'
+    red: '0xea51b2'
+    green: '0xebff87'
+    yellow: '0x00f769'
+    blue: '0x62d6e8'
+    magenta: '0xb45bcf'
+    cyan: '0xa1efe4'
+    white: '0xf7f7fb'
+
   dim:
     black: '#131415'
     red: '#864343'
@@ -157,38 +151,46 @@ colors:
     white: '#828482'
 
   indexed_colors:
-    - {index: 16, color: '0x81a1c1'}
-    - {index: 17, color: '0xb48ead'}
-    - {index: 18, color: '0x3b4252'}
-    - {index: 19, color: '0x434c5e'}
-    - {index: 20, color: '0xd8dee9'}
-    - {index: 21, color: '0xeceff4'}
+    - {index: 16, color: '0xb45bcf'}
+    - {index: 17, color: '0x00f769'}
+    - {index: 18, color: '0x3a3c4e'}
+    - {index: 19, color: '0x4d4f68'}
+    - {index: 20, color: '0x62d6e8'}
+    - {index: 21, color: '0xf1f2f8'}
 background_opacity: 1.0
 
 selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-
   save_to_clipboard: true
 
 cursor:
   # Cursor style
-  #
-  # Values for `style`:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  style: Block
-  vi_mode_style: None
+  style:
+    # Cursor shape
+    #
+    # Values for `shape`:
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Block
+
+    # Cursor blinking state
+    #
+    # Values for `blinking`:
+    #   - Never: Prevent the cursor from ever blinking
+    #   - Off: Disable blinking by default
+    #   - On: Enable blinking by default
+    #   - Always: Force the cursor to always blink
+    blinking: Always
+
+  vi_mode_style: Underline
+  blink_interval: 750
   unfocused_hollow: true
+  thickness: 0.15
 
-  thickness: 0.10
-
-# Live config reload (changes require restart)
 live_config_reload: true
-
-working_directory: None
-
-alt_send_esc: true
 
 mouse:
   double_click: {threshold: 300}
@@ -198,10 +200,10 @@ mouse:
 
   url:
     launcher:
-      program: xdg-open
+      program: firefox
       args: []
 
-    modifiers: None
+# Key bindings
 
 key_bindings:
   #- { key: Paste,                                action: Paste          }
@@ -261,28 +263,37 @@ key_bindings:
   #- { key: Slash,  mods: Shift,         mode: Vi, action: SearchBackward          }
   #- { key: N,                           mode: Vi, action: SearchNext              }
   #- { key: N,      mods: Shift,         mode: Vi, action: SearchPrevious          }
-  - {key: Return, mods: Control|Shift, action: SpawnNewInstance}
 
-  # (Windows, Linux, and BSD only)
-  #- { key: V,              mods: Control|Shift,           action: Paste            }
-  #- { key: C,              mods: Control|Shift,           action: Copy             }
-  #- { key: F,              mods: Control|Shift,           action: SearchForward    }
-  #- { key: B,              mods: Control|Shift,           action: SearchBackward   }
-  #- { key: C,              mods: Control|Shift, mode: Vi, action: ClearSelection   }
-  #- { key: Insert,         mods: Shift,                   action: PasteSelection   }
-  #- { key: Key0,           mods: Control,                 action: ResetFontSize    }
-  #- { key: Equals,         mods: Control,                 action: IncreaseFontSize }
-  #- { key: Plus,           mods: Control,                 action: IncreaseFontSize }
-  #- { key: NumpadAdd,      mods: Control,                 action: IncreaseFontSize }
-  #- { key: Minus,          mods: Control,                 action: DecreaseFontSize }
-  #- { key: NumpadSubtract, mods: Control,                 action: DecreaseFontSize }
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: C, mods: Control|Shift, action: Copy}
+  - {key: F, mods: Control|Shift, action: SearchForward}
+  - {key: B, mods: Control|Shift, action: SearchBackward}
+  - {key: C, mods: Control|Shift, mode: Vi, action: ClearSelection}
+  - {key: Insert, mods: Shift, action: PasteSelection}
+  - {key: Key0, mods: Control, action: ResetFontSize}
+  - {key: Equals, mods: Control, action: IncreaseFontSize}
+  - {key: Plus, mods: Control, action: IncreaseFontSize}
+  - {key: NumpadAdd, mods: Control, action: IncreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}
+  - {key: NumpadSubtract, mods: Control, action: DecreaseFontSize}
+
+  - {key: K, mods: Control, mode: ~Vi, chars: "\f"}
+  # - {key: L, mods: Control, action: ClearHistory}
+  - {key: C, mods: Control, mode: Vi, action: ClearSelection}
+  - {key: H, mods: Control, action: Hide}
+  - {key: M, mods: Control, action: Minimize}
+  - {key: Q, mods: Control, action: Quit}
+  - {key: W, mods: Control, action: Quit}
+  - {key: N, mods: Control, action: SpawnNewInstance}
+  - {key: F, mods: Control, action: SearchForward}
+  - {key: B, mods: Control, action: SearchBackward}
 
 debug:
   # Display the time it takes to redraw each frame.
   render_timer: false
 
   # Keep the log file after quitting Alacritty.
-  persistent_logging: false
+  #persistent_logging: false
 
   # Log level
   #
@@ -296,4 +307,4 @@ debug:
   #log_level: Warn
 
   # Print all received window events.
-  print_events: false
+  #print_events: false
