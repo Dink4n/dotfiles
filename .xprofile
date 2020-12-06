@@ -7,4 +7,9 @@ sxhkd &
 picom &
 clight &
 
+# mute speakers
+amixer set 'Front' mute
+# disable auto-mute so speakers will work
+amixer set 'Auto-Mute Mode' Disabled
+
 # vim:ft=sh
