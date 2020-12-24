@@ -6,17 +6,15 @@
                       
 " Filename: init.vim
 " Maintainer: Anu
-" Github: https://github.com/JimboKearn/dotfiles
+" Github: https://github.com/Dink4n/dotfiles
 
-" Basic Features {{{
+" Basic Features: {{{
 syntax enable                                 " Enable syntax-highlighting
 filetype plugin indent on                     " enable filetype, plugin and indentation
 
 set exrc
-set guifont=JetbrainsMono\ Nerd\ Font:h16
-set guicursor=n-v-c:block,i-ci-ve:ver10,r-cr:hor20,o:hor50
-  \,a:blinkwait175-blinkoff150-blinkon175-Cursor/lCursor
 " set guicursor=                              " Disable cursor-styling
+set guifont=Mononoki\ Nerd\ Font:h20        " Set the font for neovide
 set smartindent                             " Smart indentation
 set tabstop=4 softtabstop=4                 " changing number of spaces tab counts for to 4
 set shiftwidth=4                            " Number of spaces to use for each step of indent
@@ -59,7 +57,7 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 " }}}
 
-" Plugin Management {{{
+" Plugin Management: {{{
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -68,12 +66,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'norcalli/snippets.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/completion-treesitter'
 
 " Debugger
-Plug 'puremourning/vimspector'
-Plug 'szw/vim-maximizer'
+" Plug 'puremourning/vimspector'
+" Plug 'szw/vim-maximizer'
 
 " TPOPE
 Plug 'tpope/vim-commentary'
@@ -82,16 +79,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
 " Utilities
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
+Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vista.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep', { 'on': 'Rg' }
 Plug 'norcalli/nvim-colorizer.lua'
-
 Plug 'ThePrimeagen/harpoon'
-Plug 'cdelledonne/vim-cmake'
-" Plug 'vhdirk/vim-cmake'
-" Plug 'jalcine/cmake.vim'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -100,48 +95,68 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Colorschemes
-Plug 'tjdevries/colorbuddy.vim'
-Plug '~/dev/my-plugins/monobuddy'
-
-Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim'
+Plug 'tomasr/molokai'
+Plug 'jacoborus/tender.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 call plug#end()
 
 " }}}
 
-" Theme {{{
+" Theme: {{{
 
-let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-let g:gruvbox_invert_selection='0'
 
+" Theme Settings: {{{
+
+" Gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection='0'
+let g:gruvbox_italic = 1
+
+" Nord
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_underline = 1
 let g:nord_bold_vertical_split_line = 1
 
-let g:gruvbox_italic = 1
+" Material
+let g:material_theme_style  = 'palenight'
+let g:material_terminal_italics = 1
 
-" lua require("colorbuddy").colorscheme("monobuddy")
-colorscheme nord
+" Oceanic Next
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
+" Afterglow
+let g:afterglow_italic_comments = 1
+
+" }}}
+
+colorscheme material
 set background=dark
 
 " }}}
 
-" Lua {{{
+" Lua: {{{
 
 lua require('init')
 lua require('utilities')
 
 " }}}
 
-" Utilities {{{
+" Other: {{{
 
-" Language specific things 
+" Python is fake language
 let python_highlight_all=1
 let g:python3_host_prog='/usr/bin/python'
 
@@ -149,11 +164,12 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+" Netrw is the best file manager
 let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
-let g:netrw_localrmdir="rm -r"
 
+" Some utitlity functions
 function! MapTerminalCommand(ctrlId, key, command) abort
     execute printf('nnoremap <Leader>%s     :call SendTerminalCommand(%d, "%s\n")<CR>', a:key, a:ctrlId, a:command)
 endfunction
@@ -175,21 +191,27 @@ function! GotoWindow(winId) abort
     MaximizerToggle
 endfunction
 
+" AutoStart things
 augroup STARTUP
     autocmd!
     au BufEnter github.com_*.txt set filetype=markdown
 augroup END
 
+augroup LANGS
+    autocmd!
+    autocmd BufEnter *.cpp,*.c  vmap <Leader>f :ClangFormat<CR>
+augroup end
+
+
 augroup Completion
     autocmd!
     autocmd BufEnter *         lua require'completion'.on_attach()
-    autocmd FileType *.c,*.cpp let g:completion_trigger_character = ['.', '::']
     autocmd BufEnter *         setlocal omnifunc=v:lua.vim.lsp.omnifunc
 augroup end
 
 " }}}
 
-" Key Mappings {{{
+" Key Mappings: {{{
 
 " ======= Useful ======
 vnoremap < <gv
@@ -223,45 +245,38 @@ nnoremap <Leader>ts     :call GotoBuffer(1)<CR>
 nnoremap <Leader>td     :call GotoBuffer(2)<CR>
 nnoremap <Leader>tf     :call GotoBuffer(3)<CR>
 
-nnoremap <C-l>          :set scrollback=1 <bar> sleep 100ms <bar> set scrollback=1000<CR>
-
 " Debugger
-nnoremap <Leader>m      :MaximizerToggle<CR>
-nnoremap <Leader>dd     :call vimspector#Launch()<CR>
-nnoremap <Leader>dt     :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
-nnoremap <Leader>dv     :call GotoWindow(g:vimspector_session_windows.variables)<CR>
-nnoremap <Leader>dw     :call GotoWindow(g:vimspector_session_windows.watches)<CR>
-nnoremap <Leader>ds     :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
-nnoremap <Leader>dc     :call GotoWindow(g:vimspector_session_windows.code)<CR>
-nnoremap <Leader>do     :call GotoWindow(g:vimspector_session_windows.output)<CR>
-nnoremap <Leader>dq     :call vimspector#Reset()<CR>
+" nnoremap <Leader>m      :MaximizerToggle<CR>
+" nnoremap <Leader>dd     :call vimspector#Launch()<CR>
+" nnoremap <Leader>dt     :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+" nnoremap <Leader>dv     :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+" nnoremap <Leader>dw     :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+" nnoremap <Leader>ds     :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+" nnoremap <Leader>dc     :call GotoWindow(g:vimspector_session_windows.code)<CR>
+" nnoremap <Leader>do     :call GotoWindow(g:vimspector_session_windows.output)<CR>
+" nnoremap <Leader>dq     :call vimspector#Reset()<CR>
 
-nmap     <Leader>dl     <Plug>VimspectorStepOver
-nmap     <Leader>dj     <Plug>VimspectorStepInto
-nmap     <Leader>dk     <Plug>VimspectorStepOut
-nmap     <Leader>drs    <Plug>VimspectorRestart
-nmap     <Leader>d<space>   <Plug>VimspectorContinue
-nmap     <Leader>dp     <Plug>VimspectorPause
+" nmap     <Leader>dl     <Plug>VimspectorStepOver
+" nmap     <Leader>dj     <Plug>VimspectorStepInto
+" nmap     <Leader>dk     <Plug>VimspectorStepOut
+" nmap     <Leader>drs    <Plug>VimspectorRestart
+" nmap     <Leader>d<space>   <Plug>VimspectorContinue
+" nmap     <Leader>dp     <Plug>VimspectorPause
 
-nmap     <Leader>drc    <Plug>VimspectorRunToCursor
-nmap     <Leader>dtb    <Plug>VimspectorToggleBreakpoint
-nmap     <Leader>dtcb   <Plug>VimspectorToggleConditionalBreakpoint
+" nmap     <Leader>drc    <Plug>VimspectorRunToCursor
+" nmap     <Leader>dtb    <Plug>VimspectorToggleBreakpoint
+" nmap     <Leader>dtcb   <Plug>VimspectorToggleConditionalBreakpoint
 
-nnoremap <Leader>dcb    :call vimspector#ClearLineBreakpoint(expand("%"), line("."))<CR>
+" nnoremap <Leader>dcb    :call vimspector#ClearLineBreakpoint(expand("%"), line("."))<CR>
 
+nnoremap <Leader>af     <C-^>
+tnoremap <ESC>          <C-\><C-n>
+nnoremap <Leader>pv     :Vexplore<CR>
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>pv     :Vexplore<CR>
-tnoremap <ESC>          <C-\><C-n>
-nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pf     <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find{}<CR>
 nnoremap <Leader>pw     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.expand("<cword>") }<CR>
 nnoremap <Leader>ps     <cmd>lua require("telescope.builtin").grep_string{ search = vim.fn.input("Grep for > ") }<CR>
-
-" Output the current syntax group
-nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 if system("git rev-parse --git-dir 2> /dev/null") != "" 
     nnoremap <C-p>          <cmd>lua require('telescope.builtin').git_files{}<CR>

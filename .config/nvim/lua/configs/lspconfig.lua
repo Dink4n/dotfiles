@@ -11,6 +11,7 @@ nvim_lsp.sumneko_lua.setup {
 
     on_attach = completion.on_attach
 }
+nvim_lsp.tsserver.setup { on_attach = completion.on_attach }
 nvim_lsp.vimls.setup { on_attach = completion.on_attach }
 
 -- Mappings --

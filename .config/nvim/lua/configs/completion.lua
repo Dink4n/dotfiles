@@ -34,10 +34,12 @@ vim.g.completion_chain_complete_list = {
         {mode = 'cmd'}
     },
     c = {
-        {complete_items= {'ts'}}
+        {complete_items = {'ts', 'snippet'}}
+        -- {complete_items= {'ts', 'snippet', 'lsp'}}
     },
     cpp = {
         {complete_items = {'ts', 'snippet'}}
+        -- {complete_items = {'ts', 'snippet', 'lsp'}}
     },
 }
 
