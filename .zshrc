@@ -7,6 +7,7 @@ plugins=(
     git
     archlinux
     chucknorris
+    auto-notify
     alias-finder
     colored-man-pages
     zsh-autosuggestions

@@ -3,9 +3,9 @@ if [ -f "$HOME/.Xkbmap" ]; then
     setxkbmap `cat "$file"`
 fi
 
-sxhkd &
 picom &
 clight &
+feh --randomize --bg-fill $HOME/Pictures/anu/*
 
 # mute speakers
 amixer set 'Front' mute
