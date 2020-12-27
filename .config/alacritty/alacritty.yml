@@ -53,12 +53,11 @@ scrolling:
 font:
   normal:
     # family: DroidSansMono Nerd font
-    family: DejaVuSansMono Nerd Font
+    # family: DejaVuSansMono Nerd Font
     # family: Inconsolata Nerd Font
-    # family: NotoSansMono Nerd Font
     # family: JetbrainsMono Nerd Font
     # family: Hack Nerd Font
-    # family: UbuntuMono Nerd Font
+    family: UbuntuMono Nerd Font
     # family: Mononoki Nerd Font
     style: Regular
 
@@ -72,7 +71,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   offset:
     x: 0
@@ -81,17 +80,17 @@ font:
 draw_bold_text_with_bright_colors: true
 
 colors:
-  # COLORSCHEME: /home/anu/.config/alacritty/themes/base16/themes//base16-material-palenight-256.yml
+  # COLORSCHEME: /home/anu/.config/alacritty/themes/base16/themes/base16-gruvbox-dark-hard-256.yml
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
-    background: '0x292d3e'
-    foreground: '0x959dcb'
+    background: '0x1d2021'
+    foreground: '0xd5c4a1'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x292d3e'
-    cursor: '0x959dcb'
+    text: '0x1d2021'
+    cursor: '0xd5c4a1'
 
   # Normal colors
   vi_mode_cursor:
@@ -127,33 +126,33 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x292d3e'
-    red: '0xf07178'
-    green: '0xc3e88d'
-    yellow: '0xffcb6b'
-    blue: '0x82aaff'
-    magenta: '0xc792ea'
-    cyan: '0x89ddff'
-    white: '0x959dcb'
+    black: '0x1d2021'
+    red: '0xfb4934'
+    green: '0xb8bb26'
+    yellow: '0xfabd2f'
+    blue: '0x83a598'
+    magenta: '0xd3869b'
+    cyan: '0x8ec07c'
+    white: '0xd5c4a1'
 
   # Bright colors
   bright:
-    black: '0x676e95'
-    red: '0xf07178'
-    green: '0xc3e88d'
-    yellow: '0xffcb6b'
-    blue: '0x82aaff'
-    magenta: '0xc792ea'
-    cyan: '0x89ddff'
-    white: '0xffffff'
+    black: '0x665c54'
+    red: '0xfb4934'
+    green: '0xb8bb26'
+    yellow: '0xfabd2f'
+    blue: '0x83a598'
+    magenta: '0xd3869b'
+    cyan: '0x8ec07c'
+    white: '0xfbf1c7'
 
   indexed_colors:
-    - {index: 16, color: '0xf78c6c'}
-    - {index: 17, color: '0xff5370'}
-    - {index: 18, color: '0x444267'}
-    - {index: 19, color: '0x32374d'}
-    - {index: 20, color: '0x8796b0'}
-    - {index: 21, color: '0x959dcb'}
+    - {index: 16, color: '0xfe8019'}
+    - {index: 17, color: '0xd65d0e'}
+    - {index: 18, color: '0x3c3836'}
+    - {index: 19, color: '0x504945'}
+    - {index: 20, color: '0xbdae93'}
+    - {index: 21, color: '0xebdbb2'}
   dim:
     black: '0x232323'
     red: '0x74423f'
