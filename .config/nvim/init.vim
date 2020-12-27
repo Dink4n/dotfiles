@@ -81,18 +81,19 @@ Plug 'tpope/vim-fugitive'
 " Utilities
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
-Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vista.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep', { 'on': 'Rg' }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'ThePrimeagen/harpoon'
+Plug 'dbeniamine/cheat.sh-vim'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug '~/dev/my-plugins/telescope-cheat.sh-nvim'
 
 " Colorschemes
 Plug 'dracula/vim'
@@ -142,7 +143,7 @@ let g:afterglow_italic_comments = 1
 
 " }}}
 
-colorscheme material
+colorscheme gruvbox
 set background=dark
 
 " }}}
@@ -196,12 +197,6 @@ augroup STARTUP
     autocmd!
     au BufEnter github.com_*.txt set filetype=markdown
 augroup END
-
-augroup LANGS
-    autocmd!
-    autocmd BufEnter *.cpp,*.c  vmap <Leader>f :ClangFormat<CR>
-augroup end
-
 
 augroup Completion
     autocmd!

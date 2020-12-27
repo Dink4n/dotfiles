@@ -20,28 +20,28 @@ vim.g.completion_matching_smart_case = 1
 vim.g.completion_enable_snippet = 'snippets.nvim'
 
 -- Configure the completion chains
-vim.g.completion_chain_complete_list = {
-    default = {
-        default = {
-            {complete_items = {'lsp', 'snippet'}},
-            {mode = 'file'}
-        },
-        comment = {},
-        string = {}
-    },
-    vim = {
-        {complete_items= {'snippet'}},
-        {mode = 'cmd'}
-    },
-    c = {
-        {complete_items = {'ts', 'snippet'}}
-        -- {complete_items= {'ts', 'snippet', 'lsp'}}
-    },
-    cpp = {
-        {complete_items = {'ts', 'snippet'}}
-        -- {complete_items = {'ts', 'snippet', 'lsp'}}
-    },
-}
+-- vim.g.completion_chain_complete_list = {
+--     default = {
+--         default = {
+--             {complete_items = {'lsp', 'snippet'}},
+--             {mode = 'file'}
+--         },
+--         comment = {},
+--         string = {}
+--     },
+--     vim = {
+--         {complete_items= {'snippet'}},
+--         {mode = 'cmd'}
+--     },
+--     c = {
+--         {complete_items = {'ts', 'snippet'}}
+--         -- {complete_items= {'ts', 'snippet', 'lsp'}}
+--     },
+--     cpp = {
+--         {complete_items = {'ts', 'snippet'}}
+--         -- {complete_items = {'ts', 'snippet', 'lsp'}}
+--     },
+-- }
 
 function CompleteMatchingLine()
   local current_line = api.nvim_get_current_line()
