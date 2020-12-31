@@ -4,15 +4,17 @@
 
 # terminal emulator
 super + Return
-	$TERMINAL
+#	$TERMINAL
+	alacritty
 
 # suspend pc
 super + shift + e
-	systemctl suspend
+	sudo zzz
 
 # program launcher
 super + @space
-	dmenu_run -p run -h 28 -fn "Fira Code NerdFont" -nb "#2E3440" -sb "#4C566A" -sf "#5E81AC"
+	# dmenu_run -p run -h 28 -fn "Fira Code NerdFont" -nb "#2E3440" -sb "#4C566A" -sf "#5E81AC"
+    rofi -show drun
 
 # file manager
 super + r
@@ -20,7 +22,7 @@ super + r
 
 # random wallpaper
 super + b;
-	feh --randomize --bg-fill ~/Pictures/anu/*
+	feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
 ######## Audio #################################################################
 # alsamixer for more audio controls
