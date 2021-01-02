@@ -52,13 +52,7 @@ scrolling:
 # Font configuration
 font:
   normal:
-    # family: DroidSansMono Nerd font
-    # family: DejaVuSansMono Nerd Font
     family: Inconsolata Nerd Font
-    # family: JetbrainsMono Nerd Font
-    # family: Hack Nerd Font
-    # family: UbuntuMono Nerd Font
-    # family: Mononoki Nerd Font
     style: Regular
 
   bold:
@@ -80,17 +74,17 @@ font:
 draw_bold_text_with_bright_colors: true
 
 colors:
-  # COLORSCHEME: /home/anu/.config/alacritty/themes/base16/themes/base16-gruvbox-dark-hard-256.yml
+  # COLORSCHEME: /home/anu/.config/alacritty/themes/base16/themes/base16-oceanicnext-256.yml
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
-    background: '0x1d2021'
-    foreground: '0xd5c4a1'
+    background: '0x1b2b34'
+    foreground: '0xc0c5ce'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x1d2021'
-    cursor: '0xd5c4a1'
+    text: '0x1b2b34'
+    cursor: '0xc0c5ce'
 
   # Normal colors
   vi_mode_cursor:
@@ -126,33 +120,33 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x1d2021'
-    red: '0xfb4934'
-    green: '0xb8bb26'
-    yellow: '0xfabd2f'
-    blue: '0x83a598'
-    magenta: '0xd3869b'
-    cyan: '0x8ec07c'
-    white: '0xd5c4a1'
+    black: '0x1b2b34'
+    red: '0xec5f67'
+    green: '0x99c794'
+    yellow: '0xfac863'
+    blue: '0x6699cc'
+    magenta: '0xc594c5'
+    cyan: '0x5fb3b3'
+    white: '0xc0c5ce'
 
   # Bright colors
   bright:
-    black: '0x665c54'
-    red: '0xfb4934'
-    green: '0xb8bb26'
-    yellow: '0xfabd2f'
-    blue: '0x83a598'
-    magenta: '0xd3869b'
-    cyan: '0x8ec07c'
-    white: '0xfbf1c7'
+    black: '0x65737e'
+    red: '0xec5f67'
+    green: '0x99c794'
+    yellow: '0xfac863'
+    blue: '0x6699cc'
+    magenta: '0xc594c5'
+    cyan: '0x5fb3b3'
+    white: '0xd8dee9'
 
   indexed_colors:
-    - {index: 16, color: '0xfe8019'}
-    - {index: 17, color: '0xd65d0e'}
-    - {index: 18, color: '0x3c3836'}
-    - {index: 19, color: '0x504945'}
-    - {index: 20, color: '0xbdae93'}
-    - {index: 21, color: '0xebdbb2'}
+    - {index: 16, color: '0xf99157'}
+    - {index: 17, color: '0xab7967'}
+    - {index: 18, color: '0x343d46'}
+    - {index: 19, color: '0x4f5b66'}
+    - {index: 20, color: '0xa7adba'}
+    - {index: 21, color: '0xcdd3de'}
   dim:
     black: '0x232323'
     red: '0x74423f'
@@ -167,12 +161,12 @@ background_opacity: 1.0
 selection:
     # This string contains all characters that are used as separators for
     # "semantic words" in Alacritty.
-    semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-    save_to_clipboard: true
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
 
 cursor:
     # Cursor Thickness
-    thickness: 0.15
+  thickness: 0.15
 
 live_config_reload: true
 

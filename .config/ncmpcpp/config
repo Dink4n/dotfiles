@@ -1,7 +1,7 @@
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory = ~/.config/ncmpcpp/lyrics
 ##### connection settings #####
-# mpd_host = "127.0.0.1"
+mpd_host = "127.0.0.1"
 mpd_port = 6600
 mpd_connection_timeout = 5
 mpd_music_dir = ~/Music/
@@ -311,7 +311,7 @@ titles_visibility = no
 #
 #lines_scrolled = 2
 #
-lyrics_fetchers = genius, lyricwiki, azlyrics, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
+lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 #
 follow_now_playing_lyrics = yes
 #

@@ -143,7 +143,7 @@ let g:afterglow_italic_comments = 1
 
 " }}}
 
-colorscheme gruvbox
+colorscheme OceanicNext
 set background=dark
 
 " }}}
@@ -175,16 +175,8 @@ function! MapTerminalCommand(ctrlId, key, command) abort
     execute printf('nnoremap <Leader>%s     :call SendTerminalCommand(%d, "%s\n")<CR>', a:key, a:ctrlId, a:command)
 endfunction
 
-function! MapDispatchCommand(key, dir, command) abort
-    execute printf('nnoremap <Leader>%s     :call RunDispatchCommand("%s", "%s")<CR>', a:key, a:dir, a:command)
-endfunction
-
-function! RunDispatchCommand(dir, command) abort
-    let rootDir = v:lua.utils.FindRoot()
-
-    execute 'cd ' . a:dir
-    execute 'Dispatch ' . a:command
-    execute 'cd ' . l:rootDir
+function! ProjectCommand(key, command) abort
+    execute printf('nnoremap <Leader>%s     :Dispatch %s<CR>', a:key, a:command)
 endfunction
 
 function! GotoWindow(winId) abort

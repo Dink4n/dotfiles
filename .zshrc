@@ -22,6 +22,9 @@ export ARCHFLAGS="-arch x86_64"
 # Aliases for a few useful commands
 alias ls="lsd"
 alias lt="lsd --tree"
+alias xi="sudo xbps-install"
+alias xr="sudo xbps-remove"
+alias xq="xbps-query"
 alias zshconfig="vim ~/.zshrc"
 alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias vim="nvim"

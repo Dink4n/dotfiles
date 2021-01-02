@@ -4,8 +4,15 @@
 
 # terminal emulator
 super + Return
-#	$TERMINAL
-	alacritty
+    alacritty
+
+# youtube cli
+ctrl + y
+    yt -r
+
+# google search cli
+ctrl + s
+    search
 
 # suspend pc
 super + shift + e
@@ -13,12 +20,11 @@ super + shift + e
 
 # program launcher
 super + @space
-	# dmenu_run -p run -h 28 -fn "Fira Code NerdFont" -nb "#2E3440" -sb "#4C566A" -sf "#5E81AC"
     rofi -show drun
 
 # file manager
 super + r
-	$TERMINAL -e ranger
+	alacritty -e ranger
 
 # random wallpaper
 super + b;
@@ -27,7 +33,7 @@ super + b;
 ######## Audio #################################################################
 # alsamixer for more audio controls
 super + a
-	$TERMINAL -e alsamixer
+	alacritty -e alsamixer
 
 # easily increase or decrease volume
 super + {KP_Add,KP_Subtract}
