@@ -34,19 +34,26 @@ alias vimrc="nvim ~/.config/nvim/init.vim"
 # Turn off all beeps
 unsetopt BEEP
 
-# SSH settings
-# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-#     ssh-agent -t 24h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-# fi
-# if [[ ! "$SSH_AUTH_SOCK" ]]; then
-#     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-# fi
-
-# Prompt Settings
-# precmd() { precmd() { print "" } }
-
-# Enable vim mode in zsh
+# Enable vim mode
 bindkey -v
 
+# Change cursor shape for different vi modes.
+function zle-keymap-select()
+{
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';; # Block
+        viins|main) echo -ne '\e[5 q';; # Beam
+    esac
+}
+zle -N zle-keymap-select
+zle-line-init()
+{
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne '\e[5 q'
+}
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+
 # ---Prompt---
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# precmd() { precmd() { print "" } }
