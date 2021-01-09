@@ -3,7 +3,8 @@ if [ -f "$HOME/.Xkbmap" ]; then
     setxkbmap `cat "$file"`
 fi
 
-picom &
+mpd &
+picom -b &
 clight &
 feh --randomize --bg-fill $HOME/Pictures/Wallpapers/*
 
