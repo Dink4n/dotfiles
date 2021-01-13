@@ -29,3 +29,6 @@
     added = yellow
     changed = green
     untracked = red
+
+[init]
+	defaultBranch = main
