@@ -1,0 +1,14 @@
+set page-padding 1
+set font "monospace normal 12"
+set default-bg "#0A0E14"
+set default-fg "#B3B1AD"
+set statusbar-bg "#0A0E14"
+set statusbar-fg "#B3B1AD"
+
+map J zoom in
+map K zoom out
+map L navigate next
+map H navigate previous
+map u scroll half-up
+map d scroll half-down
+map <C-d> dual-page
