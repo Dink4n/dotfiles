@@ -2,15 +2,6 @@ local nvim_lsp = require("lspconfig")
 local completion = require("completion")
 
 nvim_lsp.clangd.setup { on_attach = completion.on_attach }
-nvim_lsp.sumneko_lua.setup {
-    cmd = {
-            "/home/anu/.cache/nvim/lspconfig/sumneko_lua/lua-language-server/bin/Linux/lua-language-server",
-            "-E",
-            "/home/anu/.cache/nvim/lspconfig/sumneko_lua/lua-language-server/main.lua"
-    },
-
-    on_attach = completion.on_attach
-}
 
 -- Mappings --
 local mapper = function(mode, key, result)
