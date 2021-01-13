@@ -54,6 +54,4 @@ zle-line-init()
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 
 # ---Prompt---
-# eval "$(starship init zsh)"
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-# precmd() { precmd() { print "" } }
