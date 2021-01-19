@@ -1,108 +1,53 @@
 ! =========================
-! ======== XTERM ==========
+! ========== ST ===========
 ! =========================
-*.faceName:   JetbrainsMono Nerd Font:style=Regular;
-*.faceSize:   16
-*.saveLines:  4096
-
-*.translations: #override \n\
-Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+st.font:    Mono:pixelsize=22:style=Regular;
+st.alpha:   0.75;
 
 ! =========================
 ! ======== COLORS =========
 ! =========================
 
-! Monokai
-! special
-*.foreground:   #f8f8f2
-*.background:   #272822
-*.cursorColor:  #f8f8f2
+! Ayu Dark
+! Special
+/* *.foreground:   #B3B1AD */
+/* *.background:   #0A0E14 */
+/* *.cursorColor:  #e9e9f4 */
 
-! black
-*.color0:       #272822
-*.color8:       #75715e
+/* ! Black */
+/* *.color0:       #01060E */
+/* *.color8:       #686868 */
 
-! red
-*.color1:       #f92672
-*.color9:       #f92672
+/* ! Red */
+/* *.color1:       #EA6C73 */
+/* *.color9:       #F07178 */
 
-! green
-*.color2:       #a6e22e
-*.color10:      #a6e22e
+/* ! Green */
+/* *.color2:       #91B362 */
+/* *.color10:      #C2D94C */
 
-! yellow
-*.color3:       #f4bf75
-*.color11:      #f4bf75
+/* ! Yellow */
+/* *.color3:       #F9AF4F */
+/* *.color11:      #FFB454 */
 
-! blue
-*.color4:       #66d9ef
-*.color12:      #66d9ef
+/* ! Blue */
+/* *.color4:       #53BDFA */
+/* *.color12:      #59C2FF */
 
-! magenta
-*.color5:       #ae81ff
-*.color13:      #ae81ff
+/* ! Magenta */
+/* *.color5:       #FAE994 */
+/* *.color13:      #FFEE99 */
 
-! cyan
-*.color6:       #a1efe4
-*.color14:      #a1efe4
+/* ! Cyan */
+/* *.color6:       #90E1C6 */
+/* *.color14:      #95E6CB */
 
-! white
-*.color7:       #f8f8f2
-*.color15:      #f9f8f5
+/* ! White */
+/* *.color7:       #C7C7C7 */
+/* *.color15:      #ffffff */
 
 
-/* ! special */
-/* *.foreground:   #bbc2cf */
-/* *.background:   #282c34 */
-/* *.cursorColor:  #bbc2cf */
-
-/* ! black */
-/* *.color0:       #1c1f24 */
-/* *.color8:       #5b6268 */
-
-/* ! red */
-/* *.color1:       #ff6c6b */
-/* *.color9:       #da8548 */
-
-/* ! green */
-/* *.color2:       #98be65 */
-/* *.color10:      #4db5bd */
-
-/* ! yellow */
-/* *.color3:       #da8548 */
-/* *.color11:      #ecbe7b */
-
-/* ! blue */
-/* *.color4:       #51afef */
-/* *.color12:      #3071db */
-
-/* ! magenta */
-/* *.color5:       #c678dd */
-/* *.color13:      #a9a1e1 */
-
-/* ! cyan */
-/* *.color6:       #5699af */
-/* *.color14:      #46d9ff */
-
-/* ! white */
-/* *.color7:       #202328 */
-/* *.color15:      #dfdfdf */
-
-! ========================
-! ======== Urxvt =========
-! disable the scrollbar
-URxvt.scrollBar: false
-
-! ----Extensions----
-URxvt.perl-ext-common:  default,matcher,resize-font,clipboard
-! matcher
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1URxvt.clipboard.autocopy: true
-! resize-font
-URxvt.resize-font.smaller: C-j
-URxvt.resize-font.smaller: C-k
-! clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
+/* ! Bold, Italic, Underline */
+/* *.colorBD:      #b3b1ad */
+/* !*.colorIT: */
+/* !*.colorUL: */
