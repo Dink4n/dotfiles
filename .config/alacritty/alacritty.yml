@@ -52,7 +52,7 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Inconsolata Nerd Font
+    family: Mono
     style: Regular
 
   bold:
@@ -74,17 +74,16 @@ font:
 draw_bold_text_with_bright_colors: true
 
 colors:
-  # COLORSCHEME: /home/anu/.config/alacritty/themes/base16/themes/base16-oceanicnext-256.yml
+  # COLORSCHEME: /home/anu/.config/alacritty/themes/other/themes//ayu_dark.yaml
   # Default colors
   primary:
-    # hard contrast: background = '0x1d2021'
-    background: '0x1b2b34'
-    foreground: '0xc0c5ce'
+    background: '0x0A0E14'
+    foreground: '0xB3B1AD'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
+  # Normal colors
   cursor:
-    text: '0x1b2b34'
-    cursor: '0xc0c5ce'
+    text: '0x282936'
+    cursor: '0xe9e9f4'
 
   # Normal colors
   vi_mode_cursor:
@@ -120,33 +119,32 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x1b2b34'
-    red: '0xec5f67'
-    green: '0x99c794'
-    yellow: '0xfac863'
-    blue: '0x6699cc'
-    magenta: '0xc594c5'
-    cyan: '0x5fb3b3'
-    white: '0xc0c5ce'
+    black: '0x01060E'
+    red: '0xEA6C73'
+    green: '0x91B362'
+    yellow: '0xF9AF4F'
+    blue: '0x53BDFA'
+    magenta: '0xFAE994'
+    cyan: '0x90E1C6'
+    white: '0xC7C7C7'
 
   # Bright colors
   bright:
-    black: '0x65737e'
-    red: '0xec5f67'
-    green: '0x99c794'
-    yellow: '0xfac863'
-    blue: '0x6699cc'
-    magenta: '0xc594c5'
-    cyan: '0x5fb3b3'
-    white: '0xd8dee9'
-
+    black: '0x686868'
+    red: '0xF07178'
+    green: '0xC2D94C'
+    yellow: '0xFFB454'
+    blue: '0x59C2FF'
+    magenta: '0xFFEE99'
+    cyan: '0x95E6CB'
+    white: '0xFFFFFF'
   indexed_colors:
-    - {index: 16, color: '0xf99157'}
-    - {index: 17, color: '0xab7967'}
-    - {index: 18, color: '0x343d46'}
-    - {index: 19, color: '0x4f5b66'}
-    - {index: 20, color: '0xa7adba'}
-    - {index: 21, color: '0xcdd3de'}
+    - {index: 16, color: '0xb45bcf'}
+    - {index: 17, color: '0x00f769'}
+    - {index: 18, color: '0x3a3c4e'}
+    - {index: 19, color: '0x4d4f68'}
+    - {index: 20, color: '0x62d6e8'}
+    - {index: 21, color: '0xf1f2f8'}
   dim:
     black: '0x232323'
     red: '0x74423f'
@@ -178,7 +176,7 @@ mouse:
 
   url:
     launcher:
-      program: firefox
+      program: chromium
       args: []
 
 # Key bindings
@@ -258,10 +256,6 @@ key_bindings:
   - {key: K, mods: Control, mode: ~Vi, chars: "\f"}
   # - {key: L, mods: Control, action: ClearHistory}
   - {key: C, mods: Control, mode: Vi, action: ClearSelection}
-  - {key: H, mods: Control, action: Hide}
-  - {key: M, mods: Control, action: Minimize}
-  - {key: Q, mods: Control, action: Quit}
-  - {key: W, mods: Control, action: Quit}
   - {key: N, mods: Control|Shift, action: SpawnNewInstance}
   - {key: F, mods: Control, action: SearchForward}
   - {key: B, mods: Control, action: SearchBackward}
