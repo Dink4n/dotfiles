@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-    alacritty
+    st
 
 # youtube cli
 ctrl + y
@@ -20,11 +20,11 @@ super + shift + e
 
 # program launcher
 super + @space
-    rofi -show drun
+    dmenu_run -fn mono-14
 
 # file manager
 super + r
-	alacritty -e ranger
+	st -e ranger
 
 # random wallpaper
 super + b;
@@ -33,7 +33,7 @@ super + b;
 ######## Audio #################################################################
 # alsamixer for more audio controls
 super + a
-	alacritty -e alsamixer
+	st -e alsamixer
 
 # easily increase or decrease volume
 super + {KP_Add,KP_Subtract}
