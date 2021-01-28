@@ -28,7 +28,7 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme ayu
+colorscheme gruvbox
 set background=dark
 
 highlight Normal guibg=none

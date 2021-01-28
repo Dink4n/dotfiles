@@ -1,9 +1,9 @@
 local nvim_lsp = require("lspconfig")
 local completion = require("completion")
 
+-- servers
 nvim_lsp.clangd.setup { on_attach = completion.on_attach }
 
--- Mappings --
 local mapper = function(mode, key, result)
     vim.api.nvim_set_keymap(mode, key, result, {
         noremap = true,
@@ -45,8 +45,3 @@ mapper('n', 'grn', '<cmd>lua MyLspRename()<CR>')
 mapper('n', 'dsl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 mapper('n', 'dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 mapper('n', 'dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-
-mapper('n', '<Leader>rs', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")<CR>')
-
--- mapper('n', 'gds',  "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
--- mapper('n', 'gws', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>")

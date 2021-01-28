@@ -77,7 +77,8 @@ endfun
 
 augroup STARTUP
     autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
+    autocmd BufWritePre     * :call TrimWhitespace()
+    autocmd BufWritePost    ~/.Xresources,~/.Xdefaults :silent !xrdb %
 augroup END
 " }}}
 
