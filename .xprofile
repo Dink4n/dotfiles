@@ -1,16 +1,1 @@
-if [ -f "$HOME/.Xkbmap" ]; then
-    echo "Loading keymap: $file"
-    setxkbmap `cat "$file"`
-fi
-
-mpd &
-picom -b &
-clight &
-feh --randomize --bg-fill $HOME/Pictures/Wallpapers/*
-
-# mute speakers
-amixer set 'Front' mute
-# disable auto-mute so speakers will work
-amixer set 'Auto-Mute Mode' Disabled
-
-# vim:ft=sh
+/home/anu/.config/shell/profile
