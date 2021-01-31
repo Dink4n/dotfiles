@@ -1,0 +1,23 @@
+# Use doas for sudo if present.
+[ -x "$(command -v doas)" ] && alias sudo="doas"
+# Use LSDeluxe for ls if present.
+[ -x "$(command -v lsd)" ] && alias ls="lsd" lt="lsd --tree"
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias alias vim="nvim" vimdiff="nvim -d"
+
+# Colorize commands when possible.
+alias \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+# These common commands are just too long! Abbreviate them
+alias \
+        xi="sudo xbps-install"
+        xr="sudo xbps-remove"
+        xq="xbps-query"
+        vimrc="nvim ~/.config/nvim/init.vim"
+        zshrc="vim ~/.zshrc"
+        remirror='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+
+alias weath="curl wttr.in"

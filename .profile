@@ -1,0 +1,1 @@
+/home/anu/.config/shell/profile

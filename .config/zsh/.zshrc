@@ -5,11 +5,7 @@ ENABLE_CORRECTION="true"
 plugins=(
     z
     git
-    archlinux
-    chucknorris
     auto-notify
-    alias-finder
-    colored-man-pages
     zsh-autosuggestions
     fast-syntax-highlighting
 )
@@ -19,17 +15,13 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-# Aliases for a few useful commands
-alias ls="lsd"
-alias lt="lsd --tree"
-alias xi="sudo xbps-install"
-alias xr="sudo xbps-remove"
-alias xq="xbps-query"
-alias zshconfig="vim ~/.zshrc"
-alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
-alias vim="nvim"
-alias vi="nvim"
-alias vimrc="nvim ~/.config/nvim/init.vim"
+# History in cache directory
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE=~/.cache/zsh/history
+
+# Load aliases if existent.
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # Turn off all beeps
 unsetopt BEEP

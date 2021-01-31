@@ -1,0 +1,24 @@
+# Vim for life
+# vim:ft=sh
+
+# Remap caps lock and escape
+remap &
+
+# Music Player Daemon
+mpd &
+
+# Compositor
+picom -b &
+
+# save those eyes
+redshift &
+
+# Random wallpapers
+randwal &
+
+# mute speakers
+amixer set 'Front' mute
+# unmute headphones
+amixer set 'Headphone' unmute
+# disable auto-mute so speakers will work
+amixer set 'Auto-Mute Mode' Disabled
