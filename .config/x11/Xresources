@@ -1,7 +1,5 @@
-! =========================
-! ========== ST ===========
-! =========================
-st.font:    Mono:pixelsize=22:style=Regular;
+!! Set a default font and font size as below:
+*.font:    Mono:size=14:style=Regular;
 
 ! =========================
 ! ======== COLORS =========
@@ -44,9 +42,3 @@ st.font:    Mono:pixelsize=22:style=Regular;
 /* ! White */
 /* *.color7:       #C7C7C7 */
 /* *.color15:      #ffffff */
-
-
-/* ! Bold, Italic, Underline */
-/* *.colorBD:      #b3b1ad */
-/* !*.colorIT: */
-/* !*.colorUL: */
