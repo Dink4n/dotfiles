@@ -13,11 +13,11 @@ alias \
 
 # These common commands are just too long! Abbreviate them
 alias \
-        xi="sudo xbps-install"
-        xr="sudo xbps-remove"
-        xq="xbps-query"
-        vimrc="nvim ~/.config/nvim/init.vim"
-        zshrc="vim ~/.zshrc"
+        xi="sudo xbps-install" \
+        xr="sudo xbps-remove" \
+        xq="xbps-query" \
+        vimrc="nvim ~/.config/nvim/init.vim" \
+        zshrc="vim ~/.zshrc" \
         remirror='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 alias weath="curl wttr.in"
