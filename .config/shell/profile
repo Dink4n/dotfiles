@@ -8,7 +8,7 @@ export PATH="$PATH:$HOME/scripts"
 
 # Default programs
 export TERMINAL="st"
-export BROWSER="chromium"
+export BROWSER="google-chromium-unstable"
 export EDITOR="nvim"
 export VISUAL="nvim"
 

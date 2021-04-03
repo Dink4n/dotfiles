@@ -1,24 +1,23 @@
-export ZSH="/home/anu/.oh-my-zsh"
-ZSH_THEME=""
+# Dink4n's config for zoomer shell
 
-ENABLE_CORRECTION="true"
-plugins=(
-    z
-    git
-    auto-notify
-    zsh-autosuggestions
-    fast-syntax-highlighting
-)
+# Enable colors and change prompt
+autoload -U colors && colors # load colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-source $ZSH/oh-my-zsh.sh
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
+setopt autocd		# Automatically cd into typed directory.
+stty stop undef		# Disable ctrl-s to freeze terminal.
+setopt interactive_comments
 
 # History in cache directory
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
+
+# Good auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
 
 # Load aliases if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
@@ -28,6 +27,10 @@ unsetopt BEEP
 
 # Enable vim mode
 bindkey -v
+export KEYTIMEOUT=1
+
+# make backspace act normal
+bindkey -v '^?' backward-delete-char
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select()
@@ -43,7 +46,18 @@ zle-line-init()
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne '\e[5 q'
 }
+zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 
-# ---Prompt---
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# load plugin if existent
+loadplugin()
+{
+    plugin=$1
+    base_dir="/usr/share/zsh/plugins/"
+    [ -d "$base_dir/$plugin" ] && source "$base_dir/$plugin/$plugin.plugin.zsh"
+}
+
+# Load all the plugins
+loadplugin zsh-z
+loadplugin zsh-autosuggestions
+loadplugin fast-syntax-highlighting

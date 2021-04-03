@@ -7,12 +7,16 @@
 
 # Colorize commands when possible.
 alias \
+    ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
 # These common commands are just too long! Abbreviate them
 alias \
+        gs="git status" \
+        gc="git commit" \
+        gp="git push" \
         xi="sudo xbps-install" \
         xr="sudo xbps-remove" \
         xq="xbps-query" \

@@ -16,9 +16,9 @@ redshift &
 # Random wallpapers
 randwal &
 
-# # mute speakers
-# amixer set 'Front' mute
-# # unmute headphones
-# amixer set 'Headphone' unmute
-# # disable auto-mute so speakers will work
-# amixer set 'Auto-Mute Mode' Disabled
+# mute speakers
+amixer set 'Front' mute
+# unmute headphones
+amixer set 'Headphone' unmute
+# disable auto-mute so speakers will work
+amixer set 'Auto-Mute Mode' Disabled
