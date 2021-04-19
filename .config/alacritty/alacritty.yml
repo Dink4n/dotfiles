@@ -65,95 +65,42 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 11.0
 
   offset:
     x: 0
     y: 0
 
-draw_bold_text_with_bright_colors: true
-
+# Colors (Nord)
 colors:
-  # COLORSCHEME: /home/anu/.config/alacritty/themes/other/themes//ayu_dark.yaml
   # Default colors
   primary:
-    background: '0x0A0E14'
-    foreground: '0xB3B1AD'
-
-  # Normal colors
-  cursor:
-    text: '0x282936'
-    cursor: '0xe9e9f4'
-
-  # Normal colors
-  vi_mode_cursor:
-    text: CellBackground
-    cursor: CellForeground
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
-  selection:
-    text: CellBackground
-    background: CellForeground
-
-  # Search colors
-  #
-  # Colors used for the search bar and match highlighting.
-  search:
-    # Allowed values are CellForeground and CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    matches:
-      foreground: '#000000'
-      background: '#ffffff'
-    focused_match:
-      foreground: CellBackground
-      background: CellForeground
-
-    bar:
-      background: '#c5c8c6'
-      foreground: '#1d1f21'
+    background: '0x2E3440'
+    foreground: '0xD8DEE9'
 
   # Normal colors
   normal:
-    black: '0x01060E'
-    red: '0xEA6C73'
-    green: '0x91B362'
-    yellow: '0xF9AF4F'
-    blue: '0x53BDFA'
-    magenta: '0xFAE994'
-    cyan: '0x90E1C6'
-    white: '0xC7C7C7'
+    black:   '0x3B4252'
+    red:     '0xBF616A'
+    green:   '0xA3BE8C'
+    yellow:  '0xEBCB8B'
+    blue:    '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan:    '0x88C0D0'
+    white:   '0xE5E9F0'
 
   # Bright colors
   bright:
-    black: '0x686868'
-    red: '0xF07178'
-    green: '0xC2D94C'
-    yellow: '0xFFB454'
-    blue: '0x59C2FF'
-    magenta: '0xFFEE99'
-    cyan: '0x95E6CB'
-    white: '0xFFFFFF'
-  indexed_colors:
-    - {index: 16, color: '0xb45bcf'}
-    - {index: 17, color: '0x00f769'}
-    - {index: 18, color: '0x3a3c4e'}
-    - {index: 19, color: '0x4d4f68'}
-    - {index: 20, color: '0x62d6e8'}
-    - {index: 21, color: '0xf1f2f8'}
-  dim:
-    black: '0x232323'
-    red: '0x74423f'
-    green: '0x5e6547'
-    yellow: '0x8b7653'
-    blue: '0x556b79'
-    magenta: '0x6e4962'
-    cyan: '0x5c8482'
-    white: '0x828282'
+    black:   '0x4C566A'
+    red:     '0xBF616A'
+    green:   '0xA3BE8C'
+    yellow:  '0xEBCB8B'
+    blue:    '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan:    '0x8FBCBB'
+    white:   '0xECEFF4'
+
+draw_bold_text_with_bright_colors: false
 background_opacity: 1.0
 
 selection:
