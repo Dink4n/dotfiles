@@ -22,8 +22,6 @@ set scrolloff=8
 set clipboard=unnamedplus
 set foldmethod=marker
 set signcolumn=yes
-set completeopt=menuone,noinsert,noselect
-set omnifunc=v:lua.vim.lsp.omnifunc
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -34,5 +32,4 @@ set updatetime=50
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
 set colorcolumn=80

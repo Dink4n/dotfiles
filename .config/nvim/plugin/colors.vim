@@ -9,14 +9,6 @@ let g:nord_italic_comments           = 1
 let g:nord_underline                 = 1
 let g:nord_bold_vertical_split_line  = 1
 
-" Material
-let g:material_terminal_italics  = 1
-let g:material_theme_style       = 'palenight'
-
-" Oceanic Next
-let g:oceanic_next_terminal_bold   = 1
-let g:oceanic_next_terminal_italic = 1
-
 " Afterglow
 let g:afterglow_italic_comments = 1
 
@@ -30,7 +22,3 @@ endif
 
 colorscheme gruvbox
 set background=dark
-
-highlight Normal guibg=none
-highlight SignColumn guibg=none
-highlight CursorLineNr guibg=none

@@ -1,47 +1,68 @@
-local nvim_lsp = require("lspconfig")
-local completion = require("completion")
+local lspconfig = require("lspconfig")
+
+local sumneko_root_path = "/home/anu/.cache/nvim/lspconfig/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+
+local custom_attach = function(client, bufnr)
+    require("lsp_signature").on_attach()
+
+    local map = function(mode, key, result)
+        vim.api.nvim_set_keymap(mode, key, "<cmd> " .. result .. "<CR>", {
+            noremap = true, silent = true
+        })
+    end
+
+    map('n', 'gd', 'lua vim.lsp.buf.definition()')
+    map('n', 'gK', 'Lspsaga hover_doc')
+    map('n', 'gi', 'lua vim.lsp.buf.implementation()')
+    map('n', 'gD', 'lua vim.lsp.buf.declaration()')
+    map('n', 'gs', 'Lspsaga signature_help')
+    map('n', 'gt', 'lua vim.lsp.buf.type_definition()')
+    map('n', 'grr', 'lua vim.lsp.buf.references()')
+    map('n', 'grn', 'Lspsaga rename')
+    map('n', 'gca', 'Lspsaga code_action')
+
+    -- Diagnostics
+    map('n', '<Leader>sl', 'Lspsaga show_line_diagnostics')
+    map('n', '<Leader>dn', 'Lspsaga diagnostic_jump_next')
+    map('n', '<Leader>dp', 'Lspsaga diagnostic_jump_prev')
+end
 
 -- servers
-nvim_lsp.clangd.setup { on_attach = completion.on_attach }
+lspconfig.clangd.setup {
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--suggest-missing-includes",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+    };
 
-local mapper = function(mode, key, result)
-    vim.api.nvim_set_keymap(mode, key, result, {
-        noremap = true,
-        silent = true
-    })
-end
-
-function MyLspRename()
-  local current_word = vim.fn.expand("<cword>")
-  local plenary_window = require('plenary.window.float').percentage_range_window(0.5, 0.2)
-  vim.api.nvim_buf_set_option(plenary_window.bufnr, 'buftype', 'prompt')
-  vim.fn.prompt_setprompt(plenary_window.bufnr, string.format('Rename "%s" to > ', current_word))
-  vim.fn.prompt_setcallback(plenary_window.bufnr, function(text)
-    vim.api.nvim_win_close(plenary_window.win_id, true)
-
-    if text ~= '' then
-      vim.schedule(function()
-        vim.api.nvim_buf_delete(plenary_window.bufnr, { force = true })
-
-        vim.lsp.buf.rename(text)
-      end)
-    else
-      print("Nothing to rename!")
-    end
-  end)
-
-  vim.cmd [[startinsert]]
-end
-
-mapper('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-mapper('n', 'gK', '<cmd>lua vim.lsp.buf.hover()<CR>')
-mapper('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-mapper('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-mapper('n', 'gca', '<cmd>lua require("telescope.builtin").lsp_code_actions{}<CR>')
-mapper('n', 'grn', '<cmd>lua MyLspRename()<CR>')
-
--- Diagnostics
-mapper('n', 'dsl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-mapper('n', 'dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-mapper('n', 'dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+    on_attach = custom_attach;
+}
+lspconfig.rust_analyzer.setup { on_attach = custom_attach }
+lspconfig.sumneko_lua.setup {
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    on_attach = custom_attach;
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = vim.split(package.path, ';'),
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                },
+            },
+        },
+    },
+}
