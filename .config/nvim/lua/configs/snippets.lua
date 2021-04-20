@@ -6,12 +6,12 @@ local snips = {}
 snips._global = {}
 snips.c = {
     guard = [[
-#ifndef AK_${1|S.v:gsub("%s+", "_")}_H_
-#define AK_${|S[1]:gsub("%s+", "_")}_H_
+#ifndef ${1|S.v:gsub("%s+", "_")}_H_
+#define ${|S[1]:gsub("%s+", "_")}_H_
 
 $0
 
-#endif // AK_${|S[1]:gsub("%s+", "_")}_H_
+#endif // ${|S[1]:gsub("%s+", "_")}_H_
 ]];
     ["#if"] = [[
 #if $1
