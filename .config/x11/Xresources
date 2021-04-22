@@ -22,4 +22,4 @@ dwm.selbordercolor: #d79921
 ! ======== COLORS =========
 ! =========================
 
-/* #include ".config/x11/colors/nord" */
+#include ".config/x11/colors/dracula"
