@@ -1,6 +1,5 @@
-vim.o.completeopt = "menuone,noinsert,noselect"
+vim.o.completeopt = "menuone,noselect"
 vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
-vim.g.completion_matching_smart_case = 1
 
 require'compe'.setup {
   enabled = true;

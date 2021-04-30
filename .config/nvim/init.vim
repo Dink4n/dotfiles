@@ -18,8 +18,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'norcalli/snippets.nvim'
 Plug 'ray-x/lsp_signature.nvim'
@@ -36,16 +36,15 @@ Plug 'tpope/vim-fugitive'
 
 " Useful
 Plug 'rhysd/accelerated-jk'
+Plug 'rhysd/vim-clang-format'
 Plug 'mbbill/undotree'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 
 " Statusline
 Plug 'hoob3rt/lualine.nvim'
-
 " HARPOOOOOOOOONN!!!!!
 Plug 'ThePrimeagen/harpoon'
-
 " Pretty icons
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -56,9 +55,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Colorschemes
-Plug 'tanvirtin/monokai.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'folke/tokyonight.nvim'
+Plug 'marko-cerovac/material.nvim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
@@ -108,4 +108,5 @@ tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>pv     :Vexplore<CR>
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
+
 " }}}

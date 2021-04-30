@@ -4,7 +4,12 @@ local sumneko_root_path = "/home/anu/.cache/nvim/lspconfig/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 
 local custom_attach = function(client, bufnr)
-    require("lsp_signature").on_attach()
+    require("lsp_signature").on_attach({
+        bind = true,
+        handler_opts = {
+            border = "single"
+        }
+    })
 
     local map = function(mode, key, result)
         vim.api.nvim_set_keymap(mode, key, "<cmd> " .. result .. "<CR>", {
@@ -41,6 +46,7 @@ lspconfig.clangd.setup {
     on_attach = custom_attach;
 }
 lspconfig.rust_analyzer.setup { on_attach = custom_attach }
+lspconfig.pyls.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     on_attach = custom_attach;

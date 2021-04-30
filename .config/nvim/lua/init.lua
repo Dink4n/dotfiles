@@ -1,9 +1,9 @@
 require("configs/lspconfig")
-require("configs/compe")
 require("configs/treesitter")
-require("configs/dispatch")
+require("configs/completion")
 require("configs/telescope")
 require("configs/snippets")
 require("configs/statusline")
+require("configs/dispatch")
 
 require("lspkind").init()
