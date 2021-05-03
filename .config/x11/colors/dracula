@@ -53,3 +53,15 @@
 *.color19:      base02
 *.color20:      base04
 *.color21:      base06
+
+!---------------------!
+! Suckless theme      !
+!---------------------!
+! normal color
+*normbgcolor:     base00
+*normfgcolor:     base04
+*normbordercolor: base00
+! selection color
+*selbgcolor:     base04
+*selfgcolor:     base00
+*selbordercolor: base04

@@ -37,3 +37,15 @@
 ! White
 *.color7:       #C7C7C7
 *.color15:      #ffffff
+
+!---------------------!
+! Suckless theme      !
+!---------------------!
+! normal color
+dwm.normbgcolor: #01060E
+dwm.normfgcolor: #C7C7C7
+dwm.normbordercolor: #01060E
+! selection color
+dwm.selbgcolor: #F9AF4F
+dwm.selfgcolor: #01060E
+dwm.selbordercolor: #F9AF4F
