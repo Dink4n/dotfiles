@@ -1,0 +1,2 @@
+#!/bin/sh
+du -a "$HOME/library" | cut -f2 | grep -P '.*.(pdf|epub)' | sort | dmenu -i -l 30 | xargs -I {} zathura "{}"
