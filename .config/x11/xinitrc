@@ -1,1 +1,3 @@
-exec dwm > .dwm.log
+#!/bin/sh
+
+exec dwm

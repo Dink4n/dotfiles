@@ -42,10 +42,10 @@
 ! Suckless theme      !
 !---------------------!
 ! normal color
-dwm.normbgcolor: #01060E
-dwm.normfgcolor: #C7C7C7
-dwm.normbordercolor: #01060E
+*.normbgcolor:     #01060E
+*.normfgcolor:     #C7C7C7
+*.normbordercolor: #01060E
 ! selection color
-dwm.selbgcolor: #F9AF4F
-dwm.selfgcolor: #01060E
-dwm.selbordercolor: #F9AF4F
+*.selbgcolor:     #F9AF4F
+*.selfgcolor:     #01060E
+*.selbordercolor: #F9AF4F

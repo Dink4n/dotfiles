@@ -5,21 +5,13 @@ st.alpha:       1;
 st.font:        Mono:size=16:style=Regular;
 
 ! =========================
-! ======== DWM =========
+! ========== DWM ==========
 ! =========================
 dwm.font:       Mono:size=14:style=Regular;
-dwm.dmenufont:  Mono:size=14:style=Regular;
-
-!! Dwm theme
-dwm.normbgcolor: #282828
-dwm.normfgcolor: #ebdbb2
-dwm.normbordercolor: #3c3836
-dwm.selbgcolor:  #d79921
-dwm.selfgcolor:  #fdf1c7
-dwm.selbordercolor: #d79921
+dmenu.font:     Mono:size=14:style=Regular;
 
 ! =========================
 ! ======== COLORS =========
 ! =========================
 
-#include ".config/x11/colors/dracula"
+#include ".config/x11/colors/gruvbox"

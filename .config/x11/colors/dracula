@@ -58,10 +58,10 @@
 ! Suckless theme      !
 !---------------------!
 ! normal color
-*normbgcolor:     base00
-*normfgcolor:     base04
-*normbordercolor: base00
+*.normbgcolor:     base00
+*.normfgcolor:     base04
+*.normbordercolor: base00
 ! selection color
-*selbgcolor:     base04
-*selfgcolor:     base00
-*selbordercolor: base04
+*.selbgcolor:     base04
+*.selfgcolor:     base00
+*.selbordercolor: base04
