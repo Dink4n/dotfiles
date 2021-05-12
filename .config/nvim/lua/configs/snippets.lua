@@ -11,13 +11,11 @@ snips.c = {
 
 $0
 
-#endif // ${|S[1]:gsub("%s+", "_")}_H_
-]];
+#endif // ${|S[1]:gsub("%s+", "_")}_H_ ]];
     ["#if"] = [[
 #if $1
 $0
-#endif // $1
-]];
+#endif // $1 ]];
     ["inc"] = [[#include "$1"]];
     ["sinc"] = [[#include <$1>]];
     ["struct"] = U.match_indentation [[
@@ -44,7 +42,8 @@ for ($1; $2; $3) {
 for (int ${1:i}; $1 < $2; $1++) {
   $0
 }]];
-  };
+};
+snips.cpp = snips.c
 
 snippets_plugin.snippets = snips
 snippets_plugin.use_suggested_mappings()

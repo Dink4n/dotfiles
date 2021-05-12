@@ -21,8 +21,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
-Plug 'norcalli/snippets.nvim'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'folke/lsp-trouble.nvim'
+Plug 'norcalli/snippets.nvim'
 
 " Neovim TreeSitter
 Plug 'nvim-treesitter/playground'
@@ -41,12 +42,16 @@ Plug 'mbbill/undotree'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 
+" Web Stuff
+Plug 'mattn/emmet-vim'
+Plug 'posva/vim-vue'
+
 " Statusline
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hoob3rt/lualine.nvim'
+
 " HARPOOOOOOOOONN!!!!!
 Plug 'ThePrimeagen/harpoon'
-" Pretty icons
-Plug 'kyazdani42/nvim-web-devicons'
 
 " TELESCOPE
 Plug 'nvim-lua/plenary.nvim'
@@ -74,11 +79,11 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-" Some utitlity functions
-function! ProjectCommand(key, command) abort
-    execute printf('nnoremap <Leader>%s     :Dispatch %s<CR>', a:key, a:command)
-endfunction
+lua require('configs')
+lua require('nvim-treesitter.configs').setup { highlight = { enable = true } }
+lua require('trouble').setup()
 
+" Trim trailing whitespace
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -108,5 +113,4 @@ tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>pv     :Vexplore<CR>
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
-
 " }}}

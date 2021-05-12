@@ -41,12 +41,13 @@ lspconfig.clangd.setup {
         "--suggest-missing-includes",
         "--clang-tidy",
         "--header-insertion=iwyu",
-    };
+    },
 
-    on_attach = custom_attach;
+    on_attach = custom_attach,
 }
 lspconfig.rust_analyzer.setup { on_attach = custom_attach }
 lspconfig.pyls.setup { on_attach = custom_attach }
+lspconfig.tsserver.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     on_attach = custom_attach;
