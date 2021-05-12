@@ -2,7 +2,10 @@
 # vim:ft=sh
 
 # Remap caps lock and escape
-remap &
+remaps &
+
+# Hides the mouse
+unclutter &
 
 # Music Player Daemon
 mpd &
@@ -14,7 +17,8 @@ picom -b &
 redshift &
 
 # Random wallpapers
-randwal &
+# randwal &
+feh --bg-fill Wallpapers/PixelArt/howlsmovingcastle.jpg
 
 # mute speakers
 amixer set 'Front' mute

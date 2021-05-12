@@ -4,11 +4,10 @@
 ## Env Vars ##
 # path
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/scripts"
 
 # Default programs
 export TERMINAL="st"
-export BROWSER="google-chrome-unstable"
+export BROWSER="google-chrome-stable"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
@@ -16,8 +15,13 @@ export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export _Z_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/z"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export LESSHISTFILE=-
 
 # Other program settings:
 export LESS=-R

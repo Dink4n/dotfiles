@@ -22,6 +22,7 @@ alias \
         xq="xbps-query" \
         vimrc="nvim ~/.config/nvim/init.vim" \
         zshrc="vim ~/.zshrc" \
-        remirror='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+        remirror="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist" \
+        serve="browser-sync start --server --files ."
 
 alias weath="curl wttr.in"
