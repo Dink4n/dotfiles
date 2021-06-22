@@ -1,0 +1,36 @@
+! vim:ft=xdefaults
+
+*.background: #2f383e
+*.foreground: #d3c6aa
+
+! Normal
+*.color0: #4b565c
+*.color1: #e67e80
+*.color2: #a7c080
+*.color3: #dbbc7f
+*.color4: #7fbbb3
+*.color5: #d699b6
+*.color6: #83c092
+*.color7: #d3c6aa
+
+! Bright
+*.color8:  #4b565c
+*.color9:  #e67e80
+*.color10: #a7c080
+*.color11: #dbbc7f
+*.color12: #7fbbb3
+*.color13: #d699b6
+*.color14: #83c092
+*.color15: #d3c6aa
+
+!---------------------!
+! Suckless theme      !
+!---------------------!
+! normal color
+*.normbgcolor:     #2f383e
+*.normfgcolor:     #d3c6aa
+*.normbordercolor: #2f383e
+! selection color
+*.selbgcolor:     #a7c080
+*.selfgcolor:     #2f383e
+*.selbordercolor: #a7c080

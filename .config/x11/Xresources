@@ -2,16 +2,16 @@
 ! ========== ST ===========
 ! =========================
 st.alpha:       1;
-st.font:        Mono:size=16:style=Regular;
+st.font:        Mono:size=14:style=Bold;
 
 ! =========================
 ! ========== DWM ==========
 ! =========================
-dwm.font:       Mono:size=14:style=Regular;
-dmenu.font:     Mono:size=14:style=Regular;
+dwm.font:       Mono:size=12:style=Regular;
+dmenu.font:     Mono:size=12:style=Regular;
 
 ! =========================
 ! ======== COLORS =========
 ! =========================
 
-#include ".config/x11/colors/gruvbox"
+#include ".config/x11/colors/everforest"

@@ -1,28 +1,21 @@
 # Vim for life
 # vim:ft=sh
 
-# Remap caps lock and escape
-remaps &
+remaps & # Remap caps lock and escape
 
-# Hides the mouse
-unclutter &
+unclutter & # Hides the mouse
 
-# Music Player Daemon
-mpd &
+pipewire & # Audio System
 
-# Compositor
-picom -b &
+mpd & # Music Player Daemon
 
-# save those eyes
-redshift &
+picom -b & # Compositor
+
+redshift & # save those eyes
 
 # Random wallpapers
 # randwal &
 feh --bg-fill Wallpapers/PixelArt/howlsmovingcastle.jpg
 
-# mute speakers
-amixer set 'Front' mute
-# unmute headphones
-amixer set 'Headphone' unmute
 # disable auto-mute so speakers will work
-amixer set 'Auto-Mute Mode' Disabled
+amixer -c 1 set 'Auto-Mute Mode' Disabled
