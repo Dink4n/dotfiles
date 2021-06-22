@@ -5,5 +5,7 @@ nnoremap <Leader>l :wincmd l<CR>
 nnoremap <Leader>h :wincmd h<CR>
 
 " Quickfix lists
-nnoremap <C-l>  :cnext<CR>zz
-nnoremap <C-h>  :cprev<CR>zz
+nnoremap <C-j>  :cnext<CR>zz
+nnoremap <C-k>  :cprev<CR>zz
+nnoremap <C-l>  :lnext<CR>zz
+nnoremap <C-h>  :lprev<CR>zz

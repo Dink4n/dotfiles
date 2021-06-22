@@ -5,6 +5,5 @@ _ = require("lspkind").init()
 
 -- Plugins
 require("configs/telescope")
-require("configs/snippets")
 require("configs/statusline")
 require("configs/dispatch")

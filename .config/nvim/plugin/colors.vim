@@ -11,15 +11,8 @@ let g:nord_bold_vertical_split_line  = 1
 
 " Tokyonight.nvim
 let g:tokyonight_style = "storm"
-let g:tokyonight_italic_functions = v:true
-
-" Material.nvim
-let g:material_style            = 'deep ocean'
-let g:material_borders          = v:true
-let g:material_contrast         = v:false
-let g:material_italic_comments  = v:true
-let g:material_italic_keywords  = v:true
-let g:material_italic_functions = v:true
+let g:tokyonight_italic_functions = v:false
+let g:tokyonight_italic_comments = v:true
 
 " Ayu
 let ayucolor = "dark"
@@ -29,7 +22,7 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme gruvbox
+colorscheme everforest
 set background=dark
 
 " highlight Normal guibg=None

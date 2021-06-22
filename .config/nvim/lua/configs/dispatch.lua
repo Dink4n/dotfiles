@@ -1,3 +1,6 @@
+--> WIP <--
+-- I don't think it works ;)
+
 local M = {}
 local util = require("lspconfig.util")
 
@@ -32,12 +35,12 @@ M.SetupDispatch = function()
 
     map("<Leader>pb", 'exe printf("Dispatch make -s -C temp/%s", g:build_type)')
     map("<Leader>pr", 'exe printf("Dispatch temp/%s/%s", g:build_type, g:prog)')
-    map("<Leader>pg", 'exe printf("Dispatch cmake -S . -B temp/%s -DCMAKE_BUILD_TYPE=%s", g:build_type, g:build_type)')
-    map("<Leader>pc", "Dispatch rm -rf temp/*")
+    map("<Leader>pg", 'exe printf("Dispatch! cmake -S . -B temp/%s -DCMAKE_BUILD_TYPE=%s", g:build_type, g:build_type)')
+    map("<Leader>pc", "Dispatch! rm -rf temp/*")
 end
 
 vim.cmd [[ augroup DISPATCH ]]
-vim.cmd [[ autocmd BufNewFile,BufReadPost *.c,*.h :lua require("configs/dispatch").SetupDispatch() ]]
+vim.cmd [[ autocmd BufNewFile,BufReadPost *.c,*.h,*.cpp,CMakeLists.txt :lua require("configs/dispatch").SetupDispatch() ]]
 vim.cmd [[ augroup END ]]
 
 return M

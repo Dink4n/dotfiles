@@ -45,7 +45,6 @@ lspconfig.clangd.setup {
 
     on_attach = custom_attach,
 }
-lspconfig.rust_analyzer.setup { on_attach = custom_attach }
 lspconfig.pyls.setup { on_attach = custom_attach }
 lspconfig.tsserver.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {

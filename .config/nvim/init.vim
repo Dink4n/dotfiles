@@ -23,7 +23,11 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'folke/lsp-trouble.nvim'
-Plug 'norcalli/snippets.nvim'
+
+" snippets
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
 
 " Neovim TreeSitter
 Plug 'nvim-treesitter/playground'
@@ -35,7 +39,11 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
+" Languages
+Plug 'CaffeineViking/vim-glsl'
+
 " Useful
+Plug 'folke/todo-comments.nvim'
 Plug 'rhysd/accelerated-jk'
 Plug 'rhysd/vim-clang-format'
 Plug 'mbbill/undotree'
@@ -44,7 +52,6 @@ Plug 'RishabhRD/nvim-cheat.sh'
 
 " Web Stuff
 Plug 'mattn/emmet-vim'
-Plug 'posva/vim-vue'
 
 " Statusline
 Plug 'kyazdani42/nvim-web-devicons'
@@ -60,14 +67,27 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Colorschemes
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
+Plug 'sainnhe/edge'
+
 Plug 'gruvbox-community/gruvbox'
-Plug 'arcticicestudio/nord-vim'
+Plug 'shaunsingh/nord.nvim'
 Plug 'folke/tokyonight.nvim'
-Plug 'marko-cerovac/material.nvim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
+" }}}
+
+" Lua {{{
+lua << EOF
+require('configs')
+require('nvim-treesitter.configs').setup { highlight = { enable = true } }
+require('trouble').setup()
+require('todo-comments').setup()
+EOF
 " }}}
 
 " Other Things: {{{
@@ -79,9 +99,6 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-lua require('configs')
-lua require('nvim-treesitter.configs').setup { highlight = { enable = true } }
-lua require('trouble').setup()
 
 " Trim trailing whitespace
 fun! TrimWhitespace()
@@ -92,6 +109,7 @@ endfun
 
 augroup STARTUP
     autocmd!
+    autocmd BufEnter        *.vs,*.fs :set ft=glsl
     autocmd BufWritePre     * :call TrimWhitespace()
     autocmd BufWritePost    ~/.Xresources,~/.Xdefaults :silent !xrdb %
 augroup END
@@ -109,7 +127,7 @@ nnoremap <leader>Y gg"+yG
 " ====================
 
 nnoremap <Leader>af     <C-^>
-tnoremap <ESC>          <C-\><C-n>
+" tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>pv     :Vexplore<CR>
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
