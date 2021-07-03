@@ -1,7 +1,9 @@
 local lspconfig = require("lspconfig")
 
-local sumneko_root_path = "/home/anu/.cache/nvim/lspconfig/lua-language-server"
+local lspconfig_root = vim.fn.stdpath("cache") .. "/lspconfig"
+local sumneko_root_path = lspconfig_root .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+local haxe_root_path = lspconfig_root .. "/haxe-language-server"
 
 local custom_attach = function(client, bufnr)
     require("lsp_signature").on_attach({
@@ -25,7 +27,8 @@ local custom_attach = function(client, bufnr)
     map('n', 'gt', 'lua vim.lsp.buf.type_definition()')
     map('n', 'grr', 'lua vim.lsp.buf.references()')
     map('n', 'grn', 'Lspsaga rename')
-    map('n', 'gca', 'Lspsaga code_action')
+    map('n', '<C-f>', 'lua require("lspsaga.action").smart_scroll_with_saga(1)')
+    map('n', '<C-b>', 'lua require("lspsaga.action").smart_scroll_with_saga(-1)')   map('n', 'gca', 'Lspsaga code_action')
 
     -- Diagnostics
     map('n', '<Leader>sl', 'Lspsaga show_line_diagnostics')
@@ -45,6 +48,7 @@ lspconfig.clangd.setup {
 
     on_attach = custom_attach,
 }
+lspconfig.gopls.setup { on_attach = custom_attach }
 lspconfig.pyls.setup { on_attach = custom_attach }
 lspconfig.tsserver.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {
@@ -71,4 +75,8 @@ lspconfig.sumneko_lua.setup {
             },
         },
     },
+}
+lspconfig.haxe_language_server.setup {
+    cmd = {"node", haxe_root_path .. "/bin/server.js"},
+    on_attach = custom_attach,
 }

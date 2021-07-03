@@ -3,9 +3,11 @@ local sorters = require('telescope.sorters')
 
 telescope.setup {
     defaults = {
-        prompt_position = "top",
         sorting_strategy = "ascending",
         file_sorter = sorters.get_fzy_sorter,
+        layout_config = {
+            prompt_position = "top",
+        },
     },
 
     extensions = {

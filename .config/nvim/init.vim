@@ -1,8 +1,9 @@
-"      ___
-"     /   |  ____  __  __
-"    / /| | / __ \/ / / /
-"   / ___ |/ / / / /_/ /
-"  /_/  |_/_/ /_/\__,_/
+"     ____  _       __   __ __
+"    / __ \(_)___  / /__/ // / ____
+"   / / / / / __ \/ //_/ // /_/ __ \
+"  / /_/ / / / / / ,< /__  __/ / / /
+" /_____/_/_/ /_/_/|_|  /_/ /_/ /_/
+
 
 " Filename: init.vim
 " Maintainer: Anu
@@ -23,10 +24,10 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'folke/lsp-trouble.nvim'
+Plug 'rhysd/vim-clang-format'
 
 " snippets
 Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 
 " Neovim TreeSitter
@@ -34,8 +35,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " TPOPE
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
@@ -43,15 +42,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'CaffeineViking/vim-glsl'
 
 " Useful
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'terrortylor/nvim-comment'
 Plug 'folke/todo-comments.nvim'
-Plug 'rhysd/accelerated-jk'
-Plug 'rhysd/vim-clang-format'
-Plug 'mbbill/undotree'
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-cheat.sh'
+Plug 'glepnir/dashboard-nvim'
+" Plug 'RishabhRD/popfix'
+" Plug 'RishabhRD/nvim-cheat.sh'
 
-" Web Stuff
-Plug 'mattn/emmet-vim'
+Plug 'vim-utils/vim-man'
+Plug 'tjdevries/cyclist.vim'
+Plug 'rhysd/accelerated-jk'
+Plug 'tweekmonster/startuptime.vim'
+Plug 'mbbill/undotree', { 'on': 'UndoTreeShow' }
+
 
 " Statusline
 Plug 'kyazdani42/nvim-web-devicons'
@@ -61,22 +66,16 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
 
 " TELESCOPE
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Colorschemes
-Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
-Plug 'sainnhe/edge'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'shaunsingh/nord.nvim'
 Plug 'folke/tokyonight.nvim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 " }}}
@@ -99,6 +98,9 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+" Indent line
+let g:indent_blankline_char='|'
+let g:indent_blankline_space_char = '.'
 
 " Trim trailing whitespace
 fun! TrimWhitespace()
@@ -107,11 +109,15 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+augroup YANK_HIGHLIGHT
+	au TextYankPost * silent! lua vim.highlight.on_yank()
+augroup END
+
 augroup STARTUP
-    autocmd!
-    autocmd BufEnter        *.vs,*.fs :set ft=glsl
-    autocmd BufWritePre     * :call TrimWhitespace()
-    autocmd BufWritePost    ~/.Xresources,~/.Xdefaults :silent !xrdb %
+    au!
+    au BufEnter        *.vs,*.fs :set ft=glsl
+    au BufWritePre     * :call TrimWhitespace()
+    au BufWritePost    ~/.Xresources,~/.Xdefaults :silent !xrdb %
 augroup END
 " }}}
 
@@ -127,8 +133,10 @@ nnoremap <leader>Y gg"+yG
 " ====================
 
 nnoremap <Leader>af     <C-^>
-" tnoremap <ESC>          <C-\><C-n>
 nnoremap <Leader>pv     :Vexplore<CR>
 nnoremap <Leader>u      :UndotreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
+
+autocmd FileType c,cpp,objc nnoremap <Leader>f :ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <Leader>f :ClangFormat<CR>
 " }}}
