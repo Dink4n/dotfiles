@@ -13,9 +13,8 @@ picom -b & # Compositor
 
 redshift & # save those eyes
 
-# Random wallpapers
-# randwal &
-feh --bg-fill Wallpapers/PixelArt/howlsmovingcastle.jpg
+# set wallpaper
+setbg &
 
 # disable auto-mute so speakers will work
 amixer -c 1 set 'Auto-Mute Mode' Disabled

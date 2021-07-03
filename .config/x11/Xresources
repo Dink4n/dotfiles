@@ -2,7 +2,7 @@
 ! ========== ST ===========
 ! =========================
 st.alpha:       1;
-st.font:        Mono:size=14:style=Bold;
+st.font:        Mono:size=14:style=Regular;
 
 ! =========================
 ! ========== DWM ==========
@@ -14,4 +14,4 @@ dmenu.font:     Mono:size=12:style=Regular;
 ! ======== COLORS =========
 ! =========================
 
-#include ".config/x11/colors/everforest"
+#include ".config/x11/colors/tokyonight"
