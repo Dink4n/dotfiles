@@ -3,7 +3,6 @@ local lspconfig = require("lspconfig")
 local lspconfig_root = vim.fn.stdpath("cache") .. "/lspconfig"
 local sumneko_root_path = lspconfig_root .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
-local haxe_root_path = lspconfig_root .. "/haxe-language-server"
 
 local custom_attach = function(client, bufnr)
     require("lsp_signature").on_attach({
@@ -50,7 +49,6 @@ lspconfig.clangd.setup {
 }
 lspconfig.gopls.setup { on_attach = custom_attach }
 lspconfig.pyls.setup { on_attach = custom_attach }
-lspconfig.tsserver.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     on_attach = custom_attach;
@@ -75,8 +73,4 @@ lspconfig.sumneko_lua.setup {
             },
         },
     },
-}
-lspconfig.haxe_language_server.setup {
-    cmd = {"node", haxe_root_path .. "/bin/server.js"},
-    on_attach = custom_attach,
 }

@@ -31,7 +31,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 
 " Neovim TreeSitter
-Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " TPOPE
@@ -93,14 +92,6 @@ EOF
 " Python is fake language
 let python_highlight_all=1
 let g:python3_host_prog='/usr/bin/python'
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
-" Indent line
-let g:indent_blankline_char='|'
-let g:indent_blankline_space_char = '.'
 
 " Trim trailing whitespace
 fun! TrimWhitespace()

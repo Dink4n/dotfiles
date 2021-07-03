@@ -2,12 +2,15 @@
 ! ========== ST ===========
 ! =========================
 st.alpha:       1;
+st.cursorSize:  1;
 st.font:        Mono:size=14:style=Regular;
 
 ! =========================
 ! ========== DWM ==========
 ! =========================
 dwm.font:       Mono:size=12:style=Regular;
+dwm.borderpx:   0;
+
 dmenu.font:     Mono:size=12:style=Regular;
 
 ! =========================

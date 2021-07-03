@@ -23,8 +23,6 @@ set scrolloff=8
 set clipboard=unnamedplus
 set foldmethod=marker
 set signcolumn=yes
-set list
-set listchars=tab:\▏\ ,space:.
 
 " Give more space for displaying messages.
 set cmdheight=2
