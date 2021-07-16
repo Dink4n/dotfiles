@@ -25,5 +25,8 @@ endif
 colorscheme tokyonight
 set background=dark
 
+" Tokyonight
+highlight NonText guifg=#3b4057
+" Gruvbox
 " highlight Normal guibg=None
 " highlight SignColumn guibg=None

@@ -24,6 +24,10 @@ set clipboard=unnamedplus
 set foldmethod=marker
 set signcolumn=yes
 
+" Cursor blinking
+set guicursor+=a:blinkwait500-blinkoff250-blinkon250-Cursor/lCursor
+set guicursor+=sm:block-blinkwait175-blinkoff150-blinkon175
+
 " Give more space for displaying messages.
 set cmdheight=2
 

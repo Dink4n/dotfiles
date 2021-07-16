@@ -13,21 +13,22 @@ local custom_attach = function(client, bufnr)
     })
 
     local map = function(mode, key, result)
-        vim.api.nvim_set_keymap(mode, key, "<cmd> " .. result .. "<CR>", {
+        vim.api.nvim_buf_set_keymap(0, mode, key, "<cmd> " .. result .. "<CR>", {
             noremap = true, silent = true
         })
     end
 
-    map('n', 'gd', 'lua vim.lsp.buf.definition()')
-    map('n', 'gK', 'Lspsaga hover_doc')
-    map('n', 'gi', 'lua vim.lsp.buf.implementation()')
-    map('n', 'gD', 'lua vim.lsp.buf.declaration()')
-    map('n', 'gs', 'Lspsaga signature_help')
-    map('n', 'gt', 'lua vim.lsp.buf.type_definition()')
-    map('n', 'grr', 'lua vim.lsp.buf.references()')
-    map('n', 'grn', 'Lspsaga rename')
-    map('n', '<C-f>', 'lua require("lspsaga.action").smart_scroll_with_saga(1)')
-    map('n', '<C-b>', 'lua require("lspsaga.action").smart_scroll_with_saga(-1)')   map('n', 'gca', 'Lspsaga code_action')
+    map('n', 'gd',      'lua vim.lsp.buf.definition()')
+    map('n', 'gK',      'Lspsaga hover_doc')
+    map('n', 'gi',      'lua vim.lsp.buf.implementation()')
+    map('n', 'gD',      'lua vim.lsp.buf.declaration()')
+    map('n', 'gs',      'Lspsaga signature_help')
+    map('n', 'gt',      'lua vim.lsp.buf.type_definition()')
+    map('n', 'grr',     'lua require("telescope.builtin").lsp_references()')
+    map('n', 'grn',     'Lspsaga rename')
+    map('n', 'gca',     'Lspsaga code_action')
+    map('n', '<C-f>',   'lua require("lspsaga.action").smart_scroll_with_saga(1)')
+    map('n', '<C-b>',   'lua require("lspsaga.action").smart_scroll_with_saga(-1)')
 
     -- Diagnostics
     map('n', '<Leader>sl', 'Lspsaga show_line_diagnostics')
@@ -48,6 +49,7 @@ lspconfig.clangd.setup {
     on_attach = custom_attach,
 }
 lspconfig.gopls.setup { on_attach = custom_attach }
+lspconfig.vimls.setup { on_attach = custom_attach }
 lspconfig.pyls.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};

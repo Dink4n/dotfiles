@@ -4,7 +4,6 @@
 "  / /_/ / / / / / ,< /__  __/ / / /
 " /_____/_/_/ /_/_/|_|  /_/ /_/ /_/
 
-
 " Filename: init.vim
 " Maintainer: Anu
 " Github: https://github.com/Dink4n/dotfiles
@@ -32,30 +31,29 @@ Plug 'rafamadriz/friendly-snippets'
 
 " Neovim TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " TPOPE
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
 " Languages
-Plug 'CaffeineViking/vim-glsl'
+Plug 'CaffeineViking/vim-glsl', { 'for': 'glsl' }
 
 " Useful
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
+Plug 'folke/zen-mode.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'terrortylor/nvim-comment'
 Plug 'folke/todo-comments.nvim'
-Plug 'glepnir/dashboard-nvim'
-" Plug 'RishabhRD/popfix'
-" Plug 'RishabhRD/nvim-cheat.sh'
+Plug 'mhinz/vim-startify'
 
-Plug 'vim-utils/vim-man'
 Plug 'tjdevries/cyclist.vim'
 Plug 'rhysd/accelerated-jk'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'tweekmonster/startuptime.vim'
 Plug 'mbbill/undotree', { 'on': 'UndoTreeShow' }
-
 
 " Statusline
 Plug 'kyazdani42/nvim-web-devicons'
@@ -66,7 +64,7 @@ Plug 'ThePrimeagen/harpoon'
 
 " TELESCOPE
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 
 " Colorschemes
 Plug 'sainnhe/everforest'
@@ -82,7 +80,6 @@ call plug#end()
 " Lua {{{
 lua << EOF
 require('configs')
-require('nvim-treesitter.configs').setup { highlight = { enable = true } }
 require('trouble').setup()
 require('todo-comments').setup()
 EOF
@@ -93,6 +90,15 @@ EOF
 let python_highlight_all=1
 let g:python3_host_prog='/usr/bin/python'
 
+" Vim startify
+let g:startify_custom_header =
+            \ startify#pad(split(system('fortune | cowsay -f dragon-and-cow'), '\n'))
+
+" Cyclist
+silent call cyclist#set_tab("default", "│ ")
+silent call cyclist#add_listchar_option_set("clean", {}, v:false)
+silent call cyclist#add_listchar_option_set("debug", { 'space': '·' }, v:true)
+
 " Trim trailing whitespace
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -100,15 +106,26 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+fun! HeaderGuard()
+    echo tr(toupper(expand("%")), ".", "_")
+endfun
+
 augroup YANK_HIGHLIGHT
-	au TextYankPost * silent! lua vim.highlight.on_yank()
+    au!
+    au TextYankPost * silent! lua vim.highlight.on_yank()
+augroup END
+
+augroup FILETYPE_DETECT
+    au!
+    au TermOpen             *          setlocal nonumber norelativenumber
+    au FileType             *.vs,*.fs  :set ft=glsl
+    au BufRead,BufNewFile   *.h,*.hpp  :call HeaderGuard()
 augroup END
 
 augroup STARTUP
     au!
-    au BufEnter        *.vs,*.fs :set ft=glsl
-    au BufWritePre     * :call TrimWhitespace()
-    au BufWritePost    ~/.Xresources,~/.Xdefaults :silent !xrdb %
+    au BufWritePre     *                            :call TrimWhitespace()
+    au BufWritePost    ~/.Xresources,~/.Xdefaults   :silent !xrdb %
 augroup END
 " }}}
 
@@ -125,9 +142,17 @@ nnoremap <leader>Y gg"+yG
 
 nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pv     :Vexplore<CR>
-nnoremap <Leader>u      :UndotreeShow<CR>
+nnoremap <Leader>u      :UndoTreeShow<CR>
 nnoremap <Leader><CR>   :source ~/.config/nvim/init.vim<CR>
+nmap     <Leader>cn     <Plug>CyclistNext
+nmap     <Leader>cp     <Plug>CyclistPrev
 
 autocmd FileType c,cpp,objc nnoremap <Leader>f :ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <Leader>f :ClangFormat<CR>
+" }}}
+
+" Commands: {{{
+command! -bang -bar -range=-1 -complete=customlist,man#complete -nargs=* VMan
+      \ if <bang>0 | set ft=man |
+      \ else | call man#open_page(<count>, 'vertical', <f-args>) | endif
 " }}}
