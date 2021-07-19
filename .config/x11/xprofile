@@ -2,19 +2,11 @@
 # vim:ft=sh
 
 remaps & # Remap caps lock and escape
-
 unclutter & # Hides the mouse
-
 pipewire & # Audio System
-
 mpd & # Music Player Daemon
-
 picom -b & # Compositor
-
-redshift & # save those eyes
-
-# set wallpaper
-setbg &
+setbg & # set wallpaper
 
 # disable auto-mute so speakers will work
 amixer -c 1 set 'Auto-Mute Mode' Disabled

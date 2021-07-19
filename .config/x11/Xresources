@@ -3,7 +3,7 @@
 ! =========================
 st.alpha:       1;
 st.cursorSize:  1;
-st.font:        Mono:size=14:style=Regular;
+st.font:        Mono:size=12:style=Regular;
 
 ! =========================
 ! ========== DWM ==========

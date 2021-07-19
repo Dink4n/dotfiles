@@ -1,6 +1,4 @@
 .config/nvim/plugged/
 .config/nvim/undodir/
-.config/ncmpcpp/lyrics/
 .config/nvim/.netrwhist
-.vim/undodir/
-.vim/plugged/
+.config/ncmpcpp/lyrics/
