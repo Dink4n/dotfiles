@@ -48,9 +48,10 @@ lspconfig.clangd.setup {
 
     on_attach = custom_attach,
 }
+lspconfig.jedi_language_server.setup { on_attach = custom_attach }
 lspconfig.gopls.setup { on_attach = custom_attach }
+lspconfig.clangd.setup { on_attach = custom_attach }
 lspconfig.vimls.setup { on_attach = custom_attach }
-lspconfig.pyls.setup { on_attach = custom_attach }
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     on_attach = custom_attach;

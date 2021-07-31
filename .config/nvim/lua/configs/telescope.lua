@@ -8,6 +8,11 @@ telescope.setup {
         layout_config = {
             prompt_position = "top",
         },
+        mappings = {
+            i = {
+                ["<c-a>"] = function() print("Hello, World!") end
+            },
+        },
     },
 
     extensions = {

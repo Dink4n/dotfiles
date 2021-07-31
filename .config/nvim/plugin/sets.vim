@@ -14,7 +14,8 @@ set nohlsearch
 set smartcase
 set splitright
 set noswapfile
-set nobackup
+set backup
+set backupdir=$XDG_DATA_HOME/nvim/backup
 set undodir=~/.config/nvim/undodir
 set undofile
 set termguicolors

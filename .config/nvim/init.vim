@@ -43,12 +43,12 @@ Plug 'CaffeineViking/vim-glsl', { 'for': 'glsl' }
 " Useful
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
-Plug 'folke/zen-mode.nvim'
+Plug 'simrat39/symbols-outline.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'terrortylor/nvim-comment'
 Plug 'folke/todo-comments.nvim'
-Plug 'mhinz/vim-startify'
 
+Plug 'mhinz/vim-startify'
 Plug 'tjdevries/cyclist.vim'
 Plug 'rhysd/accelerated-jk'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -68,7 +68,6 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 
 " Colorschemes
 Plug 'sainnhe/everforest'
-Plug 'sainnhe/sonokai'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'shaunsingh/nord.nvim'
@@ -106,10 +105,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-fun! HeaderGuard()
-    echo tr(toupper(expand("%")), ".", "_")
-endfun
-
 augroup YANK_HIGHLIGHT
     au!
     au TextYankPost * silent! lua vim.highlight.on_yank()
@@ -119,7 +114,6 @@ augroup FILETYPE_DETECT
     au!
     au TermOpen             *          setlocal nonumber norelativenumber
     au FileType             *.vs,*.fs  :set ft=glsl
-    au BufRead,BufNewFile   *.h,*.hpp  :call HeaderGuard()
 augroup END
 
 augroup STARTUP
@@ -130,15 +124,37 @@ augroup END
 " }}}
 
 " Key Mappings: {{{
-" ======= Useful ======
 nmap     k <Plug>(accelerated_jk_gk)
 nmap     j <Plug>(accelerated_jk_gj)
 vnoremap < <gv
 vnoremap > >gv
+nnoremap <leader>Y gg"+yG
+
+" Behave Vim
+nnoremap Y y$
+
+" Keeping it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Undo break points
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+
+" Jumplist mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" Moving text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>Y gg"+yG
-" ====================
+inoremap <C-j> <Esc>:m .+1<CR>==
+inoremap <C-k> <Esc>:m .-2<CR>==
+nnoremap <Leader>k :m .-2<CR>==
+nnoremap <Leader>j :m .+1<CR>==
 
 nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pv     :Vexplore<CR>
