@@ -1,3 +1,3 @@
-[submodule "Wallpapers"]
-	path = Wallpapers
+[submodule "Pics/Wallpapers"]
+	path = Pics/Wallpapers
 	url = https://github.com/Dink4n/Wallpapers.git

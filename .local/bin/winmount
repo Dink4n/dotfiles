@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Need super user permission for mounting windows
+error() {
+    printf '\x1B[31m'
+    printf 'ERROR: %s\n' "$1"
+    printf '\x1B[0m'
+
+    exit 1
+}
+
+[ "$USER" != "root" ] && error "Run as root (sudo)"
+[ -x $(command -v "ntfs-3g") ] ||
+    pacman --noconfirm --needed -S ntfs-3g &>/dev/null

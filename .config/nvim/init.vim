@@ -18,42 +18,49 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'onsails/lspkind-nvim'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'folke/lsp-trouble.nvim'
-Plug 'rhysd/vim-clang-format'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
 
-" snippets
-Plug 'hrsh7th/vim-vsnip'
+Plug 'tami5/lspsaga.nvim'
+Plug 'onsails/lspkind-nvim'
+Plug 'folke/lsp-trouble.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 
-" Neovim TreeSitter
+" TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/playground'
+Plug 'romgrk/nvim-treesitter-context'
 
 " TPOPE
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 
 " Languages
 Plug 'CaffeineViking/vim-glsl', { 'for': 'glsl' }
 
-" Useful
+" Some plugins
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
+
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'terrortylor/nvim-comment'
 Plug 'folke/todo-comments.nvim'
+Plug 'folke/twilight.nvim'
+Plug 'rhysd/vim-clang-format'
+Plug 'ThePrimeagen/refactoring.nvim'
 
-Plug 'mhinz/vim-startify'
 Plug 'tjdevries/cyclist.vim'
-Plug 'rhysd/accelerated-jk'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'tweekmonster/startuptime.vim'
-Plug 'mbbill/undotree', { 'on': 'UndoTreeShow' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeShow' }
 
 " Statusline
 Plug 'kyazdani42/nvim-web-devicons'
@@ -67,10 +74,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 
 " Colorschemes
-Plug 'sainnhe/everforest'
-
 Plug 'gruvbox-community/gruvbox'
-Plug 'shaunsingh/nord.nvim'
 Plug 'folke/tokyonight.nvim'
 
 call plug#end()
@@ -81,6 +85,7 @@ lua << EOF
 require('configs')
 require('trouble').setup()
 require('todo-comments').setup()
+require('twilight').setup()
 EOF
 " }}}
 
@@ -89,13 +94,10 @@ EOF
 let python_highlight_all=1
 let g:python3_host_prog='/usr/bin/python'
 
-" Vim startify
-let g:startify_custom_header =
-            \ startify#pad(split(system('fortune | cowsay -f dragon-and-cow'), '\n'))
-
 " Cyclist
+silent call cyclist#set_eol("default", "")
 silent call cyclist#set_tab("default", "│ ")
-silent call cyclist#add_listchar_option_set("clean", {}, v:false)
+silent call cyclist#add_listchar_option_set("clean", { 'eol': '', 'tab': '  ' }, v:true)
 silent call cyclist#add_listchar_option_set("debug", { 'space': '·' }, v:true)
 
 " Trim trailing whitespace
@@ -113,19 +115,16 @@ augroup END
 augroup FILETYPE_DETECT
     au!
     au TermOpen             *          setlocal nonumber norelativenumber
-    au FileType             *.vs,*.fs  :set ft=glsl
 augroup END
 
 augroup STARTUP
     au!
-    au BufWritePre     *                            :call TrimWhitespace()
+    au BufWritePre     *[^.md]                      :call TrimWhitespace()
     au BufWritePost    ~/.Xresources,~/.Xdefaults   :silent !xrdb %
 augroup END
 " }}}
 
 " Key Mappings: {{{
-nmap     k <Plug>(accelerated_jk_gk)
-nmap     j <Plug>(accelerated_jk_gj)
 vnoremap < <gv
 vnoremap > >gv
 nnoremap <leader>Y gg"+yG
@@ -151,10 +150,8 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 " Moving text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <Esc>:m .+1<CR>==
-inoremap <C-k> <Esc>:m .-2<CR>==
-nnoremap <Leader>k :m .-2<CR>==
-nnoremap <Leader>j :m .+1<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==<Right><Insert>
+inoremap <C-k> <Esc>:m .-2<CR>==<Right><Insert>
 
 nnoremap <Leader>af     <C-^>
 nnoremap <Leader>pv     :Vexplore<CR>

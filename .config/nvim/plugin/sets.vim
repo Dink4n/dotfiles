@@ -7,23 +7,24 @@ set nowrap                                  " Disable that annoying wraping
 set number                                  " Enable absolute number line
 set relativenumber                          " Enable relative number line
 set hidden                                  " I like switching buffers quickly
-set noerrorbells
-set incsearch
-set inccommand=split
-set nohlsearch
-set smartcase
-set splitright
-set noswapfile
-set backup
-set backupdir=$XDG_DATA_HOME/nvim/backup
-set undodir=~/.config/nvim/undodir
-set undofile
-set termguicolors
-set pumheight=10
-set scrolloff=8
-set clipboard=unnamedplus
-set foldmethod=marker
-set signcolumn=yes
+set noerrorbells                            " Disable that retarded error sound
+set cursorline                              " Line at cursor position
+set incsearch                               " Search Incrementally
+set inccommand=split                        " Cool menu when substituting
+set nohlsearch                              " Don't highlight search results
+set splitright                              " Split windows to the right
+set noswapfile                              " Don't create swap files
+set backup                                  " Create backups
+set backupdir=$XDG_DATA_HOME/nvim/backup    " Directory to create backups
+set undodir=~/.config/nvim/undodir          " Directory keep undofiles
+set undofile                                " Create undofiles
+set termguicolors                           " True terminal colors
+set pumheight=10                            " Maximum 10 lines for completions
+set pumblend=15                             " Blend the completion menu
+set scrolloff=8                             " Always have 8 lines above and below the cursor
+set clipboard=unnamedplus                   " Use all clpboards
+set foldmethod=marker                       " Use marker as foldmethod
+set signcolumn=yes                          " Column in the side
 
 " Cursor blinking
 set guicursor+=a:blinkwait500-blinkoff250-blinkon250-Cursor/lCursor

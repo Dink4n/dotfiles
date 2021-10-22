@@ -24,4 +24,5 @@ alias \
         zshrc="vim ~/.zshrc" \
         remirror="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist" \
         serve="browser-sync start --server --files ." \
-        weath="curl wttr.in"
+        weath="curl wttr.in" \
+        tsm="transmission-remote" \

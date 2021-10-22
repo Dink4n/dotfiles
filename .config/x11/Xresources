@@ -1,18 +1,19 @@
 ! =========================
 ! ========== ST ===========
 ! =========================
-st.alpha:       1;
-st.cursorSize:  1;
-st.font:        Mono:size=12:style=Regular;
+st.alpha:               1;
+st.cursorthickness:     1;
+st.borderpx:            0.5;
+st.font:                Mono:pixelsize=16:style=Regular;
 
 ! =========================
 ! ========== DWM ==========
 ! =========================
-dwm.font:       Mono:size=12:style=Regular;
-dmenu.font:     Mono:size=12:style=Regular;
+dwm.font:       Mono:pixelsize=16:style=Regular;
+dmenu.font:     Mono:pixelsize=16:style=Regular;
 
 ! =========================
 ! ======== COLORS =========
 ! =========================
 
-#include ".config/x11/colors/tokyonight"
+#include ".config/x11/colors/gruvbox"

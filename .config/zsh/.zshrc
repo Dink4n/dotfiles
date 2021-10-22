@@ -31,23 +31,23 @@ export KEYTIMEOUT=1
 
 # make backspace act normal
 bindkey -v '^?' backward-delete-char
-
+#
 # Change cursor shape for different vi modes.
 function zle-keymap-select()
 {
     case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';; # Block
-        viins|main) echo -ne '\e[5 q';; # Beam
+        vicmd) printf '\e[1 q';; # Block
+        viins|main) printf '\e[5 q';; # Beam
     esac
 }
 zle -N zle-keymap-select
 zle-line-init()
 {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne '\e[5 q'
+    printf '\e[5 q'
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
+printf '\e[5 q' # Use beam shape cursor on startup.
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
