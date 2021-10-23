@@ -55,10 +55,12 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(s_tab_complete, { "i", "s" }),
     },
     sources = {
+        { name = 'nvim_lua' },
+
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'buffer' },
         { name = 'path' },
+        { name = 'buffer', keyword_length = 5 },
     },
     formatting = {
         format = lspkind.cmp_format {
@@ -69,6 +71,7 @@ cmp.setup({
                 nvim_lsp = '[LSP]',
                 luasnip = '[LuaSnip]',
                 nvim_lua = '[Lua]',
+                path = '[Path]',
             },
         }
     },
@@ -77,6 +80,7 @@ cmp.setup({
         winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
     },
     experimental = {
+        -- Very cool
         ghost_text = true,
     },
 })

@@ -1,5 +1,5 @@
 -- Lsp stuff
-require("configs/cmp")
+require("configs/completion")
 require("configs/lspconfig")
 
 -- Plugins
