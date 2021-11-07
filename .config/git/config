@@ -1,5 +1,5 @@
 [user]
-	name = JimboKearn
+	name = Dink4n
 	email = anujithbahuleyan@gmail.com
 [core]
 	editor = nvim
@@ -32,3 +32,5 @@
 
 [init]
 	defaultBranch = main
+[alias]
+	yolo = !git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
