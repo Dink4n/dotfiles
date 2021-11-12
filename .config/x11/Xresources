@@ -2,18 +2,22 @@
 ! ========== ST ===========
 ! =========================
 st.alpha:               1;
+/* st.borderpx:            0.5; */
+st.borderpx:            32;
 st.cursorthickness:     1;
-st.borderpx:            0.5;
-st.font:                Mono:pixelsize=16:style=Regular;
+st.font:                Mono:size=13:style=Regular;
 
 ! =========================
 ! ========== DWM ==========
 ! =========================
-dwm.font:       Mono:pixelsize=16:style=Regular;
-dmenu.font:     Mono:pixelsize=16:style=Regular;
+dwm.borderpx:   0;
+dwm.baroffy:     24;
+dwm.baroffx:     12;
+dwm.font:       Mono:size=13:style=Regular;
+dmenu.font:     Mono:size=13:style=Regular;
 
 ! =========================
 ! ======== COLORS =========
 ! =========================
 
-#include ".config/x11/colors/gruvbox"
+#include ".config/x11/colors/ayu"

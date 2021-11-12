@@ -2,7 +2,7 @@
 set smartindent                             " Smart indentation
 set tabstop=4 softtabstop=4                 " changing number of spaces tab counts for to 4
 set shiftwidth=4                            " Number of spaces to use for each step of indent
-set expandtab                               " Change tabs to spaces
+" set expandtab                               " Change tabs to spaces
 set nowrap                                  " Disable that annoying wraping
 set number                                  " Enable absolute number line
 set relativenumber                          " Enable relative number line
@@ -31,7 +31,7 @@ set guicursor+=a:blinkwait500-blinkoff250-blinkon250-Cursor/lCursor
 set guicursor+=sm:block-blinkwait175-blinkoff150-blinkon175
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

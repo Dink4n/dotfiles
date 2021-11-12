@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
+Plug 'github/copilot.vim'
 Plug 'tami5/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'folke/lsp-trouble.nvim'
@@ -25,10 +26,11 @@ Plug 'ray-x/lsp_signature.nvim'
 
 " Completion
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " Snippets
@@ -47,6 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 
 " Languages
+Plug 'nathom/filetype.nvim'
 Plug 'CaffeineViking/vim-glsl', { 'for': 'glsl' }
 
 " Some plugins
@@ -78,6 +81,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 " Colorschemes
 Plug 'gruvbox-community/gruvbox'
 Plug 'folke/tokyonight.nvim'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 " }}}
@@ -117,6 +121,7 @@ augroup END
 augroup FILETYPE_DETECT
     au!
     au TermOpen             *          setlocal nonumber norelativenumber
+    au BufNewFile,BufRead   *.h        set ft=c
 augroup END
 
 augroup STARTUP
@@ -148,6 +153,10 @@ inoremap ? ?<C-g>u
 " Jumplist mutations
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" Moving through quickfix list
+nnoremap <C-l> <cmd>cnext<CR>
+nnoremap <C-h> <cmd>cprev<CR>
 
 " Moving text
 vnoremap J :m '>+1<CR>gv=gv

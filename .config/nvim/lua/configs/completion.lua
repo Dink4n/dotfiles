@@ -46,33 +46,31 @@ cmp.setup({
         end,
     },
     mapping = {
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
+        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable,
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close()
+        }),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(tab_complete, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(s_tab_complete, { "i", "s" }),
     },
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lua' },
 
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
+    }, {
         { name = 'buffer', keyword_length = 5 },
-    },
+    }),
     formatting = {
         format = lspkind.cmp_format {
-            with_text = true,
+            with_text = false,
             maxwidth = 50,
-            menu = {
-                buffer = '[Buffer]',
-                nvim_lsp = '[LSP]',
-                luasnip = '[LuaSnip]',
-                nvim_lua = '[Lua]',
-                path = '[Path]',
-            },
         }
     },
     documentation = {
@@ -83,4 +81,11 @@ cmp.setup({
         -- Very cool
         ghost_text = true,
     },
+})
+
+-- Use buffer source for `/`
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' },
+    }
 })

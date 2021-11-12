@@ -65,3 +65,6 @@ loadplugin()
 loadplugin zsh-z
 loadplugin zsh-autosuggestions
 loadplugin fast-syntax-highlighting
+
+# Starship prompt
+eval "$(starship init zsh)"

@@ -14,6 +14,8 @@ let g:everforest_diagnostic_virtual_text = 'colored'
 let g:nord_borders = 1
 let g:nord_disable_background = 1
 
+" Ayu
+let ayucolor = 'dark'
 
 " Tokyonight.nvim
 let g:tokyonight_style = "night"
@@ -25,7 +27,7 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme gruvbox
+colorscheme ayu
 set background=dark
 
 " Tokyonight

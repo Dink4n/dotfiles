@@ -1,0 +1,12 @@
+{
+    "header": {
+        "prefix": "head",
+        "body": [
+            "#ifndef $1",
+            "#define $1",
+            "$0",
+            "#endif /* $1 */"
+        ],
+        "description": "Code snippet for header files"
+    }
+}

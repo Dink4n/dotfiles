@@ -3,7 +3,8 @@
 ! Ayu Dark
 ! Special
 *.foreground:   #B3B1AD
-*.background:   #0A0E14
+/* *.background:   #0A0E14 */
+*.background:   #0F1419
 *.cursorColor:  #e9e9f4
 
 ! Black

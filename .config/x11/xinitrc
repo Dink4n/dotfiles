@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # start dwm
-exec dwm
+exec dwm > dwm.log 2>&1
