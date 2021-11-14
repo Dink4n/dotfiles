@@ -6,6 +6,8 @@
 
 .config/mpd/mpd.db
 .config/mpd/mpd.log
+.config/mpd/mpd.pid
 .config/mpd/mpd.state
 .config/mpd/sticker.sql
+.config/mpd/playlists
 .config/zsh/.zcompdump
