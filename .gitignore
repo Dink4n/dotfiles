@@ -4,8 +4,8 @@
 .config/ncmpcpp/lyrics/
 .config/ncmpcpp/error.log
 
-config/mpd/mpd.db
-config/mpd/mpd.log
-config/mpd/mpd.state
-config/mpd/sticker.sql
-config/zsh/.zcompdump
+.config/mpd/mpd.db
+.config/mpd/mpd.log
+.config/mpd/mpd.state
+.config/mpd/sticker.sql
+.config/zsh/.zcompdump
