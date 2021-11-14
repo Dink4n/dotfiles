@@ -8,6 +8,7 @@ mpd & # Music Player Daemon
 picom -b & # Compositor
 setbg & # set wallpaper
 transmission-daemon & # torrents bayyyybeeeeeeeeeeee
+dwmbar & # DWM status bar
 
 # disable auto-mute so speakers will work
 amixer -c 1 set 'Auto-Mute Mode' Disabled

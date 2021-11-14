@@ -5,7 +5,7 @@ st.alpha:               1;
 /* st.borderpx:            0.5; */
 st.borderpx:            32;
 st.cursorthickness:     1;
-st.font:                Mono:size=13:style=Regular;
+st.font:                Mono:pixelsize=17:style=Regular;
 
 ! =========================
 ! ========== DWM ==========
